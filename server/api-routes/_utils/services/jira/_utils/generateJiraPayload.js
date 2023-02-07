@@ -20,7 +20,8 @@ export const generateJiraPayload = (data) => {
     SUP,
     device_name,
     expertConnectLink="",
-    description=""
+    description="",
+    jiraTicket={}
   } = data
 
   try {

@@ -6,7 +6,9 @@ export const generateTicketDescription = (data) => {
     message,
     severity,
     stream_name,
+    streamName,
     stream_type,
+    streamType,
     tags,
     value,
     time,
@@ -17,7 +19,11 @@ export const generateTicketDescription = (data) => {
     product="Formant",
     ERC,
     SUP,
-    device_name
+    device_name,
+    expertConnectUrl,
+    jiraUrl,
+    device,
+    name
   } = data
   
   return  `
@@ -25,14 +31,16 @@ export const generateTicketDescription = (data) => {
   Alert Type = ${type},
   Alert Time = ${time},
   Alert Value = ${value},
-  Alert Stream Name = ${stream_name},
-  Alert Stream Type = ${stream_type},
+  Alert Stream Name = ${stream_name || streamName},
+  Alert Stream Type = ${stream_type || streamType},
   Alert Severity = ${severity},
   Event Title: ${message},
-  Formant URL = ${formantUrl},
+  Formant Link = ${formantUrl},
+  ExpertConnect Link = ${expertConnectUrl || 'NULL'},
+  JIRA Link = ${jiraUrl || 'NULL'},
+  BUNDLE Number= ${bundle},
+  Machine ID  = ${device ? device.name : name ? name : device_name},
   ERC = ${ERC},
   SUP = ${SUP},
-  BUNDLE = ${bundle},
-  Vehicle = ${device_name}
   @@END`
 }

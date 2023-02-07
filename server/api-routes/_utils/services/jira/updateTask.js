@@ -3,16 +3,15 @@ import { generateJiraPayload } from "./_utils/generateJiraPayload"
 import { generateSpecifications } from "../_utlis/generateSpecifications"
 import { generateTicketDescription } from '../../formating/generateTicketDescription'
 
-export const createJiraTicket = async (data) => {
+export const updateJiraTicket = async (ticketId,data) => {
 
   try {
     const specifications = generateTicketDescription(data)
     const payload = generateJiraPayload ({...data, description: specifications})
 
-
-    const response  = await fetch(`${process.env.JIRA_URL}/rest/api/2/issue`
+    const response  = await fetch(`${process.env.JIRA_URL}/rest/api/2/issue/${ticketId}`
     , {
-      method: "POST"
+      method: "PUT"
       , body: JSON.stringify(payload)
       , headers: {
         "Content-Type":"application/json"
@@ -21,12 +20,15 @@ export const createJiraTicket = async (data) => {
     })
 
 
-    const issue =  await response.json()
-    return {...issue, ...payload, specifications}
+    if(response.status !== 200)
+      throw new Error("Unable to update jira ticket: " + ticketId)
+
+    return { ...payload, specifications}
 
   } catch (e) {
-    console.log("JIRA TICKET CREATION ERROR: ", e.message)
-    console.log("JIRA TICKET CREATION ERROR: ", e.stack)
+    console.log("JIRA TICKET UPDATE ERROR: ", e.message)
+    console.log("JIRA TICKET UPDATE ERROR: ", e.stack)
 
   } 
+  
 }
