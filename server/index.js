@@ -17,7 +17,7 @@ console.log(__dirname)
 dotenv.config({ path: './.env' })
 
 const app = express();
-const requestLogStream = fs.createWriteStream(path.join('./'+__dirname+'server-request-logs', 'request.log'), { flags: 'a' })
+// const requestLogStream = fs.createWriteStream(path.join('./'+__dirname+'server-request-logs', 'request.log'), { flags: 'a' })
 
 app.use(
   express.urlencoded({

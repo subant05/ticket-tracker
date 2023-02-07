@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS tickets.formant (
   time TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   url text NOT NULL,
   bundle INT DEFAULT 0,
-  vadc_diagnostics text DEFAULT '{}'
+  vadc_diagnostics text DEFAULT '{}',
   device_name varchar(255),
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
@@ -37,8 +37,8 @@ COMMENT ON TABLE tickets.formant IS '@omit delete
 This is the formant table, which is related vehicles that are registered and in use';
 COMMENT ON COLUMN tickets.formant.id IS '@omit create,update
 The ID of formant assigned by the database';
-COMMENT ON COLUMN tickets.formant.type_id IS '@omit create,update
-The type_id of formant assigned by the database';
+COMMENT ON COLUMN tickets.formant.type IS '@omit create,update
+The type of formant assigned by the database';
 COMMENT ON COLUMN tickets.formant.vehicle_id IS '@omit create,update
 The vehicle_id of formant assigned by the database';
 COMMENT ON COLUMN tickets.formant.formant_id IS '@omit create,update

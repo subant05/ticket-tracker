@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS tickets.jira (
   requirement varchar(50) NOT NULL,
   bundle INT NOT NULL,
   machine_type varchar(100) NOT NULL,
-  priority varchar(25 NOT NULL,
+  priority varchar(25) NOT NULL,
   roadmap_item varchar(100) NOT NULL,
   team_id BIGINT NOT NULL,
   formant_link text,
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS tickets.jira (
     UNIQUE (jira_ticket),
   CONSTRAINT fk_jira_team
     FOREIGN KEY (team_id)
-    REFERENCES personnel.jira_teams(id);
+    REFERENCES personnel.jira_teams(id)
 );
 
 CREATE INDEX IF NOT EXISTS idx_tickets_jira
@@ -46,8 +46,8 @@ COMMENT ON COLUMN tickets.jira.summary IS '@omit create,update
 The summary of jira assigned by the  jira';
 COMMENT ON COLUMN tickets.jira.category IS '@omit create,update
 The category of jira assigned by the  jira';
-COMMENT ON COLUMN tickets.jira.requirment IS '@omit create,update
-The requirment of jira assigned by the  jira';
+COMMENT ON COLUMN tickets.jira.requirement IS '@omit create,update
+The requirement of jira assigned by the  jira';
 COMMENT ON COLUMN tickets.jira.bundle IS '@omit create,update
 The bundle of jira assigned by the  jira';
 COMMENT ON COLUMN tickets.jira.machine_type IS '@omit create,update
