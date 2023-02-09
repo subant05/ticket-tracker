@@ -22,8 +22,8 @@ router.post("/", async (req, res) => {
       const specifications = { 
         eventType:req.body.eventType
         , ...req.body.payload
-        , stream_name: req.body.payload.steamName
-        , stream_type: req.body.payload.steamType
+        , stream_name: req.body.payload.streamName
+        , stream_type: req.body.payload.streamType
         , type: req.body.eventType
         , formantUrl: req.body.payload.sourceUrl
         , time: req.body.payload.time.replace("T", " ")
@@ -48,7 +48,7 @@ router.post("/", async (req, res) => {
 
       //  JIRA ISSUE POST
       const jiraTicket = await createJiraTicket({...specifications})
-      specifications.jiraUrl = `${process.env.JIRA_URL}/issue/${jiraTicket.key}`
+      specifications.jiraUrl = `${process.env.JIRA_URL}/browse/${jiraTicket.key}`
       specifications.jiraTicket = {
         ...jiraTicket
         , project: "TRAP"

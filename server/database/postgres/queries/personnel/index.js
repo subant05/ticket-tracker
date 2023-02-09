@@ -1,2 +1,4 @@
 import * as Insert from './insert'
-export {Insert}
+import * as Query from './query'
+
+export {Insert, Query}

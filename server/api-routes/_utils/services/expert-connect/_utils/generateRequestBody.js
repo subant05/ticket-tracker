@@ -21,7 +21,9 @@ export const generateRequestBody = (data) => {
       product="Formant",
       ERC,
       SUP,
-      device_name
+      name,
+      device,
+      team
     } = data
 
     body = JSON.stringify({
@@ -29,10 +31,10 @@ export const generateRequestBody = (data) => {
       , description: generateTicketDescription(data)
       , customerId: process.env.EXPERT_CUSTOMER_ID
       , product:product
-      , serialNumber:`${device_id} | ${device_name}`
+      , serialNumber:`${device_id} | ${name}`
       , misc: null
       , resolution:null
-      , teamId: process.env.EXPRESS_TEAM_ID
+      , teamId: team ? team : process.env.EXPRESS_TEAM_ID
       , advisorId:process.env.EXPERT_CONNECT_ADVISOR_ID
   })
   } catch(e) {
