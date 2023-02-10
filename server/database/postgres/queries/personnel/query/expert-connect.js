@@ -11,8 +11,6 @@ export const sqlQueryExpertConnectTeamByDeviceName = async (deviceName) =>{
       if(!device_number)
         throw new Error("Number designation wasn't found in device name")
       
-      console.log("------------ ", device_number[0], " ----------------")
-
       team = await client.query(`
           Select 
             ec_id,

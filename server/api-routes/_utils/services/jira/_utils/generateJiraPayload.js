@@ -21,7 +21,9 @@ export const generateJiraPayload = (data) => {
     device_name,
     expertConnectLink="",
     description="",
-    jiraTicket={}
+    jiraTicket={},
+    device,
+    name
   } = data
 
   try {
@@ -30,6 +32,7 @@ export const generateJiraPayload = (data) => {
         "project": { "key": "TRAP" },
         "summary": title,
         "description": description,
+        "customfield_12488": device.name, // Machine
         "customfield_12486": parseInt(ERC), // ERC
         "customfield_12487": parseInt(SUP), // SUP
         "customfield_12429": {value: "Defect"}, // "Group/Category" 
