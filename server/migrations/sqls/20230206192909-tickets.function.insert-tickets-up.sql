@@ -23,20 +23,20 @@ BEGIN
             vehicle_id
           )
 	   		select
-				 t->'eventType',
-				 t->'id',
-				 t->'message',
-				 t->'severity',
-				 t->'streamName',
-				 t->'streamType',
-				 t->'tags',
-				 t->'value',
+				 t->>'eventType',
+				 t->>'id',
+				 t->>'message',
+				 t->>'severity',
+				 t->>'streamName',
+				 t->>'streamType',
+				 t->>'tags',
+				 t->>'value',
 				 to_timestamp(t->>'time', 'YYYY-MM-DD HH24:MI:ss'), 
-				 t->'sourceUrl',
-				 t->'deviceId',
+				 t->>'sourceUrl',
+				 t->>'deviceId',
 				 CAST(t -> 'bundle' as INT),
-				 t->'vadcDiagnostics',
-				 t->'device'->'name',
+				 t->>'vadcDiagnostics',
+				 t->'device'->>'name',
 				 (select vehicles.vehicle.id as vehicle_id 
 				  from vehicles.vehicle 
 				  where device_id = t->>'deviceId'
@@ -65,13 +65,13 @@ BEGIN
           )
 			select
 				(select vehicles.vehicle.id as vehicle_id from vehicles.vehicle where device_id = t->>'deviceId'),
-				t->'expertConnectTicket'->'data'->'title',
-				t->'expertConnectTicket'->'data'->'description',
-				t->'expertConnectTicket'->'data'->'product',
-				t->'expertConnectTicket'->'data'->'machineHours',
-				t->'expertConnectTicket'->'data'->'serialNumber',
-				t->'expertConnectTicket'->'data'->'misc',
-				t->'expertConnectTicket'->'data'->'resolution',
+				t->'expertConnectTicket'->'data'->>'title',
+				t->'expertConnectTicket'->'data'->>'description',
+				t->'expertConnectTicket'->'data'->>'product',
+				t->'expertConnectTicket'->'data'->>'machineHours',
+				t->'expertConnectTicket'->'data'->>'serialNumber',
+				t->'expertConnectTicket'->'data'->>'misc',
+				t->'expertConnectTicket'->'data'->>'resolution',
 				(select personnel.expert_connect_contacts.id as contact_id
 				 from personnel.expert_connect_contacts 
 				 where ec_id = t->'expertConnectTicket'->'data'->'customer'->>'id'),
@@ -82,7 +82,7 @@ BEGIN
 				 from personnel.expert_connect_teams 
 				 where ec_id = t->'expertConnectTicket'->'data'->'team'->>'id'),
 				 CAST(t -> 'bundle' as INT),
-				t->'expertConnectTicket'->'data'->'id'
+				t->'expertConnectTicket'->'data'->>'id'
 			from jsonb_array_elements(obj::jsonb) t
           
           RETURNING *
@@ -111,20 +111,20 @@ BEGIN
           select
 			    t->'jiraTicket'->'key',
 				CAST(t->'jiraTicket'->>'id' as BIGINT),
-				t->'jiraTicket'->'project',
-				t->'jiraTicket'->'fields'->'description',
-				t->'jiraTicket'->'fields'->'summary',
-				t->'jiraTicket'->'category',
-				t->'jiraTicket'->'requirement',
+				t->'jiraTicket'->>'project',
+				t->'jiraTicket'->'fields'->>'description',
+				t->'jiraTicket'->'fields'->>'summary',
+				t->'jiraTicket'->>'category',
+				t->'jiraTicket'->>'requirement',
 				CAST(t -> 'bundle' as INT),
-				t->'jiraTicket'->'machine_type',
-				t->'jiraTicket'->'priority',
-				t->'jiraTicket'->'roadmap_item',
+				t->'jiraTicket'->>'machine_type',
+				t->'jiraTicket'->>'priority',
+				t->'jiraTicket'->>'roadmap_item',
 				(select personnel.jira_teams.id as team_id from personnel.jira_teams where name = t->'jiraTicket'->>'team'),
-				t->'formantUrl',
+				t->>'formantUrl',
 				t->'expertConnectUrl',
-				t->'jiraTicket'->'issue_type',
-				t->'jiraTicket'->'bug_source'
+				t->'jiraTicket'->>'issue_type',
+				t->'jiraTicket'->>'bug_source'
 			from jsonb_array_elements(obj::jsonb) t
           
           RETURNING *

@@ -1,2 +1,3 @@
 import * as Insert from './insert'
-export {Insert}
+import * as Select from './select'
+export {Insert, Select}

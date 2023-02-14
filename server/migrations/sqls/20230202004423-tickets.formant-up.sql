@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS tickets.formant (
   device_name varchar(255),
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  active BOOLEAN NOT NULL DEfAULT TRUE,
   PRIMARY KEY(id),
   CONSTRAINT fk_vehicle
     FOREIGN KEY (vehicle_id)
