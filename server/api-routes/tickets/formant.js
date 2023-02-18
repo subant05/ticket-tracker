@@ -8,49 +8,28 @@ import { createExpertConnectTicket } from "../_utils/services/expert-connect/cre
 import { createJiraTicket } from "../_utils/services/jira/createTask.js";
 import { updateExpertConnectTicket } from "../_utils/services/expert-connect/updateTicket.js";
 import { updateJiraTicket } from "../_utils/services/jira/updateTask.js";
-
+import { parseValues } from "../_utils/services/formant/getVehicleFormantData.js";
+import { generateFormantRequestSpecifications } from "../_utils/formating/generateFormantRequestSpecifiations.js";
+import {Formant} from '../_utils/rules'
 import moment from "moment"
 
 const router = express.Router();
 
 router.use(formantConnect)
 
-
 router.post("/", async (req, res) => {
   try{
 
       // FORMANT REQUEST
-      const specifications = { 
-        eventType:req.body.eventType
-        , ...req.body.payload
-        , stream_name: req.body.payload.streamName
-        , stream_type: req.body.payload.streamType
-        , type: req.body.eventType
-        , formantUrl: req.body.payload.sourceUrl
-        , time: req.body.payload.time.replace("T", " ")
-       }
+      const specifications = generateFormantRequestSpecifications(req)
+      const eventVerified = await Formant.checkEvent(specifications)
       
-      const shouldCreateTicket = await Query.Tickets.Select.Formant.sqlCheckIfTicketExists(specifications)
-      
-      if(shouldCreateTicket){
-        const startDateTime = moment(specifications.time).subtract(1,'hour').utc().format()
-        const endDateTime = moment(specifications.time).utc().format()
-        const formantData = await getVehicleFormantData(specifications.deviceId, startDateTime, endDateTime)
-        
-        specifications.bundle = formantData.bundle
-        specifications.vadcDiagnostics = formantData.vadcDiagnostics
-        specifications.device = formantData.device
-        specifications.name = formantData.device.name
-        specifications.ERC =  formantData.vadcDiagnostics.ERC
-        specifications.SUP =  formantData.vadcDiagnostics.SUP
-        specifications.TRIGGER =  formantData.vadcDiagnostics.TRIGGER
-        specifications.title = `State Demotion - ERC=${specifications.ERC}, SUP=${specifications.SUP}`
-  
+      if(eventVerified){
         //  EXPERT CONNECT TICKET POST
         const expertConnectTicket = await createExpertConnectTicket({...specifications})
         specifications.expertConnectTicket = expertConnectTicket
         specifications.expertConnectUrl = expertConnectTicket.data.url
-  
+
         //  JIRA ISSUE POST
         const jiraTicket = await createJiraTicket({...specifications})
         specifications.jiraUrl = `${process.env.JIRA_URL}/browse/${jiraTicket.key}`
@@ -66,20 +45,22 @@ router.post("/", async (req, res) => {
           , issue_type: "Bug/Story"
           , bug_source: "Field Support / ExpertConnect"
         }
+
+        console.log(JSON.stringify(specifications, null, " "))
       
         const tickets = await Query
           .Tickets
           .Insert
           .All
           .sqlInsertTickets([specifications])
-  
+
         if(!tickets.rows.length)
           throw new Error("Unable to insert all tickets")
-         
+          
         // UPDATE TICKETS
         const updatedEC = await updateExpertConnectTicket(specifications.expertConnectTicket.data.id, specifications)
         const updatedJira = await updateJiraTicket(jiraTicket.key, specifications)
-  
+
         console.log("Tickets: ", specifications)
       }
 

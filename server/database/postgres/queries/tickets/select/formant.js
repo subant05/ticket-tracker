@@ -1,70 +1,84 @@
 const { client, pool } = require("../../../connection.js")
 
-export const sqlCheckIfTicketExists = async (data) =>{
-  let shouldCreateTicket = false
+export const sqlSelectRulesByStreanNameAndStreamType = async (data) => {
+  let rules = {rows:[]}
 
   try {
-
-     const ticket = await client.query(`
-        SELECT * FROM tickets.formant
-        WHERE device_id = $1
-        AND stream_name = $2
-        AND stream_type = $3
-        AND active = TRUE
-        ORDER BY ID DESC
-        LIMIT 1
-      `,[
-        data.deviceId
-        , data.stream_name
+    rules = await client.query(`
+      SELECT 
+        rule.stream_name,
+        rule_conditions.condition,
+        rule_conditions.operator,
+        rule_conditions.value
+      FROM rules.formant as rule
+      INNER JOIN rules.formant_conditions AS rule_conditions ON rule_conditions.rule_id = rule.id
+      WHERE rule.stream_name = $1 
+      AND rule.stream_type = $2
+    `,[
+        data.stream_name
         , data.stream_type
       ])
 
-      if(!ticket.rows.length){
-          // STATE DEMOTION
-        if(data.value == 0 && data.stream_name === "vadc_diagnostics") {
-          shouldCreateTicket= true
-        } 
-
-        console.log(1)
-      }else {
-        const existingTicket = ticket.rows[0]
-
-        // STATE DEMOTION
-        if(data.value > 0 && data.stream_name === "vadc_diagnostics") {
-
-          const update  = await client.query(`
-            UPDATE tickets.formant
-              SET active = FALSE
-            WHERE id = $1
-          `,[
-            existingTicket.id
-          ])
-
-          console.log(2)
-          
-        } else if( existingTicket.value != data.value 
-          || existingTicket.message != data.message
-          || existingTicket.severity != data.severity){
-            await client.query(`
-              UPDATE tickets.formant
-                SET active = FALSE
-              WHERE id = $1
-            `,[
-              existingTicket.id
-            ])
-
-            console.log(3)
-
-            shouldCreateTicket = true
-        }
-      }
-
-  }catch(e){
-      console.log("FORMANT SELECT EXISTING TICKET ERROR", e.message)
-      console.log("FORMANT SELECT EXISTING TICKET STACK", e.stack)
+  } catch (e) {
+    console.log("FORMANT SELECT STEAM RULES ERROR", e.message)
+    console.log("FORMANT SELECT STEAM RULES ERROR", e.stack)
 
   } finally {
-    console.log("SHOULD UPDATE: ",  shouldCreateTicket)
-    return shouldCreateTicket
+    return rules;
+
+  }
+}
+
+export const sqlSelectActiveTicketByStreamNameAndStreamTypeAndDeviceId = async (data) => {
+  let ticket = {rows:[]}
+  try{
+    ticket = await client.query(`
+      SELECT * FROM tickets.formant
+      WHERE device_id = $1
+      AND stream_name = $2
+      AND stream_type = $3
+      AND active = TRUE
+      ORDER BY ID DESC
+    `,[
+      data.deviceId
+      , data.stream_name
+      , data.stream_type
+    ])
+
+  }catch(e){
+    console.log("FORMANT SELECT TICKET ERROR", e.message)
+    console.log("FORMANT SELECT TICKET ERROR", e.stack)
+
+  } finally{
+    return ticket
+  }
+}
+
+
+export const sqlSelectRuleTicketFormatting = async (data)=> {
+  let formatting = {rows:[]}
+
+  try{
+    formatting = await client.query(`
+      SELECT 
+        formatting.id as id,
+        formatting.key,
+        formatting.value
+      FROM rules.formant_formatting  as formatting
+      INNER JOIN rules.formant AS rule ON formatting.rule_id = rule.id
+      WHERE rule.stream_name = $1 
+      AND rule.stream_type = $2
+    `,[
+      data.stream_name
+      , data.stream_type
+    ])
+
+  } catch(e){
+    console.log("FORMANT SELECT TICKET RULE FORMATTING ERROR", e.message)
+    console.log("FORMANT SELECT TICKET RULE FORMATTING ERROR", e.stack)
+
+  } finally {
+    return formatting
+
   }
 }

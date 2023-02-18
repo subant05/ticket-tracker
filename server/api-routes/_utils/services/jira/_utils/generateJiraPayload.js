@@ -19,7 +19,7 @@ export const generateJiraPayload = (data) => {
     ERC,
     SUP,
     device_name,
-    expertConnectLink="",
+    expertConnectUrl="",
     description="",
     jiraTicket={},
     device,
@@ -43,7 +43,7 @@ export const generateJiraPayload = (data) => {
         "customfield_12428": {value: "Spring 2023-Delivery"}, //Roadmap Item
         "customfield_12300": [{value: "Robotics"}], // Teams Responsible
         "customfield_12471": formantUrl, //Formant Link
-        "customfield_12472": expertConnectLink, // ExpertConnect Link,
+        "customfield_12472": expertConnectUrl, // ExpertConnect Link,
         "customfield_12288": {value:"Field Support / ExpertConnect"},// Bug Source
         "issuetype": {  "name": "Bug/Story" }
       }

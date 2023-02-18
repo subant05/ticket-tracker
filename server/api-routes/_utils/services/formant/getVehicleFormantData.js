@@ -15,7 +15,35 @@ const parseBundleData = (bundlePoints) =>{
   return parseInt(regexParsed)
 }
 
-const parseVadcDiagnostics = (vadcDiagnosticsPoints) => {
+export const parseValues = (values, filters = [
+  "supplemental_error_code"
+  , "halt_code"
+  , "autonomy_state" ]) => {
+  const convertedValues =  values.filter(f=>{
+      return filters.indexOf(f.label) > -1
+      })
+      .map(r=> {
+          switch(r.label){
+              case "supplemental_error_code":
+                  r.label = "SUP"
+                  break;
+              case "halt_code":
+                  r.label = "ERC"
+                  break;
+              case "autonomy_state":
+                  r.label = "TRIGGER"
+                  break;
+          }
+          return {[r.label]:r.value}
+      })
+      .reduce((acc,i)=>{
+          return {...acc, ...i}
+      })
+    
+  return convertedValues
+}
+
+export const parseVadcDiagnostics = (vadcDiagnosticsPoints) => {
   const latestVadcDatapoint = vadcDiagnosticsPoints.pop()
   const vadcValues = latestVadcDatapoint[1]  
   const convertedValues =  vadcValues.filter(f=>{
@@ -99,7 +127,7 @@ export const getVehicleFormantData = async (
           method:"POST",
           body:JSON.stringify({
             deviceIds: [device_id],
-            names: ['update_status', 'vadc_diagnostics'],
+            names: ['update_status'],
             start: start,
             end:end
           }),

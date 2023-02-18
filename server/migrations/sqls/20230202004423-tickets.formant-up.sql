@@ -34,6 +34,7 @@ CREATE INDEX IF NOT EXISTS idx_tickets_formant_severity ON tickets.formant(sever
 CREATE INDEX IF NOT EXISTS idx_tickets_formant_stream_name ON tickets.formant(stream_name);
 CREATE INDEX IF NOT EXISTS idx_tickets_formant_stream_name ON tickets.formant(stream_name);
 
+COMMENT ON TABLE "tickets"."formant" IS E'@name formant_tickets';
 COMMENT ON TABLE tickets.formant IS '@omit delete
 This is the formant table, which is related vehicles that are registered and in use';
 COMMENT ON COLUMN tickets.formant.id IS '@omit create,update
