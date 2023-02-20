@@ -9,19 +9,19 @@ export function checkCondition(rule, datapoint){
         break;
       case ">":
         const gtValue = !isNaN(rule.value) ? parseInt(rule.value) : rule.value
-        return gtValue > datapoint.value
+        return datapoint.value >  gtValue 
         break;
       case "<":
         const ltValue = !isNaN(rule.value) ? parseInt(rule.value) : rule.value
-        return ltValue < datapoint.value
+        return datapoint.value < ltValue
         break;
       case ">=":
         const gteValue = !isNaN(rule.value) ? parseInt(rule.value) : rule.value
-        return gteValue >= datapoint.value
+        return  datapoint.value >= gteValue
         break;
       case "<=":
         const lteValue = !isNaN(rule.value) ? parseInt(rule.value) : rule.value
-        return lteValue <= datapoint.value
+        return datapoint.value <= lteValue
         break;
       case "!=":
         const notEqualValue = !isNaN(rule.value) ? parseInt(rule.value) : rule.value
