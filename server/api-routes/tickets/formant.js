@@ -17,15 +17,26 @@ const router = express.Router();
 
 router.use(formantConnect)
 
+const queue = {
+
+}
+
 router.post("/", async (req, res) => {
   try{
 
       // FORMANT REQUEST
       const specifications = generateFormantRequestSpecifications(req)
       const eventVerified = await Formant.checkEvent(specifications)
-      
-      if(eventVerified){
-        //  EXPERT CONNECT TICKET POST
+
+      console.log("QUEUE: ", queue[specifications.streamName])
+
+      if(eventVerified && (!queue[specifications.streamName] || queue[specifications.streamName].indexOf(specifications.deviceId) === -1 ) ){
+        // ADD DEVICE TO QUEUE
+        if(!queue[specifications.streamName])
+          queue[specifications.streamName] = [specifications.deviceId]
+        else 
+          queue[specifications.streamName].push(specifications.deviceId)
+
         const expertConnectTicket = await createExpertConnectTicket({...specifications})
         specifications.expertConnectTicket = expertConnectTicket
         specifications.expertConnectUrl = expertConnectTicket.data.url
@@ -61,7 +72,8 @@ router.post("/", async (req, res) => {
         const updatedEC = await updateExpertConnectTicket(specifications.expertConnectTicket.data.id, specifications)
         const updatedJira = await updateJiraTicket(jiraTicket.key, specifications)
 
-        console.log("Tickets: ", specifications)
+        // REMOVE DEVICE FROM QUEUE
+        queue[specifications.streamName].splice(queue[specifications.streamName].indexOf(specifications.deviceId), 1 )
       }
 
       res.setHeader('Content-Type', 'application/json')
