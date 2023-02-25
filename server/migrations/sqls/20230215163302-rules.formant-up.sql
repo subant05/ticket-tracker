@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS rules.formant_formatting (
 
 CREATE INDEX IF NOT EXISTS idx_rules_formant_formatting_id ON rules.formant_formatting(id);
 
-COMMENT ON TABLE "rules"."formant_conditions" IS E'@name fornant_rules_formatting';
+COMMENT ON TABLE "rules"."formant_formatting" IS E'@name fornant_rules_formatting';
 COMMENT ON TABLE rules.formant_formatting IS '@omit delete
 This id the formant_formatting table, which is related vehicles that are registered and in use';
 COMMENT ON COLUMN rules.formant_formatting.id IS '@omit create,update
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS rules.formant_associated_streams (
 
 CREATE INDEX IF NOT EXISTS idx_rules_formant_associated_streams_id ON rules.formant_associated_streams(id);
 
-COMMENT ON TABLE "rules"."formant_associated_streams" IS E'@name fornant_rules_formatting';
+COMMENT ON TABLE "rules"."formant_associated_streams" IS E'@name formant_associated_streams';
 COMMENT ON TABLE rules.formant_associated_streams IS '@omit delete
 This id the formant_associated_streams table, which is related vehicles that are registered and in use';
 COMMENT ON COLUMN rules.formant_associated_streams.id IS '@omit create,update
@@ -102,6 +102,38 @@ COMMENT ON COLUMN rules.formant_associated_streams.rule_id IS '@omit create,upda
 The rule_id of formant_associated_streams assigned by the database';
 COMMENT ON COLUMN rules.formant_associated_streams.stream_name IS '@omit create,update
 The stream_name of formant_associated_streams assigned by the database';
+
+
+CREATE TABLE IF NOT EXISTS rules.formant_associated_stream_conditions (
+    id BIGSERIAL,
+    assoc_id BIGINT NOT NULL,
+    condition VARCHAR(255) NOT NULL,
+    operator VARCHAR(5) NOT NULL,
+    value VARCHAR(255) NOT NULL,
+    PRIMARY KEY(id),
+    CONSTRAINT fk_formant_associated_streams_id
+      FOREIGN KEY (assoc_id)
+      REFERENCES rules.formant_associated_streams(id),
+    CONSTRAINT uq_formant_associated_stream_conditions
+      UNIQUE (assoc_id, condition, value)
+
+);
+
+CREATE INDEX IF NOT EXISTS idx_rules_formant_associated_stream_conditions_id ON rules.formant_associated_stream_conditions(id);
+
+COMMENT ON TABLE "rules"."formant_associated_stream_conditions" IS E'@name formant_assoc_stream_conditions';
+COMMENT ON TABLE rules.formant_associated_stream_conditions IS '@omit delete
+This id the formant_associated_stream_conditions table, which is related vehicles that are registered and in use';
+COMMENT ON COLUMN rules.formant_associated_stream_conditions.id IS '@omit create,update
+The ID of formant_associated_stream_conditions assigned by the database';
+COMMENT ON COLUMN rules.formant_associated_stream_conditions.condition IS '@omit create,update
+The condition of formant_associated_stream_conditions assigned by the database';
+COMMENT ON COLUMN rules.formant_associated_stream_conditions.operator IS '@omit create,update
+The operator of formant_associated_stream_conditions assigned by the database';
+COMMENT ON COLUMN rules.formant_associated_stream_conditions.value IS '@omit create,update
+The value of formant_associated_stream_conditions assigned by the database';
+COMMENT ON COLUMN rules.formant_associated_stream_conditions.assoc_id IS '@omit create,update
+The assoc_id of formant_associated_stream_conditions assigned by the database';
 
 
 CREATE TABLE IF NOT EXISTS rules.formant_associated_stream_formatting (
@@ -119,7 +151,7 @@ CREATE TABLE IF NOT EXISTS rules.formant_associated_stream_formatting (
 
 CREATE INDEX IF NOT EXISTS idx_rules_formant_associated_stream_formatting_id ON rules.formant_associated_stream_formatting(id);
 
-COMMENT ON TABLE "rules"."formant_associated_stream_formatting" IS E'@name fornant_rules_formatting';
+COMMENT ON TABLE "rules"."formant_associated_stream_formatting" IS E'@name formant_associated_stream_formatting';
 COMMENT ON TABLE rules.formant_associated_stream_formatting IS '@omit delete
 This id the formant_associated_stream_formatting table, which is related vehicles that are registered and in use';
 COMMENT ON COLUMN rules.formant_associated_stream_formatting.id IS '@omit create,update
@@ -130,3 +162,4 @@ COMMENT ON COLUMN rules.formant_associated_stream_formatting.key IS '@omit creat
 The key of formant_associated_stream_formatting assigned by the database';
 COMMENT ON COLUMN rules.formant_associated_stream_formatting.value IS '@omit create,update
 The value of formant_associated_stream_formatting assigned by the database';
+

@@ -12,12 +12,11 @@ export const checkRules = async (data) => {
     if(!rules.rows.length)
       throw new Error (`No rules were created for Stream Name: ${data.stream_name}, of ${data.stream_type} type`)
 
-    console.log("Latest Datapoint: ", latestDatapoint)
-    console.log("Rules Found: ", rules.rows)
-
     isValid = latestDatapoint.filter(datapoint => {
       return rules.rows.find(rule=>checkCondition(rule,datapoint) )
     })
+
+    data.rule_id = rules.rows[0].rule_id
 
     console.log("isValid: ", isValid)
 

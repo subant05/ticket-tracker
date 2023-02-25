@@ -22,7 +22,7 @@ export const getStreams = async ( device_id, time = new Date(), streams = [])  =
     throw new Error("Device Id is needed to query streams")
 
   const startDateTime = moment(time).subtract(1,'hour').utc().format()
-  const endDateTime = moment(time).utc().format()
+  const endDateTime = moment(time).add(1,'s').utc().format()
   const formantData = {}
 
   try {
@@ -35,7 +35,7 @@ export const getStreams = async ( device_id, time = new Date(), streams = [])  =
           method:"POST",
           body:JSON.stringify({
             deviceIds: [device_id],
-            names: ['update_status', ...streams],
+            names: [...streams],
             start: startDateTime,
             end:endDateTime
           }),
@@ -49,7 +49,12 @@ export const getStreams = async ( device_id, time = new Date(), streams = [])  =
     const payload = await response.json()
 
     payload.items.forEach(item=>{
-      formantData[item.name] = dataParser[item.name] ? dataParser[item.name](item.points) : item.points.pop()
+      if(dataParser[item.name]){
+        formantData[item.name] = dataParser[item.name](item.points) 
+      }else {
+        const lastDataPoint = item.points.pop()
+        formantData[item.name] = lastDataPoint[1]
+      }
     })
 
   } catch(e){

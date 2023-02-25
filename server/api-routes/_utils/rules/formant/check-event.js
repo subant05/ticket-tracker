@@ -9,24 +9,24 @@ export const checkEvent = async (data) =>{
 
   try {
     const rulesMet = await checkRules(data)
+    const isAssocStreamsValid = await checkAssociatedStreams(data)
     const ticket = await Query.Tickets.Select.Formant.sqlSelectActiveTicketByStreamNameAndStreamTypeAndDeviceId(data)
 
     console.log("RULES MET: ", rulesMet)
 
-    if(!ticket.rows.length && rulesMet){
+    if(!ticket.rows.length && rulesMet && isAssocStreamsValid){
         shouldCreateTicket = true
 
       const formatting = await Query.Tickets.Select.Formant.sqlSelectRuleTicketFormatting(data)
 
       formatting.rows.forEach(formant=> {
         data.latestDatapoint.forEach(datapoint=>{
-          if(datapoint.label === formant.key)
+          if(datapoint.label === formant.key && typeof data[formant.value] === "undefined")
             data[formant.value] = datapoint.value
             data.value[datapoint.label] = datapoint.value
         })
       })
-
-      await checkAssociatedStreams(data)
+        
       generateFormantTicketTitle(data)
       generateVadcDiagnostic(data)
 

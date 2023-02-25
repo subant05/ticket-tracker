@@ -1,39 +1,36 @@
 export function checkCondition(rule, datapoint){
   if(rule.condition !== datapoint.label )
       return false
+      
+  const ruleValue = !isNaN(rule.value) ? parseInt(rule.value) : rule.value
   
   switch(rule.operator){
       case "=":
-        const eqValue = !isNaN(rule.value) ? parseInt(rule.value) : rule.value
-        return eqValue === datapoint.value
+        return ruleValue === datapoint.value
         break;
       case ">":
-        const gtValue = !isNaN(rule.value) ? parseInt(rule.value) : rule.value
-        return datapoint.value >  gtValue 
+        return datapoint.value > ruleValue 
         break;
       case "<":
-        const ltValue = !isNaN(rule.value) ? parseInt(rule.value) : rule.value
-        return datapoint.value < ltValue
+        return datapoint.value < ruleValue
         break;
       case ">=":
-        const gteValue = !isNaN(rule.value) ? parseInt(rule.value) : rule.value
-        return  datapoint.value >= gteValue
+        return  datapoint.value >= ruleValue
         break;
       case "<=":
-        const lteValue = !isNaN(rule.value) ? parseInt(rule.value) : rule.value
-        return datapoint.value <= lteValue
+        return datapoint.value <= ruleValue
         break;
       case "!=":
-        const notEqualValue = !isNaN(rule.value) ? parseInt(rule.value) : rule.value
-        return notEqualValue !== datapoint.value
+        return ruleValue != datapoint.value
         break;
+      case "!==":
+          return ruleValue !== datapoint.value
+          break;
       case "!":
-        const falseValue = !isNaN(rule.value) ? parseInt(rule.value) : rule.value
-        return falseValue === "false" && !datapoint.value
+        return ruleValue === "false" && !datapoint.value
         break;
       case "!!":
-        const trueValue = !isNaN(rule.value) ? parseInt(rule.value) : rule.value
-        return trueValue === "true" && !!datapoint.value
+        return ruleValue === "true" && !!datapoint.value
         break;
       default:
         return false;
