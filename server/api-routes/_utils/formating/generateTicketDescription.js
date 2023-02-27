@@ -1,6 +1,6 @@
 export const generateTicketDescription = (data) => {
   const {
-    title= "State Demotion - ERC, SUP",
+    title = "State Demotion - ERC, SUP",
     type,
     id,
     message,
@@ -16,17 +16,17 @@ export const generateTicketDescription = (data) => {
     formantUrl,
     device_id,
     bundle,
-    product="Formant",
+    product = "Formant",
     ERC,
     SUP,
     device_name,
     expertConnectUrl,
     jiraUrl,
     device,
-    name
-  } = data
-  
-  return  `
+    name,
+  } = data;
+
+  return `
   @@Specifications
   Alert Type = ${type},
   Alert Time = ${time},
@@ -36,11 +36,11 @@ export const generateTicketDescription = (data) => {
   Alert Severity = ${severity},
   Event Title: ${message},
   Formant Link = ${formantUrl},
-  ExpertConnect Link = ${expertConnectUrl || 'NULL'},
-  JIRA Link = ${jiraUrl || 'NULL'},
+  ExpertConnect Link = ${expertConnectUrl || "NULL"},
+  JIRA Link = ${jiraUrl || "NULL"},
   BUNDLE Number= ${bundle},
   Machine ID  = ${device ? device.name : name ? name : device_name},
   ERC = ${ERC},
   SUP = ${SUP},
-  @@END`
-}
+  @@END`;
+};

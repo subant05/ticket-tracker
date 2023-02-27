@@ -1,2 +1,2 @@
-import * as Formant from './formant.js'
-export {Formant}
+import * as Formant from "./formant.js";
+export { Formant };

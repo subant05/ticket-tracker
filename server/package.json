@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon index.js  --exec babel-node --ext js,graphql --max-old-space-size=8199  ",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm config set strict-ssl false && babel-node index.js"
+    "start": "npm config set strict-ssl false && babel-node index.js",
+    "prepare": "husky install"
   },
   "author": "Anthony Crawford",
   "license": "ISC",
@@ -43,6 +44,12 @@
   },
   "devDependencies": {
     "db-migrate": "^0.11.12",
-    "db-migrate-pg": "^1.2.2"
+    "db-migrate-pg": "^1.2.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.2",
+    "prettier": "2.8.4"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   }
 }

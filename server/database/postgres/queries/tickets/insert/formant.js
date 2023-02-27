@@ -1,29 +1,30 @@
-const { client, pool } = require("../../../connection.js")
-import { getVehicleFormantData } from "../../../../../api-routes/_utils/services/formant/getVehicleFormantData.js"
-import moment from "moment"
+const { client, pool } = require("../../../connection.js");
+import { getVehicleFormantData } from "../../../../../api-routes/_utils/services/formant/getVehicleFormantData.js";
+import moment from "moment";
 
-export const sqlInsertFormantTicket = async (data) =>{
-  let ticket = {rows:[]}
+export const sqlInsertFormantTicket = async (data) => {
+  let ticket = { rows: [] };
 
   try {
     const {
-        eventType,
-        id,
-        message,
-        severity,
-        streamName,
-        streamType,
-        tags,
-        value,
-        time,
-        sourceUrl,
-        deviceId,
-        bundle,
-        vadcDiagnostics,
-        device
-      } = data
+      eventType,
+      id,
+      message,
+      severity,
+      streamName,
+      streamType,
+      tags,
+      value,
+      time,
+      sourceUrl,
+      deviceId,
+      bundle,
+      vadcDiagnostics,
+      device,
+    } = data;
 
-      ticket = await client.query(`
+    ticket = await client.query(
+      `
           INSERT INTO tickets.formant
           (
             type,
@@ -61,7 +62,8 @@ export const sqlInsertFormantTicket = async (data) =>{
             )
           
           RETURNING *
-      `,[
+      `,
+      [
         eventType,
         id,
         message,
@@ -76,14 +78,13 @@ export const sqlInsertFormantTicket = async (data) =>{
         bundle,
         JSON.stringify(vadcDiagnostics),
         device.name,
-        deviceId
-      ])
-
-  }catch(e){
-      console.log("FORMANT TICKET INSERT ERROR", e.message)
-      console.log("FORMANT TICKET INSERT STACK", e.stack)
-
+        deviceId,
+      ]
+    );
+  } catch (e) {
+    console.log("FORMANT TICKET INSERT ERROR", e.message);
+    console.log("FORMANT TICKET INSERT STACK", e.stack);
   } finally {
-    return ticket
+    return ticket;
   }
-}
+};

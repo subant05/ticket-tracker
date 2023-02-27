@@ -1,3 +1,3 @@
-import * as Formant from './formant'
+import * as Formant from "./formant";
 
-export {Formant}
+export { Formant };

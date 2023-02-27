@@ -1,13 +1,13 @@
-const { client, pool } = require("../../../connection.js")
-import { createExpertConnectTicket } from "../../../../../api-routes/_utils/services/expert-connect/createTicket.js"
-import moment from "moment"
+const { client, pool } = require("../../../connection.js");
+import { createExpertConnectTicket } from "../../../../../api-routes/_utils/services/expert-connect/createTicket.js";
+import moment from "moment";
 
-export const sqlInsertExpertConnectTicket = async (data) =>{
-  let ticket = {rows:[]}
+export const sqlInsertExpertConnectTicket = async (data) => {
+  let ticket = { rows: [] };
 
   try {
-
-      ticket = await client.query(`
+    ticket = await client.query(
+      `
           INSERT INTO tickets.expert_connect
           (
             vehicle_id,
@@ -41,7 +41,8 @@ export const sqlInsertExpertConnectTicket = async (data) =>{
             )
           
           RETURNING *
-      `,[
+      `,
+      [
         data.device_id,
         data.title,
         data.description,
@@ -55,13 +56,12 @@ export const sqlInsertExpertConnectTicket = async (data) =>{
         data.team.id,
         data.bundle,
         data.id,
-      ])
-
-  }catch(e){
-      console.log("EXPERT CONNECT TICKET INSERT ERROR", e.message)
-      console.log("EXPERT CONNECT TICKET INSERT STACK", e.stack)
-
+      ]
+    );
+  } catch (e) {
+    console.log("EXPERT CONNECT TICKET INSERT ERROR", e.message);
+    console.log("EXPERT CONNECT TICKET INSERT STACK", e.stack);
   } finally {
-    return ticket
+    return ticket;
   }
-}
+};

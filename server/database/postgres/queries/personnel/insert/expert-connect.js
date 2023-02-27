@@ -1,20 +1,23 @@
-const { client, pool } = require("../../../connection.js")
-import moment from "moment"
+const { client, pool } = require("../../../connection.js");
+import moment from "moment";
 
-export const sqlInsertExpertConnectContacts = async (data) =>{
-  let contacts = {rows:[]}
+export const sqlInsertExpertConnectContacts = async (data) => {
+  let contacts = { rows: [] };
 
   try {
-      const contactsInsertValue = data.map(contact=>{
+    const contactsInsertValue = data
+      .map((contact) => {
         return `('${contact.id}',
                 '${contact.firstName || null}',
                 '${contact.lastName || null}',
                 '${contact.phone || null}',
                 '${contact.email || null}'
-                )`
-      }).join(",")
+                )`;
+      })
+      .join(",");
 
-      contacts = await client.query(`
+    contacts = await client.query(
+      `
           INSERT INTO personnel.expert_connect_contacts
           (
             ec_id,
@@ -32,32 +35,34 @@ export const sqlInsertExpertConnectContacts = async (data) =>{
           phone = EXCLUDED.phone
           
           RETURNING *
-      `,[])
-
-  }catch(e){
-      console.log("EXPERT CONNECT CONTACTS INSERT ERROR", e.message)
-      console.log("EXPERT CONNECT CONTACTS INSERT STACK", e.stack)
-
+      `,
+      []
+    );
+  } catch (e) {
+    console.log("EXPERT CONNECT CONTACTS INSERT ERROR", e.message);
+    console.log("EXPERT CONNECT CONTACTS INSERT STACK", e.stack);
   } finally {
-    return contacts
+    return contacts;
   }
-}
+};
 
-
-export const sqlInsertExpertConnectAdvisors = async (data) =>{
-  let advisors = {rows:[]}
+export const sqlInsertExpertConnectAdvisors = async (data) => {
+  let advisors = { rows: [] };
 
   try {
-      const advisorsInsertValue = data.map(advisor=>{
+    const advisorsInsertValue = data
+      .map((advisor) => {
         return `('${advisor.id}',
                 '${advisor.firstName || null}',
                 '${advisor.lastName || null}',
                 '${advisor.phone || null}',
                 '${advisor.email || null}'
-                )`
-      }).join(",")
+                )`;
+      })
+      .join(",");
 
-      advisors = await client.query(`
+    advisors = await client.query(
+      `
           INSERT INTO personnel.expert_connect_advisors
           (
             ec_id,
@@ -75,31 +80,33 @@ export const sqlInsertExpertConnectAdvisors = async (data) =>{
           phone = EXCLUDED.phone
           
           RETURNING *
-      `,[])
-
-  }catch(e){
-      console.log("EXPERT CONNECT ADVISORS INSERT ERROR", e.message)
-      console.log("EXPERT CONNECT ADVISORS INSERT STACK", e.stack)
-
+      `,
+      []
+    );
+  } catch (e) {
+    console.log("EXPERT CONNECT ADVISORS INSERT ERROR", e.message);
+    console.log("EXPERT CONNECT ADVISORS INSERT STACK", e.stack);
   } finally {
-    return advisors
+    return advisors;
   }
-}
+};
 
-
-export const sqlInsertExpertConnectTeams = async (data) =>{
-  let teams = {rows:[]}
+export const sqlInsertExpertConnectTeams = async (data) => {
+  let teams = { rows: [] };
 
   try {
-      const teamsInsertValue = data.map(team=>{
+    const teamsInsertValue = data
+      .map((team) => {
         return `('${team.id}',
                 '${team.name || null}',
                 '${team.template || 0}',
                 '${team.division || 0}'
-                )`
-      }).join(",")
+                )`;
+      })
+      .join(",");
 
-      teams = await client.query(`
+    teams = await client.query(
+      `
           INSERT INTO personnel.expert_connect_teams
           (
             ec_id,
@@ -115,13 +122,13 @@ export const sqlInsertExpertConnectTeams = async (data) =>{
           division = EXCLUDED.division
           
           RETURNING *
-      `,[])
-
-  }catch(e){
-      console.log("EXPERT CONNECT TEAMS INSERT ERROR", e.message)
-      console.log("EXPERT CONNECT TEAMS INSERT STACK", e.stack)
-
+      `,
+      []
+    );
+  } catch (e) {
+    console.log("EXPERT CONNECT TEAMS INSERT ERROR", e.message);
+    console.log("EXPERT CONNECT TEAMS INSERT STACK", e.stack);
   } finally {
-    return teams
+    return teams;
   }
-}
+};

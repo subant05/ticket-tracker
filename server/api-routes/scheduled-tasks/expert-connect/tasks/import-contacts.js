@@ -3,22 +3,17 @@ import { sqlInsertExpertConnectContacts } from "../../../../database/postgres/qu
 
 export const importContacts = async (res) => {
   try {
-    const contacts = await getContacts()
-    const insertedContacts = await sqlInsertExpertConnectContacts(contacts)
+    const contacts = await getContacts();
+    const insertedContacts = await sqlInsertExpertConnectContacts(contacts);
 
-    console.log(insertedContacts.rows)
+    console.log(insertedContacts.rows);
 
-    if(res)
-        res.send("Submission Success")
-    else 
-        process.exit(0)
-
+    if (res) res.send("Submission Success");
+    else process.exit(0);
   } catch (e) {
-    console.log(e)
+    console.log(e);
 
-    if(res)
-        res.send("Submission Failed")
-    else 
-        process.exit(1)
+    if (res) res.send("Submission Failed");
+    else process.exit(1);
   }
-}
+};

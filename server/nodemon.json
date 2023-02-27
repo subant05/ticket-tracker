@@ -1,15 +1,11 @@
 {
   "restartable": "rs",
-  "ignore": [
-    ".git",
-    "node_modules/**/node_modules"
-  ],
+  "ignore": [".git", "node_modules/**/node_modules"],
   "verbose": true,
   "execMap": {
     "js": "node --harmony --harmony_generator"
   },
-  "watch": [
-  ],
+  "watch": [],
   "env": {
     "NODE_ENV": "development"
   },

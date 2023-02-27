@@ -1,9 +1,9 @@
-export const generateSpecifications = (data) =>{
-  let specifications = ''
-  try{
-    if(!Object.keys(data).length)
-      throw new Error("Unable to create specifications")
-    
+export const generateSpecifications = (data) => {
+  let specifications = "";
+  try {
+    if (!Object.keys(data).length)
+      throw new Error("Unable to create specifications");
+
     specifications = `
     ${data.message}
     ------------------------
@@ -18,13 +18,11 @@ export const generateSpecifications = (data) =>{
     SUP = ${data.SUP},
     @@END
     ------------------------
-    `
-  } catch(e){
-    console.log("UNABLE TO CREATE SPECIFICATIONS: ", e.message)
-    console.log("UNABLE TO CREATE SPECIFICATIONS: ", e.stack)
-
+    `;
+  } catch (e) {
+    console.log("UNABLE TO CREATE SPECIFICATIONS: ", e.message);
+    console.log("UNABLE TO CREATE SPECIFICATIONS: ", e.stack);
   } finally {
-    return specifications
+    return specifications;
   }
-
-}
+};

@@ -1,7 +1,7 @@
 {
-  "dev":{
-      "driver":"pg"
-      , "host":"localhost"
-      , "database":"tickettracker"
+  "dev": {
+    "driver": "pg",
+    "host": "localhost",
+    "database": "tickettracker"
   }
 }

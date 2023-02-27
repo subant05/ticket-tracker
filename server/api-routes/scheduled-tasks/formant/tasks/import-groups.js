@@ -1,15 +1,16 @@
-import { client } from  '../../../../database/postgres/connection.js'
-import { getGroups } from '../../../_utils/services/formant/getGroups.js';
-import { endProcess } from './_utils/endProcess.js';
+import { client } from "../../../../database/postgres/connection.js";
+import { getGroups } from "../../../_utils/services/formant/getGroups.js";
+import { endProcess } from "./_utils/endProcess.js";
 
 export const importGroups = async (res) => {
-  try {   
-    const groups = await getGroups()
+  try {
+    const groups = await getGroups();
 
-    Promise.all(groups.items.map( async group =>{
-      // console.log(group)
-      return await client.query(
-        `INSERT INTO vehicles.group (
+    Promise.all(
+      groups.items.map(async (group) => {
+        // console.log(group)
+        return await client.query(
+          `INSERT INTO vehicles.group (
             name, 
             group_id, 
             created_at,
@@ -42,29 +43,31 @@ export const importGroups = async (res) => {
             enabled = $9
 
             RETURNING *
-        `
-        ,[
-          group.name
-          , group.id
-          , group.createdAt
-          , group.updatedAt
-          , group.organizationId 
-          , group.tagKey
-          , group.tagValue
-          , group.active
-          , group.enabled
-        ])
+        `,
+          [
+            group.name,
+            group.id,
+            group.createdAt,
+            group.updatedAt,
+            group.organizationId,
+            group.tagKey,
+            group.tagValue,
+            group.active,
+            group.enabled,
+          ]
+        );
+      })
+    ).then(
+      () => {
+        endProcess(res);
+      },
+      (e) => {
+        console.log(e);
+        endProcess(res);
       }
-    )).then(()=>{
-      endProcess(res)
-    },
-    (e)=>{
-      console.log(e)
-      endProcess(res)
-    })
-
+    );
   } catch (e) {
-    console.log(e)
-    endProcess(res)
+    console.log(e);
+    endProcess(res);
   }
-}
+};

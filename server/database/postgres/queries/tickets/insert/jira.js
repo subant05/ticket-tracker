@@ -1,14 +1,14 @@
-const { client, pool } = require("../../../connection.js")
-import { createExpertConnectTicket } from "../../../../../api-routes/_utils/services/expert-connect/createTicket.js"
-import { createJiraTicket } from "../../../../../api-routes/_utils/services/jira/createTask.js"
-import moment from "moment"
+const { client, pool } = require("../../../connection.js");
+import { createExpertConnectTicket } from "../../../../../api-routes/_utils/services/expert-connect/createTicket.js";
+import { createJiraTicket } from "../../../../../api-routes/_utils/services/jira/createTask.js";
+import moment from "moment";
 
-export const sqlInsertJiraTicket = async (data) =>{
-  let ticket = {rows:[]}
+export const sqlInsertJiraTicket = async (data) => {
+  let ticket = { rows: [] };
 
   try {
-
-      ticket = await client.query(`
+    ticket = await client.query(
+      `
           INSERT INTO tickets.jira
           (
            jira_ticket,
@@ -48,7 +48,8 @@ export const sqlInsertJiraTicket = async (data) =>{
             )
           
           RETURNING *
-      `,[
+      `,
+      [
         data.key,
         data.id,
         data.project,
@@ -64,14 +65,13 @@ export const sqlInsertJiraTicket = async (data) =>{
         data.formantUrl,
         data.expertConnectUrl,
         data.issue_type,
-        data.bug_source
-      ])
-
-  }catch(e){
-      console.log("EXPERT CONNECT TICKET INSERT ERROR", e.message)
-      console.log("EXPERT CONNECT TICKET INSERT STACK", e.stack)
-
+        data.bug_source,
+      ]
+    );
+  } catch (e) {
+    console.log("EXPERT CONNECT TICKET INSERT ERROR", e.message);
+    console.log("EXPERT CONNECT TICKET INSERT STACK", e.stack);
   } finally {
-    return ticket
+    return ticket;
   }
-}
+};

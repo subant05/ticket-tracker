@@ -1,7 +1,4 @@
 {
-  "presets" : ["env"],
-  "plugins": [
-    "transform-object-rest-spread",
-    "syntax-async-generators"
-  ]
+  "presets": ["env"],
+  "plugins": ["transform-object-rest-spread", "syntax-async-generators"]
 }

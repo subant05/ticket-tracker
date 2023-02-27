@@ -1,10 +1,10 @@
-import { generateTicketDescription } from "../../../formating/generateTicketDescription"
+import { generateTicketDescription } from "../../../formating/generateTicketDescription";
 
 export const generateRequestBody = (data) => {
-  let body = ''
+  let body = "";
   try {
     const {
-      title= "State Demotion - ERC, SUP",
+      title = "State Demotion - ERC, SUP",
       type,
       id,
       message,
@@ -18,29 +18,29 @@ export const generateRequestBody = (data) => {
       formantUrl,
       device_id,
       bundle,
-      product="Formant",
+      product = "Formant",
       ERC,
       SUP,
       name,
       device,
-      team
-    } = data
+      team,
+    } = data;
 
     body = JSON.stringify({
-      title:  `${title}`
-      , description: generateTicketDescription(data)
-      , customerId: process.env.EXPERT_CUSTOMER_ID
-      , product:product
-      , serialNumber:`${device_id} | ${name}`
-      , misc: null
-      , resolution:null
-      , teamId: team ? team : process.env.EXPRESS_TEAM_ID
-      , advisorId:process.env.EXPERT_CONNECT_ADVISOR_ID
-  })
-  } catch(e) {
-    console.log("CREATE EXPERT CONNECT TICKET BODY ERROR", e.message)
-    console.log("CREATE EXPERT CONNECT TICKET BODY ERROR", e.stack)
+      title: `${title}`,
+      description: generateTicketDescription(data),
+      customerId: process.env.EXPERT_CUSTOMER_ID,
+      product: product,
+      serialNumber: `${device_id} | ${name}`,
+      misc: null,
+      resolution: null,
+      teamId: team ? team : process.env.EXPRESS_TEAM_ID,
+      advisorId: process.env.EXPERT_CONNECT_ADVISOR_ID,
+    });
+  } catch (e) {
+    console.log("CREATE EXPERT CONNECT TICKET BODY ERROR", e.message);
+    console.log("CREATE EXPERT CONNECT TICKET BODY ERROR", e.stack);
   } finally {
-    return body
+    return body;
   }
-}
+};
