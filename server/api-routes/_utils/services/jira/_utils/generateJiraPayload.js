@@ -29,7 +29,7 @@ export const generateJiraPayload = (data) => {
   try {
     payload = {
       fields: {
-        project: { key: "TRAP" },
+        project: { key: "SQUASH" },
         summary: title,
         description: description,
         customfield_12488: device.name, // Machine
