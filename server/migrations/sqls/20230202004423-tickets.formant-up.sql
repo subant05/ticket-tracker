@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS tickets.formant (
   stream_name varchar(255) NOT NULL,
   stream_type varchar(25) NOT NULL,
   tags text NOT NULL,
-  value varchar(255),
+  value text,
   time TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   url text NOT NULL,
   bundle INT DEFAULT 0,

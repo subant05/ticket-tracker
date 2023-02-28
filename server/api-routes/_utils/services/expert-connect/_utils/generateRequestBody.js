@@ -4,7 +4,6 @@ export const generateRequestBody = (data) => {
   let body = "";
   try {
     const {
-      title = "State Demotion - ERC, SUP",
       type,
       id,
       message,
@@ -27,7 +26,9 @@ export const generateRequestBody = (data) => {
     } = data;
 
     body = JSON.stringify({
-      title: `${title}`,
+      title: `${message} ${
+        !isNaN(ERC) && !isNaN(SUP) ? " - ERC = " + ERC + ", SUP = " + SUP : ""
+      }`,
       description: generateTicketDescription(data),
       customerId: process.env.EXPERT_CUSTOMER_ID,
       product: product,

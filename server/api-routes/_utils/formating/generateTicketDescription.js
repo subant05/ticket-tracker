@@ -30,7 +30,7 @@ export const generateTicketDescription = (data) => {
   @@Specifications
   Alert Type = ${type},
   Alert Time = ${time},
-  Alert Value = ${value},
+  Alert Value = ${typeof value === "object" ? JSON.stringify(value) : value},
   Alert Stream Name = ${stream_name || streamName},
   Alert Stream Type = ${stream_type || streamType},
   Alert Severity = ${severity},

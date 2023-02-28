@@ -21,13 +21,14 @@ const queue = {};
 
 router.post("/", async (req, res) => {
   let specifications = {};
+  let eventVerified = false;
 
   try {
     // FORMANT REQUEST
     console.log("FORMANT EVENT: ", JSON.stringify(req.body.payload, null, " "));
 
     specifications = generateFormantRequestSpecifications(req);
-    const eventVerified = await Formant.checkEvent(specifications);
+    eventVerified = await Formant.checkEvent(specifications);
 
     console.log("QUEUE: ", queue[specifications.streamName]);
 
@@ -104,6 +105,7 @@ router.post("/", async (req, res) => {
 
     // REMOVE DEVICE FROM QUEUE
     if (
+      eventVerified &&
       specifications.streamName &&
       queue[specifications.streamName] &&
       queue[specifications.streamName].indexOf(specifications.deviceId) !== -1

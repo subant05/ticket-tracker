@@ -1,7 +1,6 @@
 export const generateJiraPayload = (data) => {
   let payload = {};
   const {
-    title = "State Demotion - ERC, SUP",
     type,
     id,
     message,
@@ -24,6 +23,11 @@ export const generateJiraPayload = (data) => {
     jiraTicket = {},
     device,
     name,
+    title = `${message} ${
+      typeof ERC != "undefined" && typeof SUP != "undefined"
+        ? " - ERC = " + ERC + ", SUP = " + SUP
+        : ""
+    }`,
   } = data;
 
   try {
