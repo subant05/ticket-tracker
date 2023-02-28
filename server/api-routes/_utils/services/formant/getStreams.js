@@ -27,6 +27,10 @@ export const getStreams = async (
   const endDateTime = moment(time).add(1, "s").utc().format();
   const formantData = {};
 
+  console.log("ASSOC. STREAMS: ", streams);
+  console.log("ASSOC. STREAMS START DATETIME: ", startDateTime);
+  console.log("ASSOC. STREAMS END DATETIME: ", endDateTime);
+
   try {
     const isTokenValid = await refreshToken();
 
@@ -52,6 +56,8 @@ export const getStreams = async (
 
     const payload = await response.json();
 
+    console.log("STREAMS RETURNED: ", payload);
+
     payload.items.forEach((item) => {
       if (dataParser[item.name]) {
         formantData[item.name] = dataParser[item.name](item.points);
@@ -64,6 +70,7 @@ export const getStreams = async (
     console.log("FAILED TO GET VEHICLE BUNDLE FROM FORMANT", e.message);
     console.log("FAILED TO GET VEHICLE BUNDLE FROM FORMANT", e.stack);
   } finally {
+    console.log("ASSOC. DATA RETURNED: ", formantData);
     return formantData;
   }
 };

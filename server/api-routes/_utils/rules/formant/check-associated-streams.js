@@ -55,6 +55,13 @@ export const checkAssociatedStreams = async (data) => {
     console.log("ASSOCIATED STREAM RULES NOT MET", e.message);
     console.log("ASSOCIATED STREAM RULES NOT MET", e.stack);
   } finally {
+    console.log(
+      "ASSC. RULE MET:  ",
+      isValid.length &&
+        rules.rows.length &&
+        isValid.length === rules.rows.length
+    );
+
     return (
       isValid.length &&
       rules.rows.length &&

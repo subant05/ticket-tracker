@@ -22,6 +22,8 @@ const queue = {};
 router.post("/", async (req, res) => {
   try {
     // FORMANT REQUEST
+    console.log("FORMANT EVENT: ", JSON.stringify(req.body.payload, null, " "));
+
     const specifications = generateFormantRequestSpecifications(req);
     const eventVerified = await Formant.checkEvent(specifications);
 
