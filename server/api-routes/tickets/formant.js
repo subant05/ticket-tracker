@@ -20,11 +20,13 @@ router.use(formantConnect);
 const queue = {};
 
 router.post("/", async (req, res) => {
+  let specifications = {};
+
   try {
     // FORMANT REQUEST
     console.log("FORMANT EVENT: ", JSON.stringify(req.body.payload, null, " "));
 
-    const specifications = generateFormantRequestSpecifications(req);
+    specifications = generateFormantRequestSpecifications(req);
     const eventVerified = await Formant.checkEvent(specifications);
 
     console.log("QUEUE: ", queue[specifications.streamName]);
@@ -62,8 +64,6 @@ router.post("/", async (req, res) => {
         bug_source: "Field Support / ExpertConnect",
       };
 
-      console.log(JSON.stringify(specifications, null, " "));
-
       const tickets = await Query.Tickets.Insert.All.sqlInsertTickets([
         specifications,
       ]);
@@ -90,9 +90,29 @@ router.post("/", async (req, res) => {
     res.setHeader("Content-Type", "application/json");
     res.send(specifications);
   } catch (e) {
+    console.log("FORMANT TICKET CREATION ERROR: ", e.message);
+    console.log("FORMANT TICKET CREATION ERROR: ", e.stack);
+
     res.status(503);
     res.setHeader("Content-Type", "text/json");
     res.send({ Error: e.message });
+  } finally {
+    console.log(
+      "FINAL SPECIFICATIONS: ",
+      JSON.stringify(specifications, null, " ")
+    );
+
+    // REMOVE DEVICE FROM QUEUE
+    if (
+      specifications.streamName &&
+      queue[specifications.streamName] &&
+      queue[specifications.streamName].indexOf(specifications.deviceId) !== -1
+    ) {
+      queue[specifications.streamName].splice(
+        queue[specifications.streamName].indexOf(specifications.deviceId),
+        1
+      );
+    }
   }
 });
 
