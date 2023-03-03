@@ -36,7 +36,6 @@ export const generateRequestBody = (data) => {
       misc: null,
       resolution: null,
       teamId: team ? team : process.env.EXPRESS_TEAM_ID,
-      advisorId: process.env.EXPERT_CONNECT_ADVISOR_ID,
     });
   } catch (e) {
     console.log("CREATE EXPERT CONNECT TICKET BODY ERROR", e.message);
