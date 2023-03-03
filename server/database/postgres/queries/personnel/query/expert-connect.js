@@ -19,7 +19,7 @@ export const sqlQueryExpertConnectTeamByDeviceName = async (deviceName) => {
             template,
             division
           From personnel.expert_connect_teams
-          Where name LIKE '%${device_number[0]}'
+          Where name LIKE 'Autonomy ${device_number[0]}'
       `,
       []
     );
