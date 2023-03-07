@@ -1,5 +1,42 @@
 import { Query } from "../../../../database/postgres";
 import { checkCondition } from "./check-condition.js";
+import { getJsonData } from "../../services/formant/getJsonData";
+
+const filterDataByConditions = (latestDatapoint = [], rules = { rows: [] }) => {
+  return latestDatapoint.filter((datapoint) => {
+    return rules.rows.find((rule) => checkCondition(rule, datapoint));
+  });
+};
+
+const verifyDataPointWithRules = async (data = "", rules = { rows: [] }) => {
+  let validatedConditions = [];
+  try {
+    const jsonUrlRegExp = new RegExp(`^(${process.env.FORMANT_UPLOAD_URL})`);
+
+    switch (data.stream_type) {
+      case "numeric set":
+        validatedConditions = filterDataByConditions(
+          data.latestDatapoint,
+          rules
+        );
+        break;
+      case "json":
+        if (jsonUrlRegExp.test(data.latestDatapoint)) {
+          const datapoint = await getJsonData(data.latestDatapoint);
+          data.latestDatapoint = datapoint;
+          validatedConditions = filterDataByConditions(datapoint, rules);
+        }
+        break;
+      default:
+        break;
+    }
+  } catch (e) {
+    console.log("FORMANT RULES ERROR", e.message);
+    console.log("FORMANT RULES ERROR", e.stack);
+  } finally {
+    return validatedConditions;
+  }
+};
 
 export const checkRules = async (data) => {
   const { latestDatapoint = [] } = data;
@@ -17,9 +54,7 @@ export const checkRules = async (data) => {
         `No rules were created for Stream Name: ${data.stream_name}, of ${data.stream_type} type`
       );
 
-    isValid = latestDatapoint.filter((datapoint) => {
-      return rules.rows.find((rule) => checkCondition(rule, datapoint));
-    });
+    isValid = await verifyDataPointWithRules(data, rules);
 
     data.rule_id = rules.rows[0].rule_id;
 

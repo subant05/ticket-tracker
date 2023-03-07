@@ -19,6 +19,34 @@ export function checkCondition(rule, datapoint) {
     case "<=":
       return datapoint.value <= ruleValue;
       break;
+    case "<=||>=":
+      const lessThanOrGreaterThanRange = ruleValue.split(",");
+      return (
+        datapoint.value <= lessThanOrGreaterThanRange[0] ||
+        datapoint.value >= lessThanOrGreaterThanRange[1]
+      );
+      break;
+    case ">=||<=":
+      const greaterThanOrLessThanRange = ruleValue.split(",");
+      return (
+        datapoint.value >= greaterThanOrLessThanRange[0] ||
+        datapoint.value <= greaterThanOrLessThanRange[1]
+      );
+      break;
+    case "<=&&>=":
+      const lessThanAndGreaterThanRange = ruleValue.split(",");
+      return (
+        datapoint.value <= lessThanAndGreaterThanRange[0] &&
+        datapoint.value >= lessThanAndGreaterThanRange[1]
+      );
+      break;
+    case ">=&&<=":
+      const greaterThanAndLessThanRange = ruleValue.split(",");
+      return (
+        datapoint.value >= greaterThanAndLessThanRange[0] &&
+        datapoint.value <= greaterThanAndLessThanRange[1]
+      );
+      break;
     case "!=":
       return ruleValue != datapoint.value;
       break;

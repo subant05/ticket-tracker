@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS rules.formant_conditions (
     id BIGSERIAL,
     rule_id BIGINT NOT NULL,
     condition VARCHAR(255) NOT NULL,
-    operator VARCHAR(5) NOT NULL,
+    operator VARCHAR(10) NOT NULL,
     value VARCHAR(255) NOT NULL,
     PRIMARY KEY(id),
     CONSTRAINT fk_formant_rule_id
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS rules.formant_associated_stream_conditions (
     id BIGSERIAL,
     assoc_id BIGINT NOT NULL,
     condition VARCHAR(255) NOT NULL,
-    operator VARCHAR(5) NOT NULL,
+    operator VARCHAR(10) NOT NULL,
     value VARCHAR(255) NOT NULL,
     PRIMARY KEY(id),
     CONSTRAINT fk_formant_associated_streams_id

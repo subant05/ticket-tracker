@@ -18,8 +18,6 @@ export const checkEvent = async (data) => {
     console.log("RULES MET: ", rulesMet);
 
     if (!ticket.rows.length && rulesMet && isAssocStreamsValid) {
-      shouldCreateTicket = true;
-
       const formatting =
         await Query.Tickets.Select.Formant.sqlSelectRuleTicketFormatting(data);
 
@@ -36,6 +34,8 @@ export const checkEvent = async (data) => {
 
       generateFormantTicketTitle(data);
       generateVadcDiagnostic(data);
+
+      shouldCreateTicket = true;
     } else if (ticket.rows.length && !rulesMet) {
       await Query.Tickets.Update.Formant.sqlDeactivateTickets(ticket.rows);
     } else {

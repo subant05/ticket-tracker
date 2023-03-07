@@ -6,9 +6,10 @@ export const checkAssociatedStreams = async (data) => {
   let isValid = [];
   let rules = { rows: [] };
   let assocData = {};
+  let associatedStreams = { rows: [] };
 
   try {
-    const associatedStreams =
+    associatedStreams =
       await Query.Tickets.Select.Formant.sqlSelectAssociatedStreams(data);
     assocData = await getStreams(
       data.deviceId,
@@ -19,8 +20,6 @@ export const checkAssociatedStreams = async (data) => {
       await Query.Tickets.Select.Formant.sqlSelectAssociatedStreamsConditions(
         data
       );
-
-    console.log();
 
     Object.keys(assocData).forEach((key) => {
       if (key !== "update_status") {
@@ -57,15 +56,19 @@ export const checkAssociatedStreams = async (data) => {
   } finally {
     console.log(
       "ASSC. RULE MET:  ",
-      isValid.length &&
-        rules.rows.length &&
-        isValid.length === rules.rows.length
+      !associatedStreams.rows.length ||
+        !rules.rows.length ||
+        (isValid.length &&
+          rules.rows.length &&
+          isValid.length === rules.rows.length)
     );
 
     return (
-      isValid.length &&
-      rules.rows.length &&
-      isValid.length === rules.rows.length
+      !associatedStreams.rows.length ||
+      !rules.rows.length ||
+      (isValid.length &&
+        rules.rows.length &&
+        isValid.length === rules.rows.length)
     );
   }
 };
