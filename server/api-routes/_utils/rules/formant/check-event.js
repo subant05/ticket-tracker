@@ -4,7 +4,7 @@ import { checkAssociatedStreams } from "./check-associated-streams.js";
 import { generateFormantTicketTitle } from "../../formating/generateFormantTicketTitle.js";
 import { generateVadcDiagnostic } from "../../formating/generateVadcDiagnostic.js";
 
-export const checkEvent = async (data) => {
+export const checkEvent = async (data, overrideDuplicates = false) => {
   let shouldCreateTicket = false;
 
   try {
@@ -17,7 +17,11 @@ export const checkEvent = async (data) => {
 
     console.log("RULES MET: ", rulesMet);
 
-    if (!ticket.rows.length && rulesMet && isAssocStreamsValid) {
+    if (
+      (!ticket.rows.length || overrideDuplicates) &&
+      rulesMet &&
+      isAssocStreamsValid
+    ) {
       const formatting =
         await Query.Tickets.Select.Formant.sqlSelectRuleTicketFormatting(data);
 

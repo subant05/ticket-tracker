@@ -49,24 +49,21 @@ export const checkRules = async (data) => {
         data
       );
 
-    if (!rules.rows.length)
-      throw new Error(
-        `No rules were created for Stream Name: ${data.stream_name}, of ${data.stream_type} type`
-      );
-
-    isValid = await verifyDataPointWithRules(data, rules);
-
-    data.rule_id = rules.rows[0].rule_id;
-
-    console.log("isValid: ", isValid);
+    if (rules.rows.length) {
+      isValid = await verifyDataPointWithRules(data, rules);
+      data.rule_id = rules.rows[0].rule_id;
+      console.log("isValid: ", isValid);
+    }
   } catch (e) {
     console.log("FORMANT RULES ERROR", e.message);
     console.log("FORMANT RULES ERROR", e.stack);
   } finally {
+    console.log(rules.rows);
     return (
-      isValid.length &&
-      rules.rows.length &&
-      isValid.length === rules.rows.length
+      (rules.rows.length === 1 && !rules.rows[0].condition) ||
+      (isValid.length &&
+        rules.rows.length &&
+        isValid.length === rules.rows.length)
     );
   }
 };

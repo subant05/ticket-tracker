@@ -13,7 +13,7 @@ export const sqlSelectRulesByStreanNameAndStreamType = async (data) => {
         rule_conditions.operator,
         rule_conditions.value
       FROM rules.formant as rule
-      INNER JOIN rules.formant_conditions AS rule_conditions ON rule_conditions.rule_id = rule.id
+      LEFT OUTER JOIN rules.formant_conditions AS rule_conditions ON rule_conditions.rule_id = rule.id
       WHERE rule.stream_name = $1 
       AND rule.stream_type = $2
     `,

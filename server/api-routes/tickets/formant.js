@@ -118,4 +118,62 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.post("/manual", async (req, res) => {
+  try {
+    console.log("FORMANT EVENT: ", JSON.stringify(req.body.payload, null, " "));
+
+    const specifications = generateFormantRequestSpecifications(req);
+    await Formant.checkEvent(specifications, true);
+
+    res.setHeader("Content-Type", "application/json");
+    res.send(specifications);
+    return;
+
+    const expertConnectTicket = await createExpertConnectTicket({
+      ...specifications,
+    });
+    specifications.expertConnectTicket = expertConnectTicket;
+    specifications.expertConnectUrl = expertConnectTicket.data.url;
+
+    //  JIRA ISSUE POST
+    const jiraTicket = await createJiraTicket({ ...specifications });
+    specifications.jiraUrl = `${process.env.JIRA_URL}/browse/${jiraTicket.key}`;
+    specifications.jiraTicket = {
+      ...jiraTicket,
+      project: "SQUASH",
+      category: "Defect",
+      requirement: "INTERVENTIONS",
+      machine_type: "Loamy (Autonomous Tractor)",
+      priority: "Medium",
+      roadmap_item: "Spring 2023-Delivery",
+      team: "Robotics",
+      issue_type: "Bug/Story",
+      bug_source: "Field Support / ExpertConnect",
+    };
+
+    const tickets = await Query.Tickets.Insert.All.sqlInsertTickets([
+      specifications,
+    ]);
+
+    if (!tickets.rows.length) throw new Error("Unable to insert all tickets");
+
+    // UPDATE TICKETS
+    const updatedEC = await updateExpertConnectTicket(
+      specifications.expertConnectTicket.data.id,
+      specifications
+    );
+    const updatedJira = await updateJiraTicket(jiraTicket.key, specifications);
+
+    res.setHeader("Content-Type", "application/json");
+    res.send(specifications);
+  } catch (e) {
+    console.log("FORMANT TICKET CREATION ERROR: ", e.message);
+    console.log("FORMANT TICKET CREATION ERROR: ", e.stack);
+
+    res.status(503);
+    res.setHeader("Content-Type", "text/json");
+    res.send({ Error: e.message });
+  }
+});
+
 export default router;
