@@ -1,4 +1,4 @@
-const { client, pool } = require("../../../connection.js");
+import { client, pool } from "../../../connection.js";
 
 export const sqlInsertTickets = async (data) => {
   let ticket = { rows: [] };

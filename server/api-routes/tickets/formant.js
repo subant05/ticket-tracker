@@ -10,7 +10,7 @@ import { updateExpertConnectTicket } from "../_utils/services/expert-connect/upd
 import { updateJiraTicket } from "../_utils/services/jira/updateTask.js";
 import { parseValues } from "../_utils/services/formant/getVehicleFormantData.js";
 import { generateFormantRequestSpecifications } from "../_utils/formating/generateFormantRequestSpecifiations.js";
-import { Formant } from "../_utils/rules";
+import { Formant } from "../_utils/rules/index.js";
 import moment from "moment";
 
 const router = express.Router();
@@ -124,10 +124,6 @@ router.post("/manual", async (req, res) => {
 
     const specifications = generateFormantRequestSpecifications(req);
     await Formant.checkEvent(specifications, true);
-
-    res.setHeader("Content-Type", "application/json");
-    res.send(specifications);
-    return;
 
     const expertConnectTicket = await createExpertConnectTicket({
       ...specifications,

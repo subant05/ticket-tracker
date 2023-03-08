@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "Blue River Ticket Tracker",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "nodemon index.js  --exec babel-node --ext js,graphql --max-old-space-size=8199  ",
+    "dev": "nodemon index.js  --experimental-specifier-resolution=node --exec babel-node --ext js,graphql --max-old-space-size=8199  ",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm config set strict-ssl false && babel-node index.js",
     "prepare": "husky install"
@@ -23,6 +24,7 @@
     "babel-plugin-syntax-async-generators": "^6.13.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "congruity": "^1.0.3",
     "cors": "^2.8.5",
     "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
@@ -31,6 +33,7 @@
     "graphql": "^15.8.0",
     "graphql-tools": "^8.3.16",
     "jsonwebtoken": "^9.0.0",
+    "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "morgan": "^1.10.0",
     "node-fetch": "^2.6.9",
@@ -40,7 +43,6 @@
     "postgraphile": "^4.13.0",
     "postgraphile-plugin-connection-filter": "^2.3.0",
     "process": "^0.11.10",
-    "ramda": "^0.28.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {

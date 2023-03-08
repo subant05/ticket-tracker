@@ -1,5 +1,8 @@
-import { Pool, Client } from "pg";
+import pg from "pg";
 import dotenv from "dotenv";
+
+const { Pool, Client } = pg;
+
 dotenv.config({ path: "./.env" });
 let client, pool;
 if (process.env.NODE_ENV === "development") {

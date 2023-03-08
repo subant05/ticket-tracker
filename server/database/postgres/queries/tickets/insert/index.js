@@ -1,6 +1,6 @@
-import * as Formant from "./formant";
-import * as ExpertConnect from "./expert-connect";
-import * as Jira from "./jira";
-import * as All from "./all";
+import * as Formant from "./formant.js";
+import * as ExpertConnect from "./expert-connect.js";
+import * as Jira from "./jira.js";
+import * as All from "./all.js";
 
 export { Formant, ExpertConnect, Jira, All };

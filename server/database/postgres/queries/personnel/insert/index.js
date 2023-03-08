@@ -1,2 +1,2 @@
-import * as ExpertConnect from "./expert-connect";
+import * as ExpertConnect from "./expert-connect.js";
 export { ExpertConnect };

@@ -1,4 +1,4 @@
-import { generateTicketDescription } from "../../../formating/generateTicketDescription";
+import { generateTicketDescription } from "../../../formating/generateTicketDescription.js";
 
 export const generateRequestBody = (data) => {
   let body = "";

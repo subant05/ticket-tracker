@@ -1,4 +1,4 @@
-const { client, pool } = require("../../../connection.js");
+import { client, pool } from "../../../connection.js";
 import moment from "moment";
 
 export const sqlInsertExpertConnectContacts = async (data) => {

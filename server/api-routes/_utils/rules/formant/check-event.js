@@ -1,5 +1,5 @@
 import { checkRules } from "./check-rules.js";
-import { Query } from "../../../../database/postgres";
+import { Query } from "../../../../database/postgres/index.js";
 import { checkAssociatedStreams } from "./check-associated-streams.js";
 import { generateFormantTicketTitle } from "../../formating/generateFormantTicketTitle.js";
 import { generateVadcDiagnostic } from "../../formating/generateVadcDiagnostic.js";

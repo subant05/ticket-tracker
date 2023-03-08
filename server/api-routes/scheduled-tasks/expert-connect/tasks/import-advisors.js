@@ -1,5 +1,5 @@
-import { getAdvisors } from "../../../_utils/services/expert-connect/getAdvisors";
-import { sqlInsertExpertConnectAdvisors } from "../../../../database/postgres/queries/personnel/insert/expert-connect";
+import { getAdvisors } from "../../../_utils/services/expert-connect/getAdvisors.js";
+import { sqlInsertExpertConnectAdvisors } from "../../../../database/postgres/queries/personnel/insert/expert-connect.js";
 
 export const importAdvisors = async (res) => {
   try {

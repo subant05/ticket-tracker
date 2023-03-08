@@ -2,14 +2,16 @@ import express from "express";
 import fs from "fs";
 import morgan from "morgan";
 import path from "path";
-import ApiRouter from "./api-routes/index";
+import ApiRouter from "./api-routes/index.js";
 import dotenv from "dotenv";
 import { postgraphile, makePluginHook } from "postgraphile";
 import PgSimplifyInflectorPlugin from "@graphile-contrib/pg-simplify-inflector";
 import ConnectionFilterPlugin from "postgraphile-plugin-connection-filter";
 import PgPubsub from "@graphile/pg-pubsub";
 import { JupiterSubscriptionPlugin } from "./plugins/postgraphile/subscriptions.js";
+import * as Congruity from "congruity";
 
+console.log(Congruity);
 const pluginHook = makePluginHook([PgPubsub]);
 const __dirname = path.dirname("/");
 console.log(__dirname);

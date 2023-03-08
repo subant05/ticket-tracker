@@ -1,5 +1,5 @@
-import { getStreams } from "../../services/formant/getStreams";
-import { Query } from "../../../../database/postgres";
+import { getStreams } from "../../services/formant/getStreams.js";
+import { Query } from "../../../../database/postgres/index.js";
 import { checkCondition } from "./check-condition.js";
 
 export const checkAssociatedStreams = async (data) => {

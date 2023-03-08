@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 import { refreshToken } from "../../authentication/expressConnectAuth.js";
 import { generateRequestBody } from "./_utils/generateRequestBody.js";
 import { generateRequestHeader } from "./_utils/generateRequestHeader.js";
-import { Query } from "../../../../database/postgres";
+import { Query } from "../../../../database/postgres/index.js";
 
 export const createExpertConnectTicket = async (data) => {
   let ecTicket = null;

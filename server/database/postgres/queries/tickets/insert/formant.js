@@ -1,4 +1,4 @@
-const { client, pool } = require("../../../connection.js");
+import { client, pool } from "../../../connection.js";
 import { getVehicleFormantData } from "../../../../../api-routes/_utils/services/formant/getVehicleFormantData.js";
 import moment from "moment";
 

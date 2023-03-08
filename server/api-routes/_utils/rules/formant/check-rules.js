@@ -1,6 +1,6 @@
-import { Query } from "../../../../database/postgres";
+import { Query } from "../../../../database/postgres/index.js";
 import { checkCondition } from "./check-condition.js";
-import { getJsonData } from "../../services/formant/getJsonData";
+import { getJsonData } from "../../services/formant/getJsonData.js";
 
 const filterDataByConditions = (latestDatapoint = [], rules = { rows: [] }) => {
   return latestDatapoint.filter((datapoint) => {

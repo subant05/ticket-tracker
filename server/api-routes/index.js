@@ -1,6 +1,6 @@
 import express from "express";
 import ScheduledTasks from "./scheduled-tasks/index.js";
-import Tickets from "./tickets";
+import Tickets from "./tickets/index.js";
 import dotenv from "dotenv";
 
 dotenv.config({ path: "../.env" });

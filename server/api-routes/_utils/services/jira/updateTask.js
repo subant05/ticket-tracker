@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
-import { generateJiraPayload } from "./_utils/generateJiraPayload";
-import { generateSpecifications } from "../_utlis/generateSpecifications";
-import { generateTicketDescription } from "../../formating/generateTicketDescription";
+import { generateJiraPayload } from "./_utils/generateJiraPayload.js";
+import { generateSpecifications } from "../_utlis/generateSpecifications.js";
+import { generateTicketDescription } from "../../formating/generateTicketDescription.js";
 
 export const updateJiraTicket = async (ticketId, data) => {
   try {

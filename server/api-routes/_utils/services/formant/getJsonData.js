@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import dotenv from "dotenv";
-import { refreshToken } from "../../../_utils/authentication/formantAuth";
+import { refreshToken } from "../../../_utils/authentication/formantAuth.js";
 
 dotenv.config();
 

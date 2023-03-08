@@ -1,4 +1,4 @@
-const { client, pool } = require("../../../connection.js");
+import { client, pool } from "../../../connection.js";
 import { createExpertConnectTicket } from "../../../../../api-routes/_utils/services/expert-connect/createTicket.js";
 import moment from "moment";
 
