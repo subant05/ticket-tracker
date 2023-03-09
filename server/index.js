@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import fs from "fs";
 import morgan from "morgan";
 import path from "path";
@@ -19,6 +20,7 @@ dotenv.config({ path: "./.env" });
 const app = express();
 // const requestLogStream = fs.createWriteStream(path.join('./'+__dirname+'server-request-logs', 'request.log'), { flags: 'a' })
 
+app.use(cors());
 app.use(
   express.urlencoded({
     extended: true,

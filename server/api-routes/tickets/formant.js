@@ -125,10 +125,6 @@ router.post("/manual", async (req, res) => {
     const specifications = generateFormantRequestSpecifications(req);
     await Formant.checkEvent(specifications, true);
 
-    res.setHeader("Content-Type", "application/json");
-    res.send(specifications);
-    return;
-
     const expertConnectTicket = await createExpertConnectTicket({
       ...specifications,
     });
