@@ -32,7 +32,9 @@ export const generateFormantRequestSpecifications = async (req) => {
     const vehicle = await Query.Vehicles.Select.Formant.sqlSelectVehicleByName({
       deviceName,
     });
-    if (vehicle.rows.length) specifications.devieId = vehicle.rows[0].device_id;
+
+    if (vehicle.rows.length)
+      specifications.deviceId = vehicle.rows[0].device_id;
   } catch (e) {
     console.log("GENERATE FORMANT REQUEST SPECS ERROR", e.message);
     console.log("GENERATE FORMANT REQUEST SPECS ERROR", e.stack);
