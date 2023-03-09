@@ -27,7 +27,9 @@ router.post("/", async (req, res) => {
     // FORMANT REQUEST
     console.log("FORMANT EVENT: ", JSON.stringify(req.body.payload, null, " "));
 
-    specifications = generateFormantRequestSpecifications(req);
+    const specifications = await generateFormantRequestSpecifications(req);
+    if (!specifications) throw new Error("Unable to generate specifications");
+
     eventVerified = await Formant.checkEvent(specifications);
 
     console.log("QUEUE: ", queue[specifications.streamName]);
@@ -122,7 +124,9 @@ router.post("/manual", async (req, res) => {
   try {
     console.log("FORMANT EVENT: ", JSON.stringify(req.body.payload, null, " "));
 
-    const specifications = generateFormantRequestSpecifications(req);
+    const specifications = await generateFormantRequestSpecifications(req);
+    if (!specifications) throw new Error("Unable to generate specifications");
+
     await Formant.checkEvent(specifications, true);
 
     const expertConnectTicket = await createExpertConnectTicket({

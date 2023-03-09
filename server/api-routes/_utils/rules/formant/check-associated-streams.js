@@ -11,6 +11,7 @@ export const checkAssociatedStreams = async (data) => {
   try {
     associatedStreams =
       await Query.Tickets.Select.Formant.sqlSelectAssociatedStreams(data);
+
     assocData = await getStreams(
       data.deviceId,
       data.time,
