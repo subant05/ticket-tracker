@@ -10,9 +10,10 @@ import PgSimplifyInflectorPlugin from "@graphile-contrib/pg-simplify-inflector";
 import ConnectionFilterPlugin from "postgraphile-plugin-connection-filter";
 import PgPubsub from "@graphile/pg-pubsub";
 import { JupiterSubscriptionPlugin } from "./plugins/postgraphile/subscriptions.js";
-import * as Congruity from "congruity";
+import Congruity from "congruity";
 
-console.log(Congruity);
+console.log(Congruity.fn);
+
 const pluginHook = makePluginHook([PgPubsub]);
 const __dirname = path.dirname("/");
 console.log(__dirname);

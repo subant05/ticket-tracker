@@ -12,6 +12,8 @@ import { parseValues } from "../_utils/services/formant/getVehicleFormantData.js
 import { generateFormantRequestSpecifications } from "../_utils/formating/generateFormantRequestSpecifiations.js";
 import { Formant } from "../_utils/rules/index.js";
 import moment from "moment";
+import { createTicketFromFormantEvent } from "./compose.js";
+import Congruity from "congruity";
 
 const router = express.Router();
 
@@ -20,105 +22,151 @@ router.use(formantConnect);
 const queue = {};
 
 router.post("/", async (req, res) => {
-  let specifications = {};
-  let eventVerified = false;
-
   try {
-    // FORMANT REQUEST
-    console.log("FORMANT EVENT: ", JSON.stringify(req.body.payload, null, " "));
+    // const test = async (data) =>
+    //   new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //       resolve(data.body);
+    //     }, 3000);
+    //   });
 
-    const specifications = await generateFormantRequestSpecifications(req);
-    if (!specifications) throw new Error("Unable to generate specifications");
+    // const testTwo = async (data) =>
+    //   new Promise((resolve, reject) => {
+    //     setTimeout(() => {
+    //       resolve(data.payload);
+    //     }, 3000);
+    //   });
+    // const monadOne = await Congruity.monad.Either.fromNullable(req)
+    //   .asyncMap(async (data) => {
+    //     const body = await test(data);
+    //     return body;
+    //   })
+    //   .asyncMap(async (data) => {
+    //     const body = await testTwo(data);
+    //     return body;
+    //   });
 
-    eventVerified = await Formant.checkEvent(specifications);
+    // console.log(monadOne);
+    const ticketData = await createTicketFromFormantEvent(req);
+    const results = ticketData.getOrElseThrow();
 
-    console.log("QUEUE: ", queue[specifications.streamName]);
+    console.log("Ticket Data", results);
 
-    if (
-      eventVerified &&
-      (!queue[specifications.streamName] ||
-        queue[specifications.streamName].indexOf(specifications.deviceId) ===
-          -1)
-    ) {
-      // ADD DEVICE TO QUEUE
-      if (!queue[specifications.streamName])
-        queue[specifications.streamName] = [specifications.deviceId];
-      else queue[specifications.streamName].push(specifications.deviceId);
-
-      const expertConnectTicket = await createExpertConnectTicket({
-        ...specifications,
-      });
-      specifications.expertConnectTicket = expertConnectTicket;
-      specifications.expertConnectUrl = expertConnectTicket.data.url;
-
-      //  JIRA ISSUE POST
-      const jiraTicket = await createJiraTicket({ ...specifications });
-      specifications.jiraUrl = `${process.env.JIRA_URL}/browse/${jiraTicket.key}`;
-      specifications.jiraTicket = {
-        ...jiraTicket,
-        project: "SQUASH",
-        category: "Defect",
-        requirement: "INTERVENTIONS",
-        machine_type: "Loamy (Autonomous Tractor)",
-        priority: "Medium",
-        roadmap_item: "Spring 2023-Delivery",
-        team: "Robotics",
-        issue_type: "Bug/Story",
-        bug_source: "Field Support / ExpertConnect",
-      };
-
-      const tickets = await Query.Tickets.Insert.All.sqlInsertTickets([
-        specifications,
-      ]);
-
-      if (!tickets.rows.length) throw new Error("Unable to insert all tickets");
-
-      // UPDATE TICKETS
-      const updatedEC = await updateExpertConnectTicket(
-        specifications.expertConnectTicket.data.id,
-        specifications
-      );
-      const updatedJira = await updateJiraTicket(
-        jiraTicket.key,
-        specifications
-      );
-
-      // REMOVE DEVICE FROM QUEUE
-      queue[specifications.streamName].splice(
-        queue[specifications.streamName].indexOf(specifications.deviceId),
-        1
-      );
+    if (results) {
+      res.setHeader("Content-Type", "application/json");
+      res.send(results);
+    } else {
+      throw new Error("Unable to create tickets");
     }
-
-    res.setHeader("Content-Type", "application/json");
-    res.send(specifications);
   } catch (e) {
     console.log("FORMANT TICKET CREATION ERROR: ", e.message);
     console.log("FORMANT TICKET CREATION ERROR: ", e.stack);
-
     res.status(503);
     res.setHeader("Content-Type", "text/json");
     res.send({ Error: e.message });
-  } finally {
-    console.log(
-      "FINAL SPECIFICATIONS: ",
-      JSON.stringify(specifications, null, " ")
-    );
-
-    // REMOVE DEVICE FROM QUEUE
-    if (
-      eventVerified &&
-      specifications.streamName &&
-      queue[specifications.streamName] &&
-      queue[specifications.streamName].indexOf(specifications.deviceId) !== -1
-    ) {
-      queue[specifications.streamName].splice(
-        queue[specifications.streamName].indexOf(specifications.deviceId),
-        1
-      );
-    }
   }
 });
+
+// router.post("/", async (req, res) => {
+//   let specifications = {};
+//   let eventVerified = false;
+
+//   try {
+//     // FORMANT REQUEST
+//     console.log("FORMANT EVENT: ", JSON.stringify(req.body.payload, null, " "));
+
+//     const specifications = await generateFormantRequestSpecifications(req);
+//     if (!specifications) throw new Error("Unable to generate specifications");
+
+//     eventVerified = await Formant.checkEvent(specifications);
+
+//     console.log("QUEUE: ", queue[specifications.streamName]);
+
+//     if (
+//       eventVerified &&
+//       (!queue[specifications.streamName] ||
+//         queue[specifications.streamName].indexOf(specifications.deviceId) ===
+//           -1)
+//     ) {
+//       // ADD DEVICE TO QUEUE
+//       if (!queue[specifications.streamName])
+//         queue[specifications.streamName] = [specifications.deviceId];
+//       else queue[specifications.streamName].push(specifications.deviceId);
+
+//       const expertConnectTicket = await createExpertConnectTicket({
+//         ...specifications,
+//       });
+//       specifications.expertConnectTicket = expertConnectTicket;
+//       specifications.expertConnectUrl = expertConnectTicket.data.url;
+
+//       //  JIRA ISSUE POST
+//       const jiraTicket = await createJiraTicket({ ...specifications });
+//       specifications.jiraUrl = `${process.env.JIRA_URL}/browse/${jiraTicket.key}`;
+//       specifications.jiraTicket = {
+//         ...jiraTicket,
+//         project: "SQUASH",
+//         category: "Defect",
+//         requirement: "INTERVENTIONS",
+//         machine_type: "Loamy (Autonomous Tractor)",
+//         priority: "Medium",
+//         roadmap_item: "Spring 2023-Delivery",
+//         team: "Robotics",
+//         issue_type: "Bug/Story",
+//         bug_source: "Field Support / ExpertConnect",
+//       };
+
+//       const tickets = await Query.Tickets.Insert.All.sqlInsertTickets([
+//         specifications,
+//       ]);
+
+//       if (!tickets.rows.length) throw new Error("Unable to insert all tickets");
+
+//       // UPDATE TICKETS
+//       const updatedEC = await updateExpertConnectTicket(
+//         specifications.expertConnectTicket.data.id,
+//         specifications
+//       );
+//       const updatedJira = await updateJiraTicket(
+//         jiraTicket.key,
+//         specifications
+//       );
+
+//       // REMOVE DEVICE FROM QUEUE
+//       queue[specifications.streamName].splice(
+//         queue[specifications.streamName].indexOf(specifications.deviceId),
+//         1
+//       );
+//     }
+
+//     res.setHeader("Content-Type", "application/json");
+//     res.send(specifications);
+//   } catch (e) {
+//     console.log("FORMANT TICKET CREATION ERROR: ", e.message);
+//     console.log("FORMANT TICKET CREATION ERROR: ", e.stack);
+
+//     res.status(503);
+//     res.setHeader("Content-Type", "text/json");
+//     res.send({ Error: e.message });
+//   } finally {
+//     console.log(
+//       "FINAL SPECIFICATIONS: ",
+//       JSON.stringify(specifications, null, " ")
+//     );
+
+//     // REMOVE DEVICE FROM QUEUE
+//     if (
+//       eventVerified &&
+//       specifications.streamName &&
+//       queue[specifications.streamName] &&
+//       queue[specifications.streamName].indexOf(specifications.deviceId) !== -1
+//     ) {
+//       queue[specifications.streamName].splice(
+//         queue[specifications.streamName].indexOf(specifications.deviceId),
+//         1
+//       );
+//     }
+//   }
+// });
 
 router.post("/manual", async (req, res) => {
   try {
