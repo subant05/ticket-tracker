@@ -541,7 +541,7 @@ export async function updateJiraTicket(data = null) {
       }
     );
 
-    if (response.status !== 200)
+    if (response.status >= 400)
       throw new Error("Unable to update jira ticket: " + ticketId);
 
     clonedData.jiraTicketUpdated = { ...payload, specifications };
