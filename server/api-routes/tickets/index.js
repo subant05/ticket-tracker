@@ -1,5 +1,5 @@
 import express from "express";
-import Formant from "./formant.js";
+import Formant from "./formant/index.js";
 import Jira from "./jira.js";
 import ExpertConnect from "./expert-connect.js";
 
