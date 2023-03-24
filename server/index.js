@@ -10,13 +10,9 @@ import PgSimplifyInflectorPlugin from "@graphile-contrib/pg-simplify-inflector";
 import ConnectionFilterPlugin from "postgraphile-plugin-connection-filter";
 import PgPubsub from "@graphile/pg-pubsub";
 import { JupiterSubscriptionPlugin } from "./plugins/postgraphile/subscriptions.js";
-import Congruity from "congruity";
-
-console.log(Congruity.fn);
 
 const pluginHook = makePluginHook([PgPubsub]);
 const __dirname = path.dirname("/");
-console.log(__dirname);
 
 dotenv.config({ path: "./.env" });
 
@@ -36,42 +32,42 @@ app.use("/api", ApiRouter);
 app.use("/", express.static(path.join(__dirname, "./dist")));
 app.use(express.static("./dist"));
 
-app.use(
-  postgraphile(
-    process.env.NODE_ENV === "development"
-      ? process.env.DEV_DATABASE_URL
-      : process.env.POSTGRAPHILE,
-    [
-      "tickets",
-      "rules",
-      "vehicles",
-      "tags",
-      "groups",
-      "teams",
-      "personnel",
-      "organizations",
-    ],
-    {
-      appendPlugins: [
-        PgSimplifyInflectorPlugin,
-        ConnectionFilterPlugin,
-        // , JupiterSubscriptionPlugin
-      ],
-      pluginHook,
-      ownerConnectionString: `${process.env.DATABASE_URL}`,
-      watchPg: true,
-      enhanceGraphiql: true,
-      ignoreRBAC: false, // Role Based Access Control (RBAC)
-      extendedErrors: ["errcode", "detail", "hint"],
-      graphiql: process.env.NODE_ENV === "development" ? true : false,
-      subscriptions: true,
-      simpleSubscriptions: true,
-      live: true,
-      retryOnInitFail: true,
-      rejectUnauthorized: false,
-    }
-  )
-);
+// app.use(
+//   postgraphile(
+//     process.env.NODE_ENV === "development"
+//       ? process.env.DEV_DATABASE_URL
+//       : process.env.POSTGRAPHILE,
+//     [
+//       "tickets",
+//       "rules",
+//       "vehicles",
+//       "tags",
+//       "groups",
+//       "teams",
+//       "personnel",
+//       "organizations",
+//     ],
+//     {
+//       appendPlugins: [
+//         PgSimplifyInflectorPlugin,
+//         ConnectionFilterPlugin,
+//         // , JupiterSubscriptionPlugin
+//       ],
+//       pluginHook,
+//       ownerConnectionString: `${process.env.DATABASE_URL}`,
+//       watchPg: true,
+//       enhanceGraphiql: true,
+//       ignoreRBAC: false, // Role Based Access Control (RBAC)
+//       extendedErrors: ["errcode", "detail", "hint"],
+//       graphiql: process.env.NODE_ENV === "development" ? true : false,
+//       subscriptions: true,
+//       simpleSubscriptions: true,
+//       live: true,
+//       retryOnInitFail: true,
+//       rejectUnauthorized: false,
+//     }
+//   )
+// );
 
 app.get("*", function (req, res) {
   res.sendFile(path.join(`${__dirname}/dist/index.html`));
