@@ -1,11 +1,13 @@
 import _ from "lodash";
 
-export function formatData(data) {
+export function formatJsonData(data) {
   if (!data || data === null) return null;
 
   const clonedData = _.cloneDeep(data);
 
   if (data.stream_type !== "json") return clonedData;
+  if (!clonedData && typeof clonedData.value !== "object")
+    clonedData.value = {};
 
   const matched = clonedData.latestDatapoint
     .filter((dataPoint) => {
@@ -19,6 +21,8 @@ export function formatData(data) {
       );
       clonedData[property.value] = dataPointTwo.value;
     });
+
+  clonedData.value = clonedData.latestDatapoint;
 
   return clonedData;
 }
