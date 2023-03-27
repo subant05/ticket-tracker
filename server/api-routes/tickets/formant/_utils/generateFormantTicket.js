@@ -7,6 +7,8 @@ export function generateFormantTicketTitle(data = {}) {
 
   switch (clonedData.stream_name) {
     case "vadc_diagnostics":
+    case "autonomy_state_transition_report":
+    case "vadc_control_status_a":
       clonedData.title = `${clonedData.message} - ERC=${clonedData.ERC}, SUP=${clonedData.SUP}`;
       break;
     default:

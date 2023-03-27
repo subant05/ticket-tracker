@@ -12,6 +12,7 @@ export const shouldCreateTicket = async (result) =>
 export const createTicketFromFormantEvent = Congruity.fn.asyncCompose(
   updateTickets,
   createTickets,
+  Congruity.fn.tap((data) => console.log("Whats current ticket object", data)),
   generateSubstantiveData,
   Congruity.fn.tap((data) =>
     console.log(
