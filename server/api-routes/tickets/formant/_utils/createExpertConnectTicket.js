@@ -38,7 +38,8 @@ export async function createExpertConnectTicket(data) {
   } catch (e) {
     console.log("CREATE EXPERT CONNECT TICKET VIA API ERROR", e.message);
     console.log("CREATE EXPERT CONNECT TICKET VIA API ERROR", e.stack);
-    console.log(clonedData.expertConnectTicket);
+    console.log("RESPONSE: ", clonedData.expertConnectTicket);
+    console.log("PAYLOAD: ", body);
 
     return null;
   }
