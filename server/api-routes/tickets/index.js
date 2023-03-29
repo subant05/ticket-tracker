@@ -1,7 +1,7 @@
 import express from "express";
 import Formant from "./formant/index.js";
 import Jira from "./jira.js";
-import ExpertConnect from "./expert-connect.js";
+import ExpertConnect from "./expert-connect/index.js";
 
 const childRouter = express.Router();
 const parentRouter = express.Router();

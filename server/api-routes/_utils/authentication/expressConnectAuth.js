@@ -65,3 +65,16 @@ export const refreshToken = async () => {
     return { success: false, error: e };
   }
 };
+
+export const exprertConnect = async (req, res, next) => {
+  const isTokenValid = await refreshToken();
+
+  if (
+    !isTokenValid.success ||
+    req.headers.authorization !==
+      `Basic ${process.env.EXPERT_CONNECT_WEBHOOK_AUTHORIZATION}`
+  ) {
+    res.status(401);
+    res.send(`401 Unauthorized`);
+  } else next();
+};
