@@ -22,6 +22,7 @@ export async function createExpertConnectTicket(data) {
     if (!body || !isTokenValid.success)
       throw new Error("Unable to log into Expert Connect");
 
+    console.log("PAYLOAD: ", body);
     const response = await fetch(
       `${process.env.EXPERT_CONNECT_REQUEST_URL}/${process.env.EXPERT_CONNECT_COMPANY_ID}/tickets`,
       {
@@ -39,7 +40,6 @@ export async function createExpertConnectTicket(data) {
     console.log("CREATE EXPERT CONNECT TICKET VIA API ERROR", e.message);
     console.log("CREATE EXPERT CONNECT TICKET VIA API ERROR", e.stack);
     console.log("RESPONSE: ", clonedData.expertConnectTicket);
-    console.log("PAYLOAD: ", body);
 
     return null;
   }
