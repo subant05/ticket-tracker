@@ -44,6 +44,15 @@ export function generateJiraTicketPayload(data) {
         customfield_12288: { value: "Field Support / ExpertConnect" }, // Bug Source
         issuetype: { name: "Bug/Story" },
       },
+      update: {
+        comment: [
+          {
+            add: {
+              body: "It is time to finish this task",
+            },
+          },
+        ],
+      },
       reporter: {
         self: "http://jira.atlassian.com/rest/api/2/user?username=expertconnect.jira",
         name: "expertconnect.jira",
@@ -52,6 +61,28 @@ export function generateJiraTicketPayload(data) {
         active: true,
       },
     };
+
+    if (clonedData.expertConnectTicketNote)
+      clonedData.jiraTicket.payload.update = {
+        comment: [
+          {
+            add: {
+              body: ` 
+EXPERT CONNECT NOTE
+-------------------
+
+${clonedData.expertConnectTicketNote.data.text}
+
+-------------------
+${clonedData.expertConnectTicketNote.data.createdDate}
+${clonedData.expertConnectTicketNote.data.owner.firstName} ${clonedData.expertConnectTicketNote.data.owner.lastName}
+${clonedData.expertConnectTicketNote.data.owner.email} 
+${clonedData.expertConnectTicketNote.data.owner.phone} 
+                    `,
+            },
+          },
+        ],
+      };
 
     return clonedData;
   } catch (e) {

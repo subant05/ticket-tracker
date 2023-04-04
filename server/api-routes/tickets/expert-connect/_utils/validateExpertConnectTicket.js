@@ -9,6 +9,7 @@ export function vaidateExpertConnectTicket(data) {
   if (
     !expertConnectTicket ||
     !expertConnectTicket.data ||
+    !expertConnectTicket.data.tags ||
     !expertConnectTicket.data.tags.length ||
     !expertConnectTicket.data.tags.find((tag) => tag.name === "Vision")
   ) {

@@ -5,6 +5,9 @@ import { getDataBasedOnEventType } from "../alternates/getDataBasedOnEventType.j
 import { vaidateExpertConnectTicket } from "../_utils/validateExpertConnectTicket.js";
 
 export const getExpertConnectTicketData = Congruity.fn.asyncCompose(
+  Congruity.fn.tap((data) => {
+    console.log("TAP: ", data);
+  }),
   vaidateExpertConnectTicket,
   getDataBasedOnEventType,
   getExpertConnectBaseApiUrl,

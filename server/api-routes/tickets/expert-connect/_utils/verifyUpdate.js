@@ -5,10 +5,11 @@ export function verifyUpdate(data) {
 
   const clonedData = _.cloneDeep(data);
   if (
-    clonedData.type !== "ticket.updated" ||
-    !clonedData.expertConnectTicket.data.description.match(/(JIRA Link)/gi)
+    clonedData.type === "ticket.updated" ||
+    clonedData.type === "ticket.note.created" ||
+    clonedData.expertConnectTicket.data.description.match(/(JIRA Link)/gi)
   )
-    return null;
+    return clonedData;
 
-  return clonedData;
+  return null;
 }

@@ -2,20 +2,39 @@ import _ from "lodash";
 import fetch from "node-fetch";
 
 export async function getTicketOnNoteCreatedEvent(data) {
-  if (!data || data === null) return null;
+  console.log(data.type);
+  if (
+    !data ||
+    data === null ||
+    ["ticket.note.created"].indexOf(data.type) === -1
+  )
+    return null;
 
-  if (["ticket.note.created"].indexOf(data.type) === -1) return null;
+  try {
+    const clonedData = _.cloneDeep(data);
+    const notesResponse = await fetch(
+      `${clonedData.request.baseUrl}/tickets/${clonedData.data.ticketId}/notes?Paging.Page=1&Paging.Size=100`,
+      {
+        headers: clonedData.request.headers,
+      }
+    );
 
-  const clonedData = _.cloneDeep(data);
-  const response = await fetch(
-    `${clonedData.request.baseUrl}/tickets/${clonedData.ticketId}/notes?Paging.Page=1&Paging.Size=100`,
-    {
-      headers: clonedData.request.headers,
-    }
-  );
+    if (notesResponse.status != 200) throw new Error("Request Failue");
 
-  const ecData = await response.json();
-  clonedData.expertConnectTicket = ecData.pop();
+    const ecNotes = await notesResponse.json();
 
-  return clonedData;
+    clonedData.expertConnectTicketNote = ecNotes.items.pop();
+
+    return clonedData;
+  } catch (e) {
+    console.log(
+      "ERROR FAILED TO GET TICKETS ON NOTE CHANGES IN EXPERT CONNECT: ",
+      e.message
+    );
+    console.log(
+      "ERROR FAILED TO GET TICKETS ON NOTE CHANGES IN EXPERT CONNECT: ",
+      e.stack
+    );
+    return null;
+  }
 }
