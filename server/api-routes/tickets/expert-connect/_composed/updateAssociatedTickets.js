@@ -7,7 +7,6 @@ import { parseSpecifications } from "../_utils/parseSpecifications.js";
 import { getBundleFromMisc } from "../_utils/getBundleFromMisc.js";
 import { copyDescriptionAndMisc } from "../_utils/copyDescriptionAndMisc.js";
 import { verifyUpdate } from "../_utils/verifyUpdate.js";
-import { updateJiraComments } from "../_utils/updateJiraComments.js";
 
 export const updateAssociatedTickets = Congruity.fn.asyncCompose(
   updateJiraTicket,
