@@ -2,7 +2,6 @@ import _ from "lodash";
 import fetch from "node-fetch";
 
 export async function getTicketOnNoteCreatedEvent(data) {
-  console.log(data.type);
   if (
     !data ||
     data === null ||
