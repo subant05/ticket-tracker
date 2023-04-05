@@ -7,7 +7,7 @@ export async function getTicketOnNoteCreatedEvent(data) {
     data === null ||
     ["ticket.note.created"].indexOf(data.type) === -1
   )
-    return null;
+    return data;
 
   try {
     const clonedData = _.cloneDeep(data);

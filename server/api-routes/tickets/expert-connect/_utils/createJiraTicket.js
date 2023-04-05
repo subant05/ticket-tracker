@@ -6,28 +6,39 @@ export async function createJiraTicket(data) {
 
   const clonedData = _.cloneDeep(data);
 
-  const response = await fetch(`${process.env.JIRA_URL}/rest/api/2/issue`, {
-    method: "POST",
-    body: JSON.stringify(clonedData.jiraTicket.payload),
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `${process.env.JIRA_TOKEN_TYPE} ${process.env.JIRA_TOKEN}`,
-    },
-  });
+  try {
+    const response = await fetch(`${process.env.JIRA_URL}/rest/api/2/issue`, {
+      method: "POST",
+      body: JSON.stringify(clonedData.jiraTicket.payload),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `${process.env.JIRA_TOKEN_TYPE} ${process.env.JIRA_TOKEN}`,
+      },
+    });
 
-  const jiraResult = await response.json();
+    const jiraResult = await response.json();
 
-  if (response.status >= 400)
-    console.log("JIRA TICKET CREATION ERROR: ", e.message);
+    if (response.status >= 400) {
+      console.log(response);
+      console.log(jiraResult);
+      throw new Error("JIRA TICKET CREATION ERROR: ", response);
+    }
 
-  clonedData.jiraTicket = {
-    ...clonedData.jiraTicket.payload,
-    specifications: clonedData.specifications,
-    jiraResponse: {
-      ...jiraResult,
-      url: `${process.env.JIRA_URL}/browse/${jiraResult.key}`,
-    },
-  };
+    clonedData.jiraTicket = {
+      ...clonedData.jiraTicket.payload,
+      specifications: clonedData.specifications,
+      jiraResponse: {
+        ...jiraResult,
+        url: `${process.env.JIRA_URL}/browse/${jiraResult.key}`,
+      },
+    };
 
-  return clonedData;
+    return clonedData;
+  } catch (e) {
+    console.log("ERROR CREATING JIRA TICKET: ", e.message);
+    console.log("ERROR CREATING JIRA TICKET: ", e.stack);
+    console.log("ERROR CREATING JIRA TICKET: ", e);
+
+    return null;
+  }
 }

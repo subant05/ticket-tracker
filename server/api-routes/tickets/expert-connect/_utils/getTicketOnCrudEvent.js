@@ -7,7 +7,6 @@ export async function getTicketOnCrudEvent(data) {
 
   const clonedData = _.cloneDeep(data);
 
-  console.log(clonedData.type);
   switch (clonedData.type) {
     case "ticket.updated":
     case "ticket.created":
