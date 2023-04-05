@@ -22,7 +22,7 @@ export async function getTicketOnNoteCreatedEvent(data) {
 
     const ecNotes = await notesResponse.json();
 
-    clonedData.expertConnectTicketNote = ecNotes.items.pop();
+    clonedData.expertConnectTicketNote = ecNotes.items.unshift();
 
     return clonedData;
   } catch (e) {
