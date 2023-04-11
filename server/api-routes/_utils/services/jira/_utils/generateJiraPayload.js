@@ -60,7 +60,10 @@ export const generateJiraPayload = (data) => {
       },
     };
   } catch (e) {
+    console.log("ERROR GENERATING JIRA PAYLOAD: ", e.message);
+    console.log("ERROR GENERATING JIRA PAYLOAD: ", e.stack);
   } finally {
+    console.log("PAYLOAD: ", payload);
     return payload;
   }
 };
