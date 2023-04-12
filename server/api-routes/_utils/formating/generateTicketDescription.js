@@ -24,9 +24,11 @@ export const generateTicketDescription = (data) => {
     jiraUrl,
     device,
     name,
+    reason,
   } = data;
 
   return `
+  ${reason ? reason + "\r\r" : ""}
   @@Specifications
   Alert Type = ${type},
   Alert Time = ${time},
