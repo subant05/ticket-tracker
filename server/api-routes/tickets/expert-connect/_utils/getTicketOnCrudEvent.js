@@ -2,8 +2,7 @@ import _ from "lodash";
 import fetch from "node-fetch";
 
 export async function getTicketOnCrudEvent(data) {
-  console.log(data.type);
-  if (!data || data === null) return null;
+  if (!data || data === null || !data.data || !data.data.ticketId) return null;
 
   const clonedData = _.cloneDeep(data);
 

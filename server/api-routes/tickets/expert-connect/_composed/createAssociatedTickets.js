@@ -11,9 +11,6 @@ import { updateExpertConnectTicket } from "../_utils/updateExpertConnectTicket.j
 export const createAssociatedTickets = Congruity.fn.asyncCompose(
   updateExpertConnectTicket,
   addJiraLinkToDescription,
-  Congruity.fn.tap((data) => {
-    console.log("TAP DATA: ", data);
-  }),
   createJiraTicket,
   generateJiraTicketPayload,
   getBundleFromMisc,
