@@ -24,6 +24,9 @@ export const requestTokens = async () => {
   const credentials = await response.json();
   process.env["FORMANT_REFRESH_TOKEN"] =
     credentials.authentication.refreshToken;
+  process.env["FORMANT_USER_ID"] = credentials.authentication.userId;
+  process.env["FORMANT_ORGANIZATION_ID"] =
+    credentials.authentication.organizationId;
   process.env["FORMANT_REFRESH_TOKEN_EXPIRATION"] = moment()
     .add(604800, "s")
     .utc()

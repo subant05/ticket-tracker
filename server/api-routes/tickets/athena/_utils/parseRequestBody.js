@@ -5,6 +5,7 @@ export function parseRequestBody(req) {
   if (!req || !req.body) return null;
 
   const clonedData = _.cloneDeep(req.body);
+  const value = clonedData;
   const deviceName = `${clonedData.system}_${clonedData.machine_id}`;
   const messageJson = ["Demotion", deviceName, clonedData];
   const valueJson = messageJson;
@@ -24,7 +25,7 @@ export function parseRequestBody(req) {
     deviceName,
     device_name: deviceName,
     name: deviceName,
-    value: {},
+    value,
     message: "##### TEST - IGNORE ##### Demotion",
     latestDatapoint: clonedData,
     valueJson,
