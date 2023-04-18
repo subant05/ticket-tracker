@@ -115,11 +115,12 @@ export const sqlInsertExpertConnectTeams = async (data) => {
             division
           )
           VALUES ${teamsInsertValue}
-          ON CONFLICT (ec_id)
+          ON CONFLICT (name)
           DO UPDATE 
           SET name = EXCLUDED.name, 
           template = EXCLUDED.template,
-          division = EXCLUDED.division
+          division = EXCLUDED.division,
+          ec_id = EXCLUDED.ec_id
           
           RETURNING *
       `,

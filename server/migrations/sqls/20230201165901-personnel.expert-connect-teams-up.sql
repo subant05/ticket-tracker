@@ -6,9 +6,8 @@ CREATE TABLE IF NOT EXISTS personnel.expert_connect_teams (
   division INT DEFAULT 0,
   template INT DEFAULT 0,
   PRIMARY KEY(id),
-  CONSTRAINT uq_expert_connect_teams_id
-    UNIQUE(ec_id)
-);
+  CONSTRAINT uq_expert_connect_teams_name
+    UNIQUE(name)
 
 CREATE INDEX IF NOT EXISTS idx_personnel_expert_connect_teams
     ON personnel.expert_connect_teams(id);
