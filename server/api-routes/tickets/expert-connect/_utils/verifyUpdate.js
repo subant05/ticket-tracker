@@ -7,7 +7,7 @@ export function verifyUpdate(data) {
   if (
     clonedData.type === "ticket.updated" ||
     clonedData.type === "ticket.note.created" ||
-    clonedData.expertConnectTicket.data.description.match(/(JIRA Link)/gi)
+    clonedData.expertConnectTicket.data.description.includes("JIRA Link")
   )
     return clonedData;
 
