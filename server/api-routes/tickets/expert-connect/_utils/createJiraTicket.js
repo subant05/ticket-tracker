@@ -19,9 +19,12 @@ export async function createJiraTicket(data) {
     const jiraResult = await response.json();
 
     if (response.status >= 400) {
-      console.log(response);
-      console.log(jiraResult);
-      throw new Error("JIRA TICKET CREATION ERROR: ", response);
+      console.log(
+        "JIRA TICKET CREATION ERROR: PAYLOAD:  ",
+        clonedData.jiraTicket.payload
+      );
+      console.log("JIRA TICKET CREATION ERROR: jiraResult:  ", jiraResult);
+      throw new Error("JIRA TICKET CREATION ERROR: RESPONSE: ", response);
     }
 
     clonedData.jiraTicket = {

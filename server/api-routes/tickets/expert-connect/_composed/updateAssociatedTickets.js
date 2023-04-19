@@ -15,5 +15,8 @@ export const updateAssociatedTickets = Congruity.fn.asyncCompose(
   getJiraTicketId,
   parseSpecifications(),
   copyDescriptionAndMisc,
+  Congruity.fn.tap((data) =>
+    console.log("EXPERT CONNECT TICKET: SHOULD UPDATE?: ", data !== null)
+  ),
   verifyUpdate
 );
