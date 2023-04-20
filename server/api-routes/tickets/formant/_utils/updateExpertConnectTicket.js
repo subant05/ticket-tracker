@@ -32,8 +32,8 @@ export const updateExpertConnectTicket = async (data) => {
     clonedData.expertConnectTicket = ecTicket;
     return clonedData;
   } catch (e) {
-    console.log("CREATE EXPERT CONNECT TICKET VIA API ERROR", e.message);
-    console.log("CREATE EXPERT CONNECT TICKET VIA API ERROR", e.stack);
+    console.log("UPDATE EXPERT CONNECT TICKET VIA API ERROR", e.message);
+    console.log("UPDATE EXPERT CONNECT TICKET VIA API ERROR", e.stack);
     return null;
   }
 };

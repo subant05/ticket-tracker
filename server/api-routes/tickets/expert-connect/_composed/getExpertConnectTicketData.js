@@ -10,6 +10,9 @@ export const getExpertConnectTicketData = Congruity.fn.asyncCompose(
     console.log("EXPERT CONNECT TICKET VALID: ", data !== null)
   ),
   vaidateExpertConnectTicket,
+  Congruity.fn.tap((data) =>
+    console.log("EXPERT CONNECT TICKET: ", data.expertConnectTicket)
+  ),
   getDataBasedOnEventType,
   getExpertConnectBaseApiUrl,
   generateRequestHeaders,
