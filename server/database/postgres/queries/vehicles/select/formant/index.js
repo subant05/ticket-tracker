@@ -5,7 +5,7 @@ export const sqlSelectVehicleByName = async (data) => {
   try {
     vehicle = await client.query(
       `
-      SELECT * FROM vehicles.vehicle WHERE name = $1
+      SELECT * FROM vehicles.vehicle WHERE decommissioned = false AND name = $1
     `,
       [data.deviceName]
     );
@@ -34,7 +34,7 @@ export const sqlSelectVehicleAndGroupByVehicleName = async (data) => {
     FROM vehicles.vehicle
     LEFT OUTER JOIN vehicles.vehicle_group ON vehicles.vehicle_group.vehicle_id = vehicles.vehicle.id
     LEFT OUTER JOIN vehicles.group ON vehicles.group.id = vehicles.vehicle_group.id
-    WHERE vehicles.vehicle.name = $1
+    WHERE vehicles.vehicle.decommissioned = false AND vehicles.vehicle.name = $1
     `,
       [data.deviceName]
     );
