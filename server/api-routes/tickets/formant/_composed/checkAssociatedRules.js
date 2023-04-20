@@ -19,5 +19,11 @@ export const checkAssociatedRules = Congruity.fn.asyncCompose(
     console.log("What is the assocated data: ", data.associatedStreamData);
   }),
   getAssociatedStreamData,
+  Congruity.fn.tap((data) => {
+    console.log(
+      "What are the associated streams: ",
+      JSON.stringify(data.associatedStreams.map((assoc) => assoc.stream_name))
+    );
+  }),
   geAssociatedStreams
 );

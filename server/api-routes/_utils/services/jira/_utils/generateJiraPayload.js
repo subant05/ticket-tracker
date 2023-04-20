@@ -41,7 +41,7 @@ export const generateJiraPayload = (data) => {
         customfield_12487: parseInt(SUP), // SUP
         customfield_12429: { value: "Defect" }, // "Group/Category"
         customfield_12452: [{ value: "INTERVENTIONS" }], // Spring 2023 Requirement (Airtable)
-        customfield_12470: parseInt(bundle) || 0, // Bundle Numbner
+        customfield_12470: parseInt(bundle) || 0, // Bundle Number
         customfield_12289: [{ value: "Loamy (Autonomous Tractor)" }], // "Machine Type"
         priority: { name: "Medium" },
         customfield_12428: { value: "Spring 2023-Delivery" }, //Roadmap Item
