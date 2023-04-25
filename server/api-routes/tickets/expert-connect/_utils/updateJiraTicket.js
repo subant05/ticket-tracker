@@ -6,25 +6,39 @@ export async function updateJiraTicket(data = null) {
 
   const clonedData = _.cloneDeep(data);
 
-  const response = await fetch(
-    `${process.env.JIRA_URL}/rest/api/2/issue/${clonedData.jiraTicket.id}`,
-    {
-      method: "PUT",
-      body: JSON.stringify(clonedData.jiraTicket.payload),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `${process.env.JIRA_TOKEN_TYPE} ${process.env.JIRA_TOKEN}`,
-      },
+  try {
+    const response = await fetch(
+      `${process.env.JIRA_URL}/rest/api/2/issue/${clonedData.jiraTicket.id}`,
+      {
+        method: "PUT",
+        body: JSON.stringify(clonedData.jiraTicket.payload),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `${process.env.JIRA_TOKEN_TYPE} ${process.env.JIRA_TOKEN}`,
+        },
+      }
+    );
+
+    if (response.status >= 400) {
+      console.log("JIRA FAILED RESPONSE: ", await response.json());
+      throw new Error(
+        "Unable to update jira ticket: " + clonedData.jiraTicket.id
+      );
     }
-  );
 
-  if (response.status >= 400)
-    throw new Error("Unable to update jira ticket: " + ticketId);
+    clonedData.jiraTicketUpdated = {
+      ...clonedData.jiraTicket.payload,
+      specifications: clonedData.specifications,
+    };
 
-  clonedData.jiraTicketUpdated = {
-    ...clonedData.jiraTicket.payload,
-    specifications: clonedData.specifications,
-  };
+    return clonedData;
+  } catch (e) {
+    console.log(
+      "EXPERT CONNECT FAILED TO UPDATE JIRA VIA WEBHOOK: ",
+      e.message
+    );
+    console.log("EXPERT CONNECT FAILED TO UPDATE JIRA VIA WEBHOOK: ", e.stack);
 
-  return clonedData;
+    return null;
+  }
 }
