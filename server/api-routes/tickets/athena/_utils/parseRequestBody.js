@@ -26,7 +26,7 @@ export function parseRequestBody(req) {
     device_name: deviceName,
     name: deviceName,
     value,
-    message: "##### TEST - IGNORE ##### Demotion",
+    message: "##### TEST ATHENA - IGNORE ##### Demotion",
     latestDatapoint: clonedData,
     valueJson,
     messageJson,

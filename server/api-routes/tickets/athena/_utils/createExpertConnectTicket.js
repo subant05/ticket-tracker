@@ -8,9 +8,13 @@ import { generateRequestBody } from "../../../_utils/services/expert-connect/_ut
 export async function createExpertConnectTicket(data) {
   if (!data || data === null) return null;
 
-  const clonedData = _.cloneDeep(data);
-
   try {
+    const clonedData = _.cloneDeep(data);
+    const expertConnectEndPoint =
+      clonedData.apiEndpoints &&
+      clonedData.apiEndpoints.EXPERT_CONNECT_REQUEST_URL
+        ? clonedData.apiEndpoints.EXPERT_CONNECT_REQUEST_URL
+        : process.env.EXPERT_CONNECT_REQUEST_URL;
     const team =
       await Query.Personnel.Query.ExpertConnect.sqlQueryExpertConnectTeamByDeviceName(
         clonedData.name || clonedData.device.name
@@ -23,7 +27,7 @@ export async function createExpertConnectTicket(data) {
       throw new Error("Unable to log into Expert Connect");
 
     const response = await fetch(
-      `${process.env.EXPERT_CONNECT_REQUEST_URL}/${process.env.EXPERT_CONNECT_COMPANY_ID}/tickets`,
+      `${expertConnectEndPoint}/${process.env.EXPERT_CONNECT_COMPANY_ID}/tickets`,
       {
         method: "POST",
         body: body,

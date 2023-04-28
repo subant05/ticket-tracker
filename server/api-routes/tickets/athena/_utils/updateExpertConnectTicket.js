@@ -7,10 +7,15 @@ import { generateRequestBody } from "../../../_utils/services/expert-connect/_ut
 export const updateExpertConnectTicket = async (data) => {
   if (!data || data === null) return null;
 
-  const clonedData = _.cloneDeep(data);
-  const ticketId = clonedData.expertConnectTicket.data.id;
-
   try {
+    const clonedData = _.cloneDeep(data);
+    const ticketId = clonedData.expertConnectTicket.data.id;
+    const expertConnectEndPoint =
+      clonedData.apiEndpoints &&
+      clonedData.apiEndpoints.EXPERT_CONNECT_REQUEST_URL
+        ? clonedData.apiEndpoints.EXPERT_CONNECT_REQUEST_URL
+        : process.env.EXPERT_CONNECT_REQUEST_URL;
+
     const isTokenValid = await expertConnectRefreshToken();
     const headers = generateRequestHeader();
     const body = generateRequestBody(clonedData);
@@ -19,7 +24,7 @@ export const updateExpertConnectTicket = async (data) => {
       throw new Error("Unable to log into Expert Connect");
 
     const response = await fetch(
-      `${process.env.EXPERT_CONNECT_REQUEST_URL}/${process.env.EXPERT_CONNECT_COMPANY_ID}/tickets/${ticketId}`,
+      `${expertConnectEndPoint}/${process.env.EXPERT_CONNECT_COMPANY_ID}/tickets/${ticketId}`,
       {
         method: "PUT",
         body: body,

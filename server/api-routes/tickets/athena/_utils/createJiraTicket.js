@@ -6,16 +6,19 @@ import { generateJiraPayload } from "../../../_utils/services/jira/_utils/genera
 export async function createJiraTicket(data) {
   if (!data || data === null) return null;
 
-  const clonedData = _.cloneDeep(data);
-
   try {
+    const clonedData = _.cloneDeep(data);
+    const jiraEndpoint =
+      clonedData.apiEndpoints && clonedData.apiEndpoints.JIRA_URL
+        ? clonedData.apiEndpoints.JIRA_URL
+        : process.env.JIRA_URL;
     const specifications = generateTicketDescription(clonedData);
     const payload = generateJiraPayload({
       ...clonedData,
       description: specifications,
     });
 
-    const response = await fetch(`${process.env.JIRA_URL}/rest/api/2/issue`, {
+    const response = await fetch(`${jiraEndpoint}/rest/api/2/issue`, {
       method: "POST",
       body: JSON.stringify(payload),
       headers: {
@@ -28,7 +31,7 @@ export async function createJiraTicket(data) {
 
     if (issue.errors) return null;
 
-    clonedData.jiraUrl = `${process.env.JIRA_URL}/browse/${issue.key}`;
+    clonedData.jiraUrl = `${jiraEndpoint}/browse/${issue.key}`;
     clonedData.jiraTicket = {
       ...issue,
       ...payload,
