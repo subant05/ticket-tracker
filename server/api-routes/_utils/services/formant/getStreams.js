@@ -23,7 +23,7 @@ export const getStreams = async (
 ) => {
   if (!device_id) throw new Error("Device Id is needed to query streams");
 
-  const startDateTime = moment(time).subtract(1, "day").utc().format();
+  const startDateTime = moment(time).subtract(3, "day").utc().format();
   const endDateTime = moment(time).add(5, "s").utc().format();
   const formantData = {};
 

@@ -15,6 +15,12 @@ export const checkAssociatedRules = Congruity.fn.asyncCompose(
   checkAssocRules,
   geAssociatedStreamFormatting,
   geAssociatedStreamRules,
+  Congruity.fn.tap((data) =>
+    console.log("Associated Streams Data: ", data.associatedStreamData)
+  ),
   getAssociatedStreamData,
+  Congruity.fn.tap((data) =>
+    console.log("Associated Streams: ", data.associatedStreams)
+  ),
   geAssociatedStreams
 );
