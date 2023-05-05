@@ -18,6 +18,7 @@ const handleExpertConnectWebhook = Congruity.fn.asyncCompose(
 
 router.post("/", async (req, res) => {
   try {
+    console.log("Expert Connect Webhook: ", req.body);
     const ticketData = await handleExpertConnectWebhook(req.body);
     const results = ticketData.getOrElse({ message: "No ticket created." });
 
