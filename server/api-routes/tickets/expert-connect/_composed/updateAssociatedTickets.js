@@ -11,52 +11,16 @@ import { getJiraTicket } from "../_utils/getJiraTicket.js";
 import { updateJiraLabelsWithExperConnectTags } from "../_utils/updateJiraLabelsWithExperConnectTags.js";
 
 export const updateAssociatedTickets = Congruity.fn.asyncCompose(
-  Congruity.fn.tap((data) =>
-    console.log(
-      "EXPERT CONNECT TICKET: JIRA TICKET UPDATED?: ",
-      data.jiraTicketUpdated
-    )
-  ),
   updateJiraTicket,
-  Congruity.fn.tap((data) =>
-    console.log(
-      "EXPERT CONNECT TICKET: JIRA TAGS ADD/REMOVE?: ",
-      data.jiraTicket.payload.update
-    )
-  ),
   updateJiraLabelsWithExperConnectTags,
-  Congruity.fn.tap((data) =>
-    console.log(
-      "EXPERT CONNECT TICKET: EXISTING JIRA TICKET?: ",
-      data.existingJiraTicket
-    )
-  ),
+  // Congruity.fn.tap((data) =>
+  //   console.log("####################:\n", data.existingJiraTicket)
+  // ),
   getJiraTicket,
-  Congruity.fn.tap((data) =>
-    console.log(
-      "EXPERT CONNECT TICKET: EXISTING JIRA PAYLOAD?: ",
-      data.jiraTicket.payload
-    )
-  ),
   generateJiraTicketPayload,
   getBundleFromMisc,
-  Congruity.fn.tap((data) =>
-    console.log(
-      "EXPERT CONNECT TICKET: WHATS THE JIRA ID?: ",
-      data.jiraTicket.id
-    )
-  ),
   getJiraTicketId,
-  Congruity.fn.tap((data) =>
-    console.log(
-      "EXPERT CONNECT TICKET: WHATS ARE THE SPECIFICATIONS?: ",
-      data.specifications
-    )
-  ),
   parseSpecifications(),
   copyDescriptionAndMisc,
-  Congruity.fn.tap((data) =>
-    console.log("EXPERT CONNECT TICKET: SHOULD UPDATE?: ", data !== null)
-  ),
   verifyUpdate
 );

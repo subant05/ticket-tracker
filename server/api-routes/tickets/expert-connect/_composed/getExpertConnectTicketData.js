@@ -6,18 +6,18 @@ import { vaidateExpertConnectTicket } from "../_utils/validateExpertConnectTicke
 import { formatExpertConnectWebhookData } from "../_utils/formatExpertConnectWebhookData.js";
 
 export const getExpertConnectTicketData = Congruity.fn.asyncCompose(
-  Congruity.fn.tap((data) =>
-    console.log("EXPERT CONNECT TICKET VALID: ", data !== null)
-  ),
+  // Congruity.fn.tap((data) =>
+  //   console.log("EXPERT CONNECT TICKET VALID: ", data !== null)
+  // ),
   vaidateExpertConnectTicket,
-  Congruity.fn.tap((data) =>
-    console.log("EXPERT CONNECT TICKET: ", data.expertConnectTicket)
-  ),
+  // Congruity.fn.tap((data) =>
+  //   console.log("EXPERT CONNECT TICKET: ", data.expertConnectTicket)
+  // ),
   getDataBasedOnEventType,
   getExpertConnectBaseApiUrl,
   generateRequestHeaders,
-  Congruity.fn.tap((data) =>
-    console.log("EXPERT CONNECT TICKET REQUEST: ", data)
-  ),
+  // Congruity.fn.tap((data) =>
+  //   console.log("EXPERT CONNECT TICKET REQUEST: ", data)
+  // ),
   formatExpertConnectWebhookData
 );

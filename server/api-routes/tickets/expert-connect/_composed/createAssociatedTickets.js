@@ -13,12 +13,6 @@ export const createAssociatedTickets = Congruity.fn.asyncCompose(
   updateExpertConnectTicket,
   addJiraLinkToDescription,
   createJiraTicket,
-  Congruity.fn.tap((data) =>
-    console.log(
-      "EXPERT CONNECT TICKET: JIRA TICKET PAYLOAD: ",
-      data !== null ? data.jiraTicket.payload : false
-    )
-  ),
   addExpertConnectTagsToJira,
   generateJiraTicketPayload,
   getBundleFromMisc,

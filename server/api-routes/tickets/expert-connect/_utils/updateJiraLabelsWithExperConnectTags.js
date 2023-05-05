@@ -54,6 +54,7 @@ export async function updateJiraLabelsWithExperConnectTags(data) {
         });
 
       clonedData.jiraTicket.payload.update = {
+        ...clonedData.jiraTicket.payload.update,
         labels: [...removeTags, ...addTags],
       };
     }
