@@ -11,6 +11,5 @@ export const createTicketFromAthena = Congruity.fn.asyncCompose(
   createTickets,
   generateSubstantiveData,
   shouldCreateTicket,
-  setupTickets,
-  filterVehicles(["752", "710"])
+  setupTickets
 );

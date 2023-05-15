@@ -7,7 +7,8 @@ export function parseRequestBody(req) {
   const clonedData = _.cloneDeep(req.body);
   const value = clonedData;
   const deviceName = `${clonedData.system}_${clonedData.machine_id}`;
-  const messageJson = ["Demotion", deviceName, clonedData];
+  const message = "Demotion";
+  const messageJson = [message, deviceName, clonedData];
   const valueJson = messageJson;
   const returnedData = {
     eventType: "alert",
@@ -26,7 +27,7 @@ export function parseRequestBody(req) {
     device_name: deviceName,
     name: deviceName,
     value,
-    message: "##### TEST ATHENA - IGNORE ##### Demotion",
+    message,
     latestDatapoint: clonedData,
     valueJson,
     messageJson,
