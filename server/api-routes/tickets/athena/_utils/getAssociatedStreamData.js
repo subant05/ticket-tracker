@@ -14,7 +14,13 @@ export async function getAssociatedStreamData(data) {
 
   if (Object.keys(associatedStreamData).length) {
     clonedData.associatedStreamData = associatedStreamData;
-  } else clonedData.associatedStreamData = {};
+  } else {
+    clonedData.associatedStreamData = {};
+    clonedData.associatedStreams.forEach((assoc) => {
+      clonedData.associatedStreamData[assoc.stream_name] =
+        assoc.stream_name === "update_status" ? 0 : null;
+    });
+  }
 
   return clonedData;
 }
