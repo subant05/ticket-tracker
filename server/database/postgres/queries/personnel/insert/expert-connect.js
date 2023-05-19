@@ -133,3 +133,40 @@ export const sqlInsertExpertConnectTeams = async (data) => {
     return teams;
   }
 };
+
+export const sqlInsertExpertConnectTags = async (data) => {
+  let tags = { rows: [] };
+
+  try {
+    const tagsInsertValue = data
+      .map((tag) => {
+        return `('${tag.id}',
+                '${tag.name || null}'
+                )`;
+      })
+      .join(",");
+
+    tags = await client.query(
+      `
+          INSERT INTO tags.expert_connect 
+          (
+            ec_id,
+            name
+          )
+          VALUES ${tagsInsertValue}
+          ON CONFLICT (name, ec_id)
+          DO UPDATE 
+          SET name = EXCLUDED.name, 
+          ec_id = EXCLUDED.ec_id
+
+          RETURNING *
+      `,
+      []
+    );
+  } catch (e) {
+    console.log("EXPERT CONNECT TAGS INSERT ERROR", e.message);
+    console.log("EXPERT CONNECT TAGS INSERT STACK", e.stack);
+  } finally {
+    return tags;
+  }
+};

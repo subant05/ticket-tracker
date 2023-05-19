@@ -64,13 +64,37 @@ export function generateJiraTicketPayload(data) {
   EXPERT CONNECT NOTE
   -------------------
   
-  ${clonedData.expertConnectTicketNote.data.text}
+  ${
+    clonedData.expertConnectTicketNote
+      ? clonedData.expertConnectTicketNote.data.text
+      : "N/A"
+  }
   
   -------------------
-  ${clonedData.expertConnectTicketNote.data.createdDate}
-  ${clonedData.expertConnectTicketNote.data.owner.firstName} ${clonedData.expertConnectTicketNote.data.owner.lastName}
-  ${clonedData.expertConnectTicketNote.data.owner.email} 
-  ${clonedData.expertConnectTicketNote.data.owner.phone} 
+  ${
+    clonedData.expertConnectTicketNote
+      ? clonedData.expertConnectTicketNote.data.createdDate
+      : ""
+  }
+  ${
+    clonedData.expertConnectTicketNote
+      ? clonedData.expertConnectTicketNote.data.owner.firstName
+      : ""
+  } ${
+                    clonedData.expertConnectTicketNote
+                      ? clonedData.expertConnectTicketNote.data.owner.lastName
+                      : ""
+                  }
+  ${
+    clonedData.expertConnectTicketNote
+      ? clonedData.expertConnectTicketNote.data.owner.email
+      : ""
+  } 
+  ${
+    clonedData.expertConnectTicketNote
+      ? clonedData.expertConnectTicketNote.data.owner.phone
+      : ""
+  } 
                       `,
                 },
               },

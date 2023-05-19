@@ -3,7 +3,9 @@ CREATE TABLE IF NOT EXISTS tags.expert_connect (
   id BIGSERIAL,
   ec_id varchar(50) NOT NULL,
   name varchar(255) NOT NULL,
-  PRIMARY KEY (id)
+  PRIMARY KEY (id),
+  CONSTRAINT uq_tag_name
+    UNIQUE(name, ec_id)
 );
 
 CREATE INDEX IF NOT EXISTS idx_tags_expert_connect ON tags.expert_connect(id);

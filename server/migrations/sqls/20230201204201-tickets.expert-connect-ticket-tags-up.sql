@@ -10,6 +10,8 @@ CREATE TABLE IF NOT EXISTS tickets.expert_connect_ticket_tags (
   CONSTRAINT fk_ticket_tags_ec_tag
     FOREIGN KEY (tag_id)
     REFERENCES tags.expert_connect(id)
+  CONSTRAINT uq_ticket_tag_assoc
+    UNIQUE (ticket_id, tag_id)
 );
 
 CREATE INDEX IF NOT EXISTS idx_ticket_ec_ticket_tags ON tickets.expert_connect_ticket_tags(id);

@@ -4,6 +4,7 @@ import { expertConnect as expertConenctWebHook } from "../../_utils/authenticati
 import { exprertConnect as expertConnectAuthentication } from "../../_utils/authentication/expressConnectAuth.js";
 import { getExpertConnectTicketData } from "./_composed/getExpertConnectTicketData.js";
 import { createOrUpdateExpertConnectTicket } from "./alternates/createOrUpdateExpertConnectTicket.js";
+import { recordExpertConnectTags } from "./_composed/recordExpertConnectTags.js";
 
 const router = express.Router();
 
@@ -11,6 +12,7 @@ router.use(expertConenctWebHook);
 router.use(expertConnectAuthentication);
 
 const handleExpertConnectWebhook = Congruity.fn.asyncCompose(
+  async (result) => result.asyncMap(recordExpertConnectTags),
   async (result) => result.asyncMap(createOrUpdateExpertConnectTicket),
   async (result) => result.asyncMap(getExpertConnectTicketData),
   Congruity.monad.Either.fromNullable
