@@ -32,7 +32,7 @@ export const uploadTicket = (data) =>
   new Promise((resolve, reject) => {
     if (!data || !data) return null;
 
-    const key = `${data.time}_${data.deviceName}_${data.streamName}`;
+    const key = `${data.id}_${data.time}_${data.deviceName}_${data.streamName}`;
     var buf = Buffer.from(JSON.stringify(data));
 
     s3.upload(

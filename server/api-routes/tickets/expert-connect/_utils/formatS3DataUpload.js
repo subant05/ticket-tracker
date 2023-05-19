@@ -1,4 +1,5 @@
 import _ from "lodash";
+import { v4 as uuid } from "uuid";
 
 export const formantS3DataUpload = (data) => {
   if (!data || !data) return null;
@@ -9,6 +10,7 @@ export const formantS3DataUpload = (data) => {
     const experConnect = clonedData.expertConnectTicket.data;
 
     return {
+      id: uuid(),
       time: specifications.alerttime || null,
       deviceName: specifications.machineid || null,
       streamName: specifications.alertstreamname || null,
