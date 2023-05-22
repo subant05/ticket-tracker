@@ -13,7 +13,7 @@ export const createTicketFromAthena = Congruity.fn.asyncCompose(
   updateTickets,
   createTickets,
   generateSubstantiveData,
-  shouldCreateTicket,
-  // areRulesValidated,
+  // shouldCreateTicket,
+  areRulesValidated,
   setupTickets
 );
