@@ -6,12 +6,14 @@ import { createTickets } from "./_composed/createTickets.js";
 import { updateTickets } from "./_composed/updateTickets.js";
 import { filterVehicles } from "./_utils/filterVehicles.js";
 import { recordExpertConnectTags } from "./_composed/recordExpertConnectTags.js";
+import { areRulesValidated } from "./_utils/areRulesValid.js";
 
 export const createTicketFromAthena = Congruity.fn.asyncCompose(
   recordExpertConnectTags,
   updateTickets,
   createTickets,
   generateSubstantiveData,
-  shouldCreateTicket,
+  // shouldCreateTicket,
+  areRulesValidated,
   setupTickets
 );
