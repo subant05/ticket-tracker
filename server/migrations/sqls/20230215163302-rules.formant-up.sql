@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS rules.formant (
 
 CREATE INDEX IF NOT EXISTS idx_rules_formant_id ON rules.formant(id);
 
-COMMENT ON TABLE "rules"."formant" IS E'@name fornant_rules';
+COMMENT ON TABLE "rules"."formant" IS E'@name formant_rules';
 COMMENT ON TABLE rules.formant IS '@omit delete
 This id the formant table, which is related vehicles that are registered and in use';
 COMMENT ON COLUMN rules.formant.id IS '@omit create,update

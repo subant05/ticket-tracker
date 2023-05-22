@@ -33,6 +33,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "fetch": "^1.1.0",
+    "graphile-utils": "^4.13.0",
     "graphql": "^15.8.0",
     "graphql-tools": "^8.3.16",
     "jsonwebtoken": "^9.0.0",
@@ -47,6 +48,7 @@
     "pg": "^8.9.0",
     "postgraphile": "^4.13.0",
     "postgraphile-plugin-connection-filter": "^2.3.0",
+    "postgraphile-schema-resolver": "^1.0.2",
     "process": "^0.11.10",
     "uuid": "^9.0.0",
     "zlib": "^1.0.5"

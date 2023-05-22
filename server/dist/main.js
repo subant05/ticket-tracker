@@ -199,7 +199,7 @@ AppModule.ɵinj = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_12__["ɵɵ
     useFactory: createDefaultApollo,
     deps: [apollo_angular_http__WEBPACK_IMPORTED_MODULE_15__.HttpLink]
   }, _services_auth_auth_guard_service__WEBPACK_IMPORTED_MODULE_5__.AuthGuardService],
-  imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_16__.BrowserModule, _routes_app_routes_module__WEBPACK_IMPORTED_MODULE_0__.AppRoutes, _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_17__.BrowserAnimationsModule, _modules_graphql_module__WEBPACK_IMPORTED_MODULE_1__.GraphQLModule, _angular_common_http__WEBPACK_IMPORTED_MODULE_18__.HttpClientModule, _angular_forms__WEBPACK_IMPORTED_MODULE_19__.ReactiveFormsModule, _abacritt_angularx_social_login__WEBPACK_IMPORTED_MODULE_13__.SocialLoginModule,
+  imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_16__.BrowserModule, _routes_app_routes_module__WEBPACK_IMPORTED_MODULE_0__.AppRoutes, apollo_angular__WEBPACK_IMPORTED_MODULE_14__.ApolloModule, _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_17__.BrowserAnimationsModule, _modules_graphql_module__WEBPACK_IMPORTED_MODULE_1__.GraphQLModule, _angular_common_http__WEBPACK_IMPORTED_MODULE_18__.HttpClientModule, _angular_forms__WEBPACK_IMPORTED_MODULE_19__.ReactiveFormsModule, _abacritt_angularx_social_login__WEBPACK_IMPORTED_MODULE_13__.SocialLoginModule,
   // Material
   _angular_material_list__WEBPACK_IMPORTED_MODULE_20__.MatListModule, _angular_material_card__WEBPACK_IMPORTED_MODULE_21__.MatCardModule, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_22__.MatFormFieldModule, _angular_material_input__WEBPACK_IMPORTED_MODULE_23__.MatInputModule, _angular_material_button__WEBPACK_IMPORTED_MODULE_24__.MatButtonModule, _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_25__.MatSnackBarModule, _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_26__.MatGridListModule, _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_27__.MatProgressBarModule, _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_28__.MatProgressSpinnerModule, _angular_material_paginator__WEBPACK_IMPORTED_MODULE_29__.MatPaginatorModule, _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_30__.MatSlideToggleModule, _angular_material_table__WEBPACK_IMPORTED_MODULE_31__.MatTableModule, _angular_material_button_toggle__WEBPACK_IMPORTED_MODULE_32__.MatButtonToggleModule, _angular_material_tabs__WEBPACK_IMPORTED_MODULE_33__.MatTabsModule, _angular_material_icon__WEBPACK_IMPORTED_MODULE_34__.MatIconModule,
   // Material
@@ -208,7 +208,7 @@ AppModule.ɵinj = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_12__["ɵɵ
 (function () {
   (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_12__["ɵɵsetNgModuleScope"](AppModule, {
     declarations: [_app_component__WEBPACK_IMPORTED_MODULE_3__.AppComponent, _pages_login_login_component__WEBPACK_IMPORTED_MODULE_2__.LoginComponent, _pages_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_6__.DashboardComponent, _components_layout_layout_component__WEBPACK_IMPORTED_MODULE_7__.LayoutComponent],
-    imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_16__.BrowserModule, _routes_app_routes_module__WEBPACK_IMPORTED_MODULE_0__.AppRoutes, _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_17__.BrowserAnimationsModule, _modules_graphql_module__WEBPACK_IMPORTED_MODULE_1__.GraphQLModule, _angular_common_http__WEBPACK_IMPORTED_MODULE_18__.HttpClientModule, _angular_forms__WEBPACK_IMPORTED_MODULE_19__.ReactiveFormsModule, _abacritt_angularx_social_login__WEBPACK_IMPORTED_MODULE_13__.SocialLoginModule,
+    imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_16__.BrowserModule, _routes_app_routes_module__WEBPACK_IMPORTED_MODULE_0__.AppRoutes, apollo_angular__WEBPACK_IMPORTED_MODULE_14__.ApolloModule, _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_17__.BrowserAnimationsModule, _modules_graphql_module__WEBPACK_IMPORTED_MODULE_1__.GraphQLModule, _angular_common_http__WEBPACK_IMPORTED_MODULE_18__.HttpClientModule, _angular_forms__WEBPACK_IMPORTED_MODULE_19__.ReactiveFormsModule, _abacritt_angularx_social_login__WEBPACK_IMPORTED_MODULE_13__.SocialLoginModule,
     // Material
     _angular_material_list__WEBPACK_IMPORTED_MODULE_20__.MatListModule, _angular_material_card__WEBPACK_IMPORTED_MODULE_21__.MatCardModule, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_22__.MatFormFieldModule, _angular_material_input__WEBPACK_IMPORTED_MODULE_23__.MatInputModule, _angular_material_button__WEBPACK_IMPORTED_MODULE_24__.MatButtonModule, _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_25__.MatSnackBarModule, _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_26__.MatGridListModule, _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_27__.MatProgressBarModule, _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_28__.MatProgressSpinnerModule, _angular_material_paginator__WEBPACK_IMPORTED_MODULE_29__.MatPaginatorModule, _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_30__.MatSlideToggleModule, _angular_material_table__WEBPACK_IMPORTED_MODULE_31__.MatTableModule, _angular_material_button_toggle__WEBPACK_IMPORTED_MODULE_32__.MatButtonToggleModule, _angular_material_tabs__WEBPACK_IMPORTED_MODULE_33__.MatTabsModule, _angular_material_icon__WEBPACK_IMPORTED_MODULE_34__.MatIconModule],
     exports: [
@@ -270,6 +270,158 @@ LayoutComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__[
 
 /***/ }),
 
+/***/ 36:
+/*!**********************************!*\
+  !*** ./src/app/graphql/index.ts ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Query": () => (/* reexport module object */ _query__WEBPACK_IMPORTED_MODULE_0__)
+/* harmony export */ });
+/* harmony import */ var _query__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./query */ 45);
+
+
+
+/***/ }),
+
+/***/ 45:
+/*!****************************************!*\
+  !*** ./src/app/graphql/query/index.ts ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Tickets": () => (/* reexport module object */ _tickets__WEBPACK_IMPORTED_MODULE_0__)
+/* harmony export */ });
+/* harmony import */ var _tickets__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tickets */ 306);
+
+
+
+/***/ }),
+
+/***/ 306:
+/*!************************************************!*\
+  !*** ./src/app/graphql/query/tickets/index.ts ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "JoinedTickets": () => (/* reexport safe */ _joined__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _joined__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./joined */ 433);
+
+
+
+/***/ }),
+
+/***/ 433:
+/*!*************************************************!*\
+  !*** ./src/app/graphql/query/tickets/joined.ts ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ JoinedTickets)
+/* harmony export */ });
+/* harmony import */ var apollo_angular__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! apollo-angular */ 26);
+
+const JoinedTickets = apollo_angular__WEBPACK_IMPORTED_MODULE_0__.gql`
+query Tickets($offset: Int = 1, $limit: Int = 1) {
+  connections(orderBy: ID_DESC, first: $limit, offset: $offset) {
+    nodes {
+      id
+      jira {
+        jiraId
+        jiraTicket
+        machineType
+        priority
+        project
+        requirement
+        description
+        expertConnectLink
+        formantLink
+        issueType
+        roadmapItem
+        summary
+        team {
+          name
+        }
+      }
+      formant {
+        deviceId
+        deviceName
+        id
+        message
+        severity
+        streamName
+        streamType
+        tags
+        time
+        type
+        url
+        value
+      }
+      expertConnect {
+        expertConnectTicketTagsByTicketId {
+          nodes{
+            tag{
+              name
+              id
+            }
+          }
+        }
+        bundle
+        contactId
+        createdAt
+        description
+        ecId
+        id
+        machineHours
+        misc
+        product
+        resolution
+        serialNumber
+        team {
+          name
+          ecId
+          id
+        }
+        title
+        vehicle {
+          deviceId
+          name
+        }
+        advisor {
+          email
+          firstName
+          lastName
+          phone
+        }
+      }
+    }
+    edges {
+      node {
+        id
+      }
+    }
+    pageInfo {
+      startCursor
+      endCursor
+      hasNextPage
+      hasPreviousPage
+    }
+  }
+}
+`;
+
+
+/***/ }),
+
 /***/ 2504:
 /*!*******************************************!*\
   !*** ./src/app/modules/graphql.module.ts ***!
@@ -325,25 +477,45 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "DashboardComponent": () => (/* binding */ DashboardComponent)
 /* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material/table */ 5288);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var _services_graphql_gql_query_service_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../services/graphql/gql-query.service.service */ 138);
 
-class DashboardComponent {}
+
+
+class DashboardComponent {
+  constructor(gqlQuery) {
+    this.gqlQuery = gqlQuery;
+    this.trackedVehicles = [];
+    this.ticketsList = new _angular_material_table__WEBPACK_IMPORTED_MODULE_1__.MatTableDataSource([]);
+  }
+  ngOnInit() {
+    // Query Vehicles Currently Online
+    this.ticketsQuery = this.gqlQuery.getJoinedTickets().subscribe(response => {
+      this.trackedVehicles = response;
+      this.ticketsList = new _angular_material_table__WEBPACK_IMPORTED_MODULE_1__.MatTableDataSource(this.trackedVehicles);
+    });
+  }
+  ngOnDestroy() {
+    this.ticketsQuery?.unsubscribe();
+  }
+}
 DashboardComponent.ɵfac = function DashboardComponent_Factory(t) {
-  return new (t || DashboardComponent)();
+  return new (t || DashboardComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_services_graphql_gql_query_service_service__WEBPACK_IMPORTED_MODULE_0__.GqlQueryService));
 };
-DashboardComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+DashboardComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({
   type: DashboardComponent,
   selectors: [["app-dashboard"]],
   decls: 2,
   vars: 0,
   template: function DashboardComponent_Template(rf, ctx) {
     if (rf & 1) {
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "dashboard works!");
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "p");
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](1, "dashboard works!");
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     }
   },
-  styles: ["\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsInNvdXJjZVJvb3QiOiIifQ== */"]
+  styles: [".mat-table[_ngcontent-%COMP%] {\n  width: 100%;\n}\n\n.mat-form-field[_ngcontent-%COMP%] {\n  font-size: 14px;\n  width: 100%;\n}\n\ntd[_ngcontent-%COMP%], th[_ngcontent-%COMP%] {\n  width: 25%;\n}\n\nth.mat-sort-header-sorted[_ngcontent-%COMP%] {\n  color: black;\n}\n\ntr.mat-row[_ngcontent-%COMP%], tr.mat-footer-row[_ngcontent-%COMP%] {\n  cursor: pointer;\n}\n\n.tickets[_ngcontent-%COMP%]   .icon[_ngcontent-%COMP%] {\n  font-size: 1.5rem;\n  width: 24px;\n}\n.tickets[_ngcontent-%COMP%]   .priority_high[_ngcontent-%COMP%] {\n  background-color: var(--critical);\n}\n.tickets[_ngcontent-%COMP%]   .error[_ngcontent-%COMP%] {\n  background-color: var(--error);\n}\n.tickets[_ngcontent-%COMP%]   .warning[_ngcontent-%COMP%] {\n  background-color: var(--warning);\n}\n.tickets[_ngcontent-%COMP%]   .logging[_ngcontent-%COMP%], .tickets[_ngcontent-%COMP%]   .information[_ngcontent-%COMP%] {\n  background-color: var(--success);\n}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9hcHAvcGFnZXMvZGFzaGJvYXJkL2Rhc2hib2FyZC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQUE7QUFDRjs7QUFFQTtFQUNFLGVBQUE7RUFDQSxXQUFBO0FBQ0Y7O0FBRUE7RUFDRSxVQUFBO0FBQ0Y7O0FBRUE7RUFDRSxZQUFBO0FBQ0Y7O0FBRUE7RUFDRSxlQUFBO0FBQ0Y7O0FBSUU7RUFDSSxpQkFBQTtFQUNBLFdBQUE7QUFETjtBQUdFO0VBQ0ksaUNBQUE7QUFETjtBQUlFO0VBQ0ksOEJBQUE7QUFGTjtBQUtFO0VBQ0ksZ0NBQUE7QUFITjtBQU1FOztFQUVJLGdDQUFBO0FBSk4iLCJzb3VyY2VzQ29udGVudCI6WyIubWF0LXRhYmxlIHtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5tYXQtZm9ybS1maWVsZCB7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbnRkLCB0aCB7XG4gIHdpZHRoOiAyNSU7XG59XG5cbnRoLm1hdC1zb3J0LWhlYWRlci1zb3J0ZWQge1xuICBjb2xvcjogYmxhY2s7XG59XG5cbnRyLm1hdC1yb3csIHRyLm1hdC1mb290ZXItcm93e1xuICBjdXJzb3I6IHBvaW50ZXI7XG59XG5cbi50aWNrZXRzIHtcblxuICAuaWNvbiB7XG4gICAgICBmb250LXNpemU6IDEuNXJlbTtcbiAgICAgIHdpZHRoOjI0cHg7XG4gIH1cbiAgLnByaW9yaXR5X2hpZ2gge1xuICAgICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tY3JpdGljYWwpO1xuICB9XG5cbiAgLmVycm9yIHtcbiAgICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWVycm9yKTtcbiAgfVxuXG4gIC53YXJuaW5nIHtcbiAgICAgIGJhY2tncm91bmQtY29sb3I6IHZhcigtLXdhcm5pbmcpO1xuICB9XG5cbiAgLmxvZ2dpbmcsXG4gIC5pbmZvcm1hdGlvbiB7XG4gICAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1zdWNjZXNzKTtcbiAgfVxufSJdLCJzb3VyY2VSb290IjoiIn0= */"]
 });
 
 /***/ }),
@@ -546,6 +718,57 @@ AuthGuardService.ɵfac = function AuthGuardService_Factory(t) {
 AuthGuardService.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({
   token: AuthGuardService,
   factory: AuthGuardService.ɵfac,
+  providedIn: 'root'
+});
+
+/***/ }),
+
+/***/ 138:
+/*!***************************************************************!*\
+  !*** ./src/app/services/graphql/gql-query.service.service.ts ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "GqlQueryService": () => (/* binding */ GqlQueryService)
+/* harmony export */ });
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs/operators */ 635);
+/* harmony import */ var _graphql__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../graphql */ 36);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 2560);
+/* harmony import */ var apollo_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! apollo-angular */ 26);
+
+
+
+
+class GqlQueryService {
+  constructor(graphService) {
+    this.graphService = graphService;
+  }
+  basicFilteredQuery(Query, variables = {}) {
+    return this.graphService.watchQuery({
+      query: Query,
+      variables
+    }).valueChanges;
+  }
+  getJoinedTickets(variables = {
+    offset: 1,
+    limit: 10
+  }) {
+    return this.basicFilteredQuery(_graphql__WEBPACK_IMPORTED_MODULE_0__.Query.Tickets.JoinedTickets, variables).pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_1__.map)(response => {
+      return {
+        data: response.data.connections.nodes,
+        pageInfo: response.data.connections.pageInfo
+      };
+    }));
+  }
+}
+GqlQueryService.ɵfac = function GqlQueryService_Factory(t) {
+  return new (t || GqlQueryService)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](apollo_angular__WEBPACK_IMPORTED_MODULE_3__.Apollo));
+};
+GqlQueryService.ɵprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({
+  token: GqlQueryService,
+  factory: GqlQueryService.ɵfac,
   providedIn: 'root'
 });
 
