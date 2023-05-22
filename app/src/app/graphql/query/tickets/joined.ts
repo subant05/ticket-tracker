@@ -37,6 +37,14 @@ query Tickets($offset: Int = 1, $limit: Int = 1) {
         value
       }
       expertConnect {
+        expertConnectTicketTagsByTicketId {
+          nodes{
+            tag{
+              name
+              id
+            }
+          }
+        }
         bundle
         contactId
         createdAt
@@ -79,7 +87,6 @@ query Tickets($offset: Int = 1, $limit: Int = 1) {
     }
   }
 }
-
 `
 
   export {JoinedTickets as default}

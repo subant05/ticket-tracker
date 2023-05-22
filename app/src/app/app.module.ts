@@ -112,6 +112,7 @@ function createDefaultApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   imports: [
     BrowserModule,
     AppRoutes,
+    ApolloModule,
     BrowserAnimationsModule,
     GraphQLModule,
     HttpClientModule,
