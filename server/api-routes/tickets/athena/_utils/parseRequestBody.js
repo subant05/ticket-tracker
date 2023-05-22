@@ -11,6 +11,7 @@ export function parseRequestBody(req) {
   const messageJson = [message, deviceName, clonedData];
   const valueJson = messageJson;
   const returnedData = {
+    ...clonedData,
     eventType: "alert",
     type: "alert",
     formantUrl: `${process.env.FORMANT_API_URL}`,

@@ -18,7 +18,9 @@ export async function getAssociatedStreamData(data) {
     clonedData.associatedStreamData = {};
     clonedData.associatedStreams.forEach((assoc) => {
       clonedData.associatedStreamData[assoc.stream_name] =
-        assoc.stream_name === "update_status" ? 0 : null;
+        assoc.stream_name === "update_status"
+          ? parseInt(clonedData.vpu_software_version)
+          : null;
     });
   }
 
