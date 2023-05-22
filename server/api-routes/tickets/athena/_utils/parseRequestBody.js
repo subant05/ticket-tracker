@@ -7,7 +7,7 @@ export function parseRequestBody(req) {
   const clonedData = _.cloneDeep(req.body);
   const value = clonedData;
   const deviceName = `${clonedData.system}_${clonedData.machine_id}`;
-  const message = "Demotion";
+  const message = "##TEST### Demotion";
   const messageJson = [message, deviceName, clonedData];
   const valueJson = messageJson;
   const returnedData = {
