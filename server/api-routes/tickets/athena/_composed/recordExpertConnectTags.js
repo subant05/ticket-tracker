@@ -4,6 +4,6 @@ import { recordExpertConnectTagsInDB } from "../_utils/recordExpertConnectTagsIn
 import { recordExpertConnectTagsS3 } from "../_utils/recordExpertConnectTagsS3.js";
 
 export const recordExpertConnectTags = Congruity.fn.asyncCompose(
-  //async (result) => result.asyncMap(recordExpertConnectTagsS3),
+  async (result) => result.asyncMap(recordExpertConnectTagsS3),
   async (result) => result.asyncMap(recordExpertConnectTagsInDB)
 );

@@ -6,8 +6,8 @@ export function getApiEndpoints(data) {
     const clonedData = _.cloneDeep(data);
 
     clonedData.apiEndpoints = {
-      JIRA_URL: process.env.JIRA_SANDBOX_URL,
-      JIRA_API: process.env.JIRA_SANDBOX_API,
+      JIRA_URL: process.env.JIRA_URL,
+      JIRA_API: process.env.JIRA_API,
       FORMANT_API_URL: process.env.FORMANT_API_URL,
       FORMANT_UPLOAD_URL: process.env.FORMANT_UPLOAD_URL,
       EXPERT_CONNECT_AUTH_URL: process.env.EXPERT_CONNECT_AUTH_URL,

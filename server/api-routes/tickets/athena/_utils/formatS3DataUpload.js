@@ -15,7 +15,7 @@ export const formantS3DataUpload = (data) => {
       streamName: clonedData.stream_name || null,
       erc: clonedData.ERC || null,
       sup: clonedData.SUP || null,
-      bundle: clonedData.associatedStreamData.update_status || null,
+      bundle: clonedData.bundle || null,
       expert_connect_id: experConnect.id || null,
       expert_connect_tags:
         experConnect.tags && experConnect.tags.length ? experConnect.tags : [],
