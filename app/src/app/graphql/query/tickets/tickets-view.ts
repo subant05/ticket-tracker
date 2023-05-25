@@ -1,0 +1,79 @@
+import { gql } from 'apollo-angular';
+
+const TicketViews = gql`
+query Tickets($offset: Int = 1, $limit: Int = 1 $deviceName:String = "") {
+  ticketsViews(
+    	offset:$offset 
+    	first:$limit 
+    	orderBy:FORMANT_ID_DESC 
+    	filter:{deviceName:{includes:$deviceName}}){
+    nodes {
+      formantId
+      expertConnectId
+      jiraId
+      deviceName
+      formantVehicleId
+      deviceId
+      message
+      severity
+      streamName
+      streamType
+      formantTags
+      value
+      formantTime
+      formantUrl
+      type
+      formantBundle
+      expertConnectVehicleId
+  		expertConnectTagName
+      expertConnectTitle
+      expertConnectDescription
+      expertConnectProduct
+      expertConnectHours
+      expertConnectSerialNumber
+      expertConnectMisc
+      expertConnectResolution
+      expertConnectAdvisorId
+      expertConnectTeamId
+      expertConnectContactId
+      expertConnectBundle
+      expertConnectEcId
+      expertConnectTeamName
+      expertConnectAdvisorFirstName
+      expertConnectAdvisorLastName
+      expertConnectAdvisorEmail
+      expertConnectAdvisorPhone
+      expertConnectContactFirstName
+      expertConnectContactLastName
+      expertConnectContactEmail
+      expertConnectContactPhone
+      jiraTicket
+      jiraProject
+      jiraDescription
+      jiraSummary
+      jiraCategory
+      jiraRequirement
+      jiraBundle
+      jiraMachineType
+      jiraRoadmapItem
+      jiraFormantLink
+      jiraExpertConnectLink
+      jiraIssueType
+      jiraCreatedAt
+      jiraUpdatedAt
+      jiraPriority
+      jiraTeamId
+      jiraBugSource
+    }
+    pageInfo{
+      endCursor
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      __typename
+    }
+  }
+}
+`
+
+export {TicketViews as default}

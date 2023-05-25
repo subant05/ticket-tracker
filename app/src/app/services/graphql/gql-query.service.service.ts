@@ -32,4 +32,8 @@ export class GqlQueryService {
       }))
   }
 
+  getTicketsView(variables:{offset?: number, limit?:number, deviceName:string} = {offset:1, limit:10, deviceName:""}){
+    return this.basicFilteredQuery(QueryQL.Query.Tickets.TicketsView, variables)
+  }
+
 }

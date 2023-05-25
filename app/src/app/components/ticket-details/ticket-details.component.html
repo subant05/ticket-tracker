@@ -1,0 +1,125 @@
+<div class="wrapper">
+  <header>
+    <h4>
+      {{data.deviceName}}
+    </h4>
+    <button class="close-button" mat-icon-button [mat-dialog-close]="true"> 
+      <mat-icon>close</mat-icon>
+    </button>
+  </header>
+
+  <mat-divider></mat-divider>
+  <div class="content">
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Expert Connect</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item>
+            <span matListItemTitle>Title</span>
+            <span matListItemLine class="wrap">{{data.expertConnectTitle}}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>Bundle</span>
+            <span matListItemLine>{{data.expertConnectBundle}}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>Team</span>
+            <span matListItemLine>{{data.expertConnectTeamName}}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>URL</span>
+            <span matListItemLine>
+              <a [href]="expertConnectLink" target="_blank">
+                Ticket <mat-icon>link</mat-icon>
+              </a>
+            </span>
+          </mat-list-item>
+          <mat-list-item class="list-item-tags">
+            <span matListItemTitle>Tags</span>
+              <div class="tags">
+                <mat-chip-listbox  aria-label="expert-connect-tags">
+                  <mat-chip>{{expertConnectTags}}</mat-chip>
+
+                  <!-- <mat-chip *ngFor="let item of expertConnectTags" >{{item.tag.name}}</mat-chip> -->
+                </mat-chip-listbox>
+              </div>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Jira</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item>
+            <span matListItemTitle>Ticket</span>
+            <span matListItemLine>{{data.jiraTicket}}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>Machine Type</span>
+            <span matListItemLine>{{data.jiraMachineType}}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>Priority</span>
+            <span matListItemLine>{{data.jiraPriority}}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>Requirement</span>
+            <span matListItemLine>{{data.jiraRequirement}}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>Roadmap Item</span>
+            <span matListItemLine>{{data.jiraRoadmapItem}}</span>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Formant</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item>
+            <span matListItemTitle>URL</span>
+            <span matListItemLine>
+               <a [href]="data.formantUrl"  target="_blank">
+                Formant Dashboard <mat-icon>link</mat-icon>
+              </a>
+            </span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>Time</span>
+            <span matListItemLine>{{data.formantTime}}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>ERC</span>
+            <span matListItemLine> {{this.formantData.halt_error_code}}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>SUP</span>
+            <span matListItemLine> {{this.formantData.halt_supplemental_error_code}}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>From</span>
+            <span matListItemLine> {{this.formantData.from_state}}</span>
+          </mat-list-item>
+          <mat-list-item>
+            <span matListItemTitle>To</span>
+            <span matListItemLine> {{this.formantData.to_state}}</span>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="footer">
+  </div>
+</div>

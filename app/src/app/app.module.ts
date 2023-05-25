@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutes } from './routes/app-routes.module'
 import { GraphQLModule } from './modules/graphql.module';
 import { ReactiveFormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
 
 //Components
@@ -46,6 +47,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LayoutComponent } from './components/layout/layout.component';
+import { TicketDetailsComponent } from './components/ticket-details/ticket-details.component';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {MatChipsModule} from '@angular/material/chips';
 
 const errorLink = onError(({ graphQLErrors, networkError, response }) => {
 	// React only on graphql errors
@@ -105,6 +109,7 @@ function createDefaultApollo(httpLink: HttpLink): ApolloClientOptions<any> {
     LoginComponent,
     DashboardComponent,
     LayoutComponent,
+    TicketDetailsComponent,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -117,6 +122,7 @@ function createDefaultApollo(httpLink: HttpLink): ApolloClientOptions<any> {
     GraphQLModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
     SocialLoginModule,
     // Material
     MatListModule,
@@ -134,6 +140,8 @@ function createDefaultApollo(httpLink: HttpLink): ApolloClientOptions<any> {
     MatButtonToggleModule,
     MatTabsModule,
     MatIconModule,
+    MatDialogModule,
+    MatChipsModule
     // 
   ],
   exports:[

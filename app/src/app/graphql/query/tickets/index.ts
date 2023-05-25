@@ -1,3 +1,4 @@
 import JoinedTickets from './joined'
+import TicketsView from './tickets-view'
 
-export {JoinedTickets}
+export {JoinedTickets, TicketsView}
