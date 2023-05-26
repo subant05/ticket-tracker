@@ -36,4 +36,8 @@ export class GqlQueryService {
     return this.basicFilteredQuery(QueryQL.Query.Tickets.TicketsView, variables)
   }
 
+  getRulesByStreamName(variables:{offset?: number, limit?:number, streamName:string} = {offset:1, limit:10, streamName:""}){
+    return this.basicFilteredQuery(QueryQL.Query.Rules.RulesByStreamName, variables)
+  }
+
 }

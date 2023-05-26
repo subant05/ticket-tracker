@@ -50,6 +50,11 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { TicketDetailsComponent } from './components/ticket-details/ticket-details.component';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {MatChipsModule} from '@angular/material/chips';
+import { TopNavigationBarComponent } from './components/navigation/top-navigation-bar/top-navigation-bar.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
+import { RulesComponent } from './pages/rules/rules/rules.component';
+import { RuleDetailsComponent } from './components/rule-details/rule-details.component';
 
 const errorLink = onError(({ graphQLErrors, networkError, response }) => {
 	// React only on graphql errors
@@ -110,6 +115,9 @@ function createDefaultApollo(httpLink: HttpLink): ApolloClientOptions<any> {
     DashboardComponent,
     LayoutComponent,
     TicketDetailsComponent,
+    TopNavigationBarComponent,
+    RulesComponent,
+    RuleDetailsComponent,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -141,7 +149,9 @@ function createDefaultApollo(httpLink: HttpLink): ApolloClientOptions<any> {
     MatTabsModule,
     MatIconModule,
     MatDialogModule,
-    MatChipsModule
+    MatChipsModule,
+    MatToolbarModule,
+    MatMenuModule
     // 
   ],
   exports:[
@@ -161,6 +171,8 @@ function createDefaultApollo(httpLink: HttpLink): ApolloClientOptions<any> {
     MatTableModule,
     MatButtonToggleModule,
     MatTabsModule,
+    MatToolbarModule,
+    MatMenuModule
     // 
   ],
   providers: [

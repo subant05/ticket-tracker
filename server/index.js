@@ -30,6 +30,7 @@ app.use(
 app.use(express.json({ limit: "50mb", extended: true }));
 // app.use(morgan('dev', {stream: requestLogStream }));
 app.use("/api", ApiRouter);
+app.use("/rules", (req, res) => res.sendFile("index.html", { root: "./dist" }));
 app.use("/", express.static(path.join(__dirname, "./dist")));
 app.use(express.static("./dist"));
 

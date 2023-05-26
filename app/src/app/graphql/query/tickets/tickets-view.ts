@@ -6,7 +6,7 @@ query Tickets($offset: Int = 1, $limit: Int = 1 $deviceName:String = "") {
     	offset:$offset 
     	first:$limit 
     	orderBy:FORMANT_ID_DESC 
-    	filter:{deviceName:{includes:$deviceName}}){
+    	filter:{deviceName:{includesInsensitive:$deviceName}}){
     nodes {
       formantId
       expertConnectId

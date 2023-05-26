@@ -1,0 +1,89 @@
+<app-layout>
+  <section class="filter-section">
+    <div class="filter-section_fields">
+      <mat-form-field class="filter-section__vehicle">
+        <mat-label>Stream</mat-label>
+        <input
+          matInput 
+          [formControl]="filter.streamName"
+          placeholder="Stream Name" 
+          #input>
+      </mat-form-field>
+    </div>
+  
+    <div class="filter-section__search">
+      <button mat-fab matInput
+        class="filter-section__search"
+        aria-label="search"
+        (click)="resetResubmit($event)">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+  
+  </section>
+  
+  
+  <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+  <section class="table-area">
+    <table class="tickets_table" mat-table [dataSource]="rulesList">
+  
+      <ng-container matColumnDef="streamName">
+        <th mat-header-cell *matHeaderCellDef>Stream Name </th>
+        <td mat-cell *matCellDef="let col"> {{col.streamName}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="streamType">
+        <th mat-header-cell *matHeaderCellDef>Stream Type </th>
+        <td mat-cell *matCellDef="let col"> {{col.streamType}} </td>
+        </ng-container>
+          
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr 
+          mat-row  
+          class="mat-row" 
+          *matRowDef="let row; columns: columns;"
+          (click)="rowClick(row)"
+        ></tr>
+    
+        <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data found</td>
+        </tr>
+    </table>
+  </section>
+  <mat-divider></mat-divider>
+  <section class="footer">
+    <div class="pagination-row">
+      <div class="pagination-container">
+        <div class="pagination-button-container">
+          <mat-form-field>
+            <mat-label>Page Size</mat-label>
+            <select 
+              matNativeControl 
+              [formControl]="currentPageSize"
+              (change)="resetResubmit($event)">
+              <option value="10">10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+            </select>
+          </mat-form-field>
+        </div>
+        <div class="pagination-button-container">
+          <button mat-fab color="primary" 
+            aria-label="previous" 
+            (click)="paginationHandler('previous')"
+            [disabled]="currentOffset === 1">
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+        </div>
+        <div class="pagination-button-container">
+          <button mat-fab color="primary" 
+            [disabled]="!pageInfo.hasNextPage"
+            aria-label="next"
+            (click)="paginationHandler('next')">
+            <mat-icon>arrow_forward</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</app-layout>

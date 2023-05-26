@@ -1,109 +1,111 @@
-<section class="filter-section">
-  <div class="filter-section_fields">
-    <mat-form-field class="filter-section__vehicle">
-      <mat-label>Vehicle</mat-label>
-      <input
-        matInput 
-        [formControl]="filter.deviceName"
-        (keyup)="applyFilter($event)" 
-        placeholder="Vehicle" 
-        #input>
-    </mat-form-field>
-  </div>
-
-  <div class="filter-section__search">
-    <button mat-fab matInput
-      class="filter-section__search"
-      aria-label="search"
-      (click)="resetResubmit($event)">
-      <mat-icon>search</mat-icon>
-    </button>
-  </div>
-
-</section>
-
-
-<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
-<section class="table-area">
-  <table class="tickets_table" mat-table [dataSource]="ticketsList">
-
-    <ng-container matColumnDef="formantId">
-      <th mat-header-cell *matHeaderCellDef>Formant ID </th>
-      <td mat-cell *matCellDef="let col"> {{col.formantId}} </td>
-      </ng-container>
+<app-layout>
+  <section class="filter-section">
+    <div class="filter-section_fields">
+      <mat-form-field class="filter-section__vehicle">
+        <mat-label>Vehicle</mat-label>
+        <input
+          matInput 
+          [formControl]="filter.deviceName"
+          (keyup)="applyFilter($event)" 
+          placeholder="Vehicle" 
+          #input>
+      </mat-form-field>
+    </div>
   
-      <ng-container matColumnDef="deviceName">
-      <th mat-header-cell *matHeaderCellDef>Device </th>
-      <td mat-cell *matCellDef="let col"> {{col.deviceName}} </td>
-      </ng-container>
+    <div class="filter-section__search">
+      <button mat-fab matInput
+        class="filter-section__search"
+        aria-label="search"
+        (click)="resetResubmit($event)">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
   
-      <ng-container matColumnDef="expertConnectTitle">
-        <th mat-header-cell *matHeaderCellDef>Title </th>
-        <td mat-cell *matCellDef="let col"> {{col.expertConnectTitle}} </td>
-        </ng-container>
+  </section>
   
-      <ng-container matColumnDef="expertConnectBundle">
-        <th mat-header-cell *matHeaderCellDef>Bundle </th>
-        <td mat-cell *matCellDef="let col"> {{col.expertConnectBundle}} </td>
-        </ng-container>
   
-      <ng-container matColumnDef="formantTime">
-        <th mat-header-cell *matHeaderCellDef>Time </th>
-        <td mat-cell *matCellDef="let col"> {{col.formantTime}} </td>
-        </ng-container>
-      
-      <ng-container matColumnDef="expertConnectTagName">
-        <th mat-header-cell *matHeaderCellDef>Tags </th>
-        <td mat-cell *matCellDef="let col"> {{col.expertConnectTagName}} </td>
+  <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+  <section class="table-area">
+    <table class="tickets_table" mat-table [dataSource]="ticketsList">
+  
+      <ng-container matColumnDef="formantId">
+        <th mat-header-cell *matHeaderCellDef>Formant ID </th>
+        <td mat-cell *matCellDef="let col"> {{col.formantId}} </td>
         </ng-container>
     
-  
-      <tr mat-header-row *matHeaderRowDef="columns"></tr>
-      <tr 
-        mat-row  
-        class="mat-row" 
-        *matRowDef="let row; columns: columns;"
-        (click)="rowClick(row)"
-      ></tr>
-  
-      <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" colspan="4">No data found</td>
-      </tr>
-  </table>
-</section>
-<mat-divider></mat-divider>
-<section class="footer">
-  <div class="pagination-row">
-    <div class="pagination-container">
-      <div class="pagination-button-container">
-        <mat-form-field>
-          <mat-label>Page Size</mat-label>
-          <select 
-            matNativeControl 
-            [formControl]="currentPageSize"
-            (change)="resetResubmit($event)">
-            <option value="10">10</option>
-            <option value="25">25</option>
-            <option value="50">50</option>
-          </select>
-        </mat-form-field>
-      </div>
-      <div class="pagination-button-container">
-        <button mat-fab color="primary" 
-          aria-label="previous" 
-          (click)="paginationHandler('previous')"
-          [disabled]="currentOffset === 1">
-          <mat-icon>arrow_back</mat-icon>
-        </button>
-      </div>
-      <div class="pagination-button-container">
-        <button mat-fab color="primary" 
-          [disabled]="!pageInfo.hasNextPage"
-          aria-label="next"
-          (click)="paginationHandler('next')">
-          <mat-icon>arrow_forward</mat-icon>
-        </button>
+        <ng-container matColumnDef="deviceName">
+        <th mat-header-cell *matHeaderCellDef>Device </th>
+        <td mat-cell *matCellDef="let col"> {{col.deviceName}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="expertConnectTitle">
+          <th mat-header-cell *matHeaderCellDef>Title </th>
+          <td mat-cell *matCellDef="let col"> {{col.expertConnectTitle}} </td>
+          </ng-container>
+    
+        <ng-container matColumnDef="expertConnectBundle">
+          <th mat-header-cell *matHeaderCellDef>Bundle </th>
+          <td mat-cell *matCellDef="let col"> {{col.expertConnectBundle}} </td>
+          </ng-container>
+    
+        <ng-container matColumnDef="formantTime">
+          <th mat-header-cell *matHeaderCellDef>Time </th>
+          <td mat-cell *matCellDef="let col"> {{col.formantTime}} </td>
+          </ng-container>
+        
+        <ng-container matColumnDef="expertConnectTagName">
+          <th mat-header-cell *matHeaderCellDef>Tags </th>
+          <td mat-cell *matCellDef="let col"> {{col.expertConnectTagName}} </td>
+          </ng-container>
+      
+    
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr 
+          mat-row  
+          class="mat-row" 
+          *matRowDef="let row; columns: columns;"
+          (click)="rowClick(row)"
+        ></tr>
+    
+        <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data found</td>
+        </tr>
+    </table>
+  </section>
+  <mat-divider></mat-divider>
+  <section class="footer">
+    <div class="pagination-row">
+      <div class="pagination-container">
+        <div class="pagination-button-container">
+          <mat-form-field>
+            <mat-label>Page Size</mat-label>
+            <select 
+              matNativeControl 
+              [formControl]="currentPageSize"
+              (change)="resetResubmit($event)">
+              <option value="10">10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+            </select>
+          </mat-form-field>
+        </div>
+        <div class="pagination-button-container">
+          <button mat-fab color="primary" 
+            aria-label="previous" 
+            (click)="paginationHandler('previous')"
+            [disabled]="currentOffset === 1">
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+        </div>
+        <div class="pagination-button-container">
+          <button mat-fab color="primary" 
+            [disabled]="!pageInfo.hasNextPage"
+            aria-label="next"
+            (click)="paginationHandler('next')">
+            <mat-icon>arrow_forward</mat-icon>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</app-layout>

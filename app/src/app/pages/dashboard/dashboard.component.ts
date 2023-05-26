@@ -1,14 +1,10 @@
 import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy, EventEmitter, Output, Input } from '@angular/core';
 import { Subscription } from 'rxjs'
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { GqlQueryService } from '../../services/graphql/gql-query.service.service'
-import { map } from 'rxjs';
 import {FormControl,} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 import { TicketDetailsComponent } from 'src/app/components/ticket-details/ticket-details.component';
-import type { ITicketResponse } from 'src/app/interface/response';
 import type {IPageInfo} from 'src/app/interface/page-info'
 import type { TicketsViewResponse } from 'src/app/interface/tickets';
 

@@ -1,11 +1,11 @@
 .container__content{
-  top: 50px;
   position: absolute;
   width: 100%;    
 
   .container__content-main{
       padding: 0 20px;
       grid-column: 2;
+      margin-top: 90px;
   }
 }
 

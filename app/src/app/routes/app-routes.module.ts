@@ -5,20 +5,20 @@ import { LoginComponent } from "../pages/login/login.component"
 import { DashboardComponent } from "../pages/dashboard/dashboard.component"
 import { LayoutComponent } from "../components/layout/layout.component"
 import { AuthGuardService } from "../services/auth/auth-guard.service"
+import { RulesComponent } from "../pages/rules/rules/rules.component"
 
 const routes: Routes = [
     {
         path: "",
-        component: LayoutComponent,
+        component: DashboardComponent,
         canActivate: [AuthGuardService],
         runGuardsAndResolvers: 'always',
-        children: [
-            {
-                // Main / Home Page
-                path: "",
-                component: DashboardComponent
-            },
-        ]
+    },
+    {
+        path: "rules",
+        component: RulesComponent,
+        canActivate: [AuthGuardService],
+        runGuardsAndResolvers: 'always',
     },
     {
         path: "login",
