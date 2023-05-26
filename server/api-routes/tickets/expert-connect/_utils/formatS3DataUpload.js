@@ -16,7 +16,7 @@ export const formantS3DataUpload = (data) => {
       streamName: specifications.alertstreamname || null,
       erc: specifications.erc || null,
       sup: specifications.sup || null,
-      bundle: specifications.bundle || null,
+      bundle: specifications.bundlenumber || null,
       expert_connect_id: experConnect.id || null,
       expert_connect_tags:
         experConnect.tags && experConnect.tags.length ? experConnect.tags : [],

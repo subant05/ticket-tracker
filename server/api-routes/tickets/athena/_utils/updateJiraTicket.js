@@ -17,7 +17,7 @@ export async function updateJiraTicket(data = null) {
     });
 
     const response = await fetch(
-      `${process.env.JIRA_SANDBOX_URL}/rest/api/2/issue/${ticketId}`,
+      `${clonedData.apiEndpoints.JIRA_URL}/rest/api/2/issue/${ticketId}`,
       {
         method: "PUT",
         body: JSON.stringify(payload),
