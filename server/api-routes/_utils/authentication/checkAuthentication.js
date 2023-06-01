@@ -95,3 +95,10 @@ export const formantConnect = async (req, res, next) => {
     res.send(`401 Unauthorized`);
   } else next();
 };
+
+export const webClientConnect = async (req, res, next) => {
+  if (req.headers.authorization !== `Bearer ${process.env.WEB_CLIENT_TOKEN}`) {
+    res.status(401);
+    res.send(`401 Unauthorized`);
+  } else next();
+};

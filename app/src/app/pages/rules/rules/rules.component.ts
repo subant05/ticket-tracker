@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import {FormControl,} from '@angular/forms';
 import type { IFormantRulesResponse, IFormantRule } from 'src/app/interface/rules';
 import { RuleDetailsComponent } from 'src/app/components/rule-details/rule-details.component';
+import { CreateRuleModalComponent } from 'src/app/components/create-rule-modal/create-rule-modal.component';
 
 @Component({
   selector: 'app-rules',
@@ -22,6 +23,7 @@ export class RulesComponent  implements OnInit, OnDestroy{
   currentOffset:number = 1
   rulesList = new MatTableDataSource([]);
   rulesQuery: Subscription | undefined
+  dialogClosed: Subscription | undefined
   currentPageSize: any = new FormControl("10")
   filter:{streamName: FormControl} = { 
     streamName: new FormControl("")
@@ -72,6 +74,7 @@ export class RulesComponent  implements OnInit, OnDestroy{
 
   ngOnDestroy(): void {
     this.rulesQuery?.unsubscribe()
+    this.dialogClosed?.unsubscribe()
   }
 
   rowClick(row:IFormantRule){
@@ -82,10 +85,25 @@ export class RulesComponent  implements OnInit, OnDestroy{
       exitAnimationDuration:"200ms",
       data: row
     });
-    dialogRef.afterClosed().subscribe(result => {
+    this.dialogClosed = dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+      this.requestRules()
     });
     this.onClick.emit(row)
+  }
+
+  addRuleButtonHandler(evt : Event) {
+    const dialogRef = this.dialog.open(CreateRuleModalComponent, {
+      width: "80%",
+      height: "625px",
+      enterAnimationDuration:"200ms",
+      exitAnimationDuration:"200ms",
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      this.requestRules()
+    });
+    this.onClick.emit()
   }
 
   paginationHandler(arg:string){

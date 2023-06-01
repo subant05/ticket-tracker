@@ -7,10 +7,12 @@ import { GraphQLModule } from './modules/graphql.module';
 import { ReactiveFormsModule } from '@angular/forms'
 import { FormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http'
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 //Components
 import { LoginComponent } from './pages/login/login.component';
 import { AppComponent } from './app.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 // Enviornment Variables
 import { environment } from '../environments/environment';
@@ -55,6 +57,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatMenuModule} from '@angular/material/menu';
 import { RulesComponent } from './pages/rules/rules/rules.component';
 import { RuleDetailsComponent } from './components/rule-details/rule-details.component';
+import { CreateRuleModalComponent } from './components/create-rule-modal/create-rule-modal.component';
+import {MatSelectModule} from '@angular/material/select';
 
 const errorLink = onError(({ graphQLErrors, networkError, response }) => {
 	// React only on graphql errors
@@ -102,8 +106,13 @@ function createDefaultApollo(httpLink: HttpLink): ApolloClientOptions<any> {
 		link: ApolloLink.from([basicContext, errorLink, http]),
 		defaultOptions: {
 			watchQuery: {
-				errorPolicy: 'all',
+        fetchPolicy: 'no-cache',
+        errorPolicy: 'ignore',
 			},
+      query: {
+        fetchPolicy: 'no-cache',
+        errorPolicy: 'all',
+      },
 		},
 	};
 }
@@ -118,6 +127,7 @@ function createDefaultApollo(httpLink: HttpLink): ApolloClientOptions<any> {
     TopNavigationBarComponent,
     RulesComponent,
     RuleDetailsComponent,
+    CreateRuleModalComponent,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
@@ -151,7 +161,9 @@ function createDefaultApollo(httpLink: HttpLink): ApolloClientOptions<any> {
     MatDialogModule,
     MatChipsModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule
+
     // 
   ],
   exports:[
@@ -172,7 +184,8 @@ function createDefaultApollo(httpLink: HttpLink): ApolloClientOptions<any> {
     MatButtonToggleModule,
     MatTabsModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatSelectModule
     // 
   ],
   providers: [
@@ -194,7 +207,13 @@ function createDefaultApollo(httpLink: HttpLink): ApolloClientOptions<any> {
 			provide: APOLLO_OPTIONS,
 			useFactory: createDefaultApollo,
 			deps: [HttpLink],
-		}
+		},
+    // HTTP INTERCEPTOR
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    }
     , AuthGuardService
   ],
   bootstrap: [AppComponent]

@@ -37,12 +37,13 @@
               </a>
             </span>
           </mat-list-item>
-          <mat-list-item class="list-item-tags">
+          <mat-list-item class="list-item-tags" *ngIf="expertConnectTags.length">
             <span matListItemTitle>Tags</span>
               <div class="tags">
-                <mat-chip-listbox  aria-label="expert-connect-tags">
-                  <mat-chip>{{expertConnectTags}}</mat-chip>
-
+                <mat-chip-listbox  aria-label="expert-connect-tags" >
+                  <span *ngFor="let tag of expertConnectTags.split(',')">
+                    <mat-chip>{{tag}}</mat-chip>
+                  </span>
                   <!-- <mat-chip *ngFor="let item of expertConnectTags" >{{item.tag.name}}</mat-chip> -->
                 </mat-chip-listbox>
               </div>

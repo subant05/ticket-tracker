@@ -16,14 +16,21 @@
     }
   }
 
+  .filter-section__search{
+    .mat-mdc-fab{
+      &.mat-accent{
+        background-color: white;
+      }
+    }
+  }
 
-  .filter-section__search {
+  .filter-add-rule{
     position: absolute;
     right: 30px;
 
     .mat-mdc-fab{
       &.mat-accent{
-        background-color: white;
+        background-color: red;
       }
     }
   }

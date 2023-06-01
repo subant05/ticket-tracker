@@ -10,7 +10,6 @@
 
   <mat-divider></mat-divider>
   <div class="content">
-
     <mat-card>
       <mat-card-header>
         <mat-card-title>Rule</mat-card-title>
@@ -18,11 +17,19 @@
       <mat-card-content>
         <mat-list>
           <mat-list-item>
-            <span matListItemTitle>Conditions</span>
-            <div *ngFor="let rule in data.fornantRulesConditionsByRuleId.nodes">
-              <span matListItemLine><b>Condition:</b>{{rule.condition}}</span>
-              <span matListItemLine><b>Operator:</b>{{rule.operator}}</span>
-              <span matListItemLine><b>Values:</b>{{rule.value}}</span>
+            <div *ngFor="let rule of data.fornantRulesConditionsByRuleId.nodes">
+              <mat-divider></mat-divider>
+              <mat-list>
+                <mat-list-item>
+                  <span matListItemLine><b>Condition:</b> {{rule.condition}}</span>
+                </mat-list-item>
+                <mat-list-item>
+                  <span matListItemLine><b>Operator:</b> {{rule.operator}}</span>
+                </mat-list-item>
+                <mat-list-item>
+                  <span matListItemLine><b>Values:</b> {{rule.value}}</span>
+                </mat-list-item>
+              </mat-list>
             </div>
           </mat-list-item>
         </mat-list>
@@ -35,20 +42,52 @@
       </mat-card-header>
       <mat-card-content>
         <mat-list>
-          <mat-list-item *ngFor="let assocRule in data.formantAssociatedStreamsByRuleId.nodes">
+          <mat-list-item *ngFor="let assocRule of data.formantAssociatedStreamsByRuleId.nodes">
             <span matListItemTitle>{{assocRule.streamName}}</span>
-            <mat-list-item *ngFor="let assocCond in assocRule.formantAssocStreamConditionsByAssocId.node" >
-              <span matListItemTitle > Conditions </span>
+            <mat-list-item *ngFor="let assocCond of assocRule.formantAssocStreamConditionsByAssocId.nodes" >
               <div>
-                <span matListItemLine><b>Condition:</b>{{assocCond.condition}}</span>
-                <span matListItemLine><b>Operator:</b>{{assocCond.operator}}</span>
-                <span matListItemLine><b>Values:</b>{{assocCond.value}}</span>
+                <mat-divider></mat-divider>
+                <mat-list>
+                  <mat-list-item>
+                    <span matListItemLine><b>Condition:</b> {{assocCond.condition}}</span>
+                  </mat-list-item>
+                  <mat-list-item>
+                    <span matListItemLine><b>Operator:</b> {{assocCond.operator}}</span>
+                  </mat-list-item>
+                  <mat-list-item>
+                    <span matListItemLine><b>Values:</b> {{assocCond.value}}</span>
+                  </mat-list-item>
+                </mat-list>
               </div>
             </mat-list-item>
           </mat-list-item>
         </mat-list>
       </mat-card-content>
     </mat-card>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Associated Stream Formatting</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item *ngFor="let assocRule of data.formantAssociatedStreamsByRuleId.nodes">
+            <span matListItemTitle>{{assocRule.streamName}}</span>
+            <mat-list-item *ngFor="let assocFormantting of assocRule.formantAssociatedStreamFormattingsByAssociatedStreamId.nodes" >
+              <div>
+                <mat-divider></mat-divider>
+                <mat-list>
+                  <mat-list-item>
+                    <span matListItemLine><b>{{assocFormantting.key}}: </b> {{assocFormantting.value}} </span>
+                  </mat-list-item>
+                </mat-list>
+              </div>
+            </mat-list-item>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+
 
   </div>
 

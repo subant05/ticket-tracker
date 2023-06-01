@@ -10,7 +10,7 @@ interface IFormantRulesConditions {
 }
 
 interface IFormantRulesConditionsByRuleId {
-  nodes:IFormantRulesConditions
+  nodes:IFormantRulesConditions[]
 }
 
 interface IFormantAssocStreamCondition {
