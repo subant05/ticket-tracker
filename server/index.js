@@ -56,12 +56,15 @@ app.use(
         // , JupiterSubscriptionPlugin
       ],
       pluginHook,
-      ownerConnectionString: `${process.env.DATABASE_URL}`,
+      ownerConnectionString:
+        process.env.NODE_ENV === "development"
+          ? process.env.DEV_DATABASE_URL
+          : process.env.DATABASE_URL + "?ssl=true",
       watchPg: true,
       enhanceGraphiql: true,
       ignoreRBAC: false, // Role Based Access Control (RBAC)
       extendedErrors: ["errcode", "detail", "hint"],
-      graphiql: true, //process.env.NODE_ENV === "development" ? true : false,
+      graphiql: true,
       subscriptions: true,
       simpleSubscriptions: true,
       live: true,
