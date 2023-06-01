@@ -61,7 +61,7 @@ app.use(
       enhanceGraphiql: true,
       ignoreRBAC: false, // Role Based Access Control (RBAC)
       extendedErrors: ["errcode", "detail", "hint"],
-      graphiql: process.env.NODE_ENV === "development" ? true : false,
+      graphiql: true, //process.env.NODE_ENV === "development" ? true : false,
       subscriptions: true,
       simpleSubscriptions: true,
       live: true,
