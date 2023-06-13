@@ -5,5 +5,8 @@ import { recordExpertConnectTagsS3 } from "../_utils/recordExpertConnectTagsS3.j
 
 export const recordExpertConnectTags = Congruity.fn.asyncCompose(
   recordExpertConnectTagsS3,
-  recordExpertConnectTagsInDB
+  Congruity.fn.tap((data) =>
+    console.log("EXPERT CONNECT TAGS: ", data.expertConnectTicket.data.tags)
+  )
+  // , recordExpertConnectTagsInDB
 );

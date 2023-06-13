@@ -7,6 +7,7 @@ export function formatExpertConnectWebhookData(data) {
 
   Object.entries(data).forEach((item) => {
     let value = item[1];
+
     if (typeof value === "object" && item[0].toLowerCase() === "data")
       value = { ticketId: value.TicketId };
 

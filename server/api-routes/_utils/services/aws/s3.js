@@ -50,6 +50,7 @@ export const uploadTicket = (data) =>
           reject(err);
         } else {
           console.log("succesfully uploaded!!!");
+          console.log("DATA UPLOADED TO S3: ", key);
           resolve(data);
         }
       }
