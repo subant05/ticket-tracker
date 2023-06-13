@@ -1547,7 +1547,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_components_ticket_details_ticket_details_component__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/components/ticket-details/ticket-details.component */ 1615);
 /* harmony import */ var _services_graphql_gql_query_service_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../services/graphql/gql-query.service.service */ 9138);
 /* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/dialog */ 1484);
-/* harmony import */ var src_app_services_tickets_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/tickets.service */ 695);
+/* harmony import */ var src_app_services_tickets_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/tickets.service */ 4695);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common */ 4666);
 /* harmony import */ var _angular_material_divider__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/divider */ 1528);
 /* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/form-field */ 5074);
@@ -2532,7 +2532,7 @@ RulesService.Éµprov = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1__["É
 
 /***/ }),
 
-/***/ 695:
+/***/ 4695:
 /*!*********************************************!*\
   !*** ./src/app/services/tickets.service.ts ***!
   \*********************************************/
