@@ -33,11 +33,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   columns: string[] = [
-    'formant_id'
+    'formant_time'
     , 'device_name'
     , 'expert_connect_title'
     , 'expert_connect_bundle'
-    , 'formant_time'
     , 'expert_connect_tag_name'
   ];
 

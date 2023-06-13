@@ -2954,7 +2954,7 @@ query Tickets($offset: Int = 1, $limit: Int = 1 $deviceName:String = "") {
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](
               0,
               "mat-progress-bar",
-              31
+              30
             );
           }
         }
@@ -2963,12 +2963,9 @@ query Tickets($offset: Int = 1, $limit: Int = 1 $deviceName:String = "") {
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
               0,
               "th",
-              32
+              31
             );
-            _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](
-              1,
-              "Formant ID "
-            );
+            _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](1, "Time ");
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
           }
         }
@@ -2977,17 +2974,23 @@ query Tickets($offset: Int = 1, $limit: Int = 1 $deviceName:String = "") {
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
               0,
               "td",
-              33
+              32
             );
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](1);
+            _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipe"](2, "date");
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
           }
           if (rf & 2) {
-            const col_r17 = ctx.$implicit;
+            const col_r15 = ctx.$implicit;
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](1);
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](
               " ",
-              col_r17.formant_id,
+              _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵpipeBind2"](
+                2,
+                1,
+                col_r15.formant_time,
+                "medium"
+              ),
               " "
             );
           }
@@ -2997,7 +3000,7 @@ query Tickets($offset: Int = 1, $limit: Int = 1 $deviceName:String = "") {
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
               0,
               "th",
-              32
+              31
             );
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](1, "Device ");
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
@@ -3008,17 +3011,17 @@ query Tickets($offset: Int = 1, $limit: Int = 1 $deviceName:String = "") {
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
               0,
               "td",
-              33
+              32
             );
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](1);
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
           }
           if (rf & 2) {
-            const col_r18 = ctx.$implicit;
+            const col_r16 = ctx.$implicit;
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](1);
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](
               " ",
-              col_r18.device_name,
+              col_r16.device_name,
               " "
             );
           }
@@ -3028,7 +3031,7 @@ query Tickets($offset: Int = 1, $limit: Int = 1 $deviceName:String = "") {
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
               0,
               "th",
-              32
+              31
             );
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](1, "Title ");
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
@@ -3039,17 +3042,17 @@ query Tickets($offset: Int = 1, $limit: Int = 1 $deviceName:String = "") {
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
               0,
               "td",
-              33
+              32
             );
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](1);
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
           }
           if (rf & 2) {
-            const col_r19 = ctx.$implicit;
+            const col_r17 = ctx.$implicit;
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](1);
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](
               " ",
-              col_r19.expert_connect_title,
+              col_r17.expert_connect_title,
               " "
             );
           }
@@ -3059,7 +3062,7 @@ query Tickets($offset: Int = 1, $limit: Int = 1 $deviceName:String = "") {
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
               0,
               "th",
-              32
+              31
             );
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](1, "Bundle ");
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
@@ -3070,17 +3073,17 @@ query Tickets($offset: Int = 1, $limit: Int = 1 $deviceName:String = "") {
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
               0,
               "td",
-              33
+              32
             );
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](1);
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
           }
           if (rf & 2) {
-            const col_r20 = ctx.$implicit;
+            const col_r18 = ctx.$implicit;
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](1);
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](
               " ",
-              col_r20.expert_connect_bundle,
+              col_r18.expert_connect_bundle,
               " "
             );
           }
@@ -3090,9 +3093,9 @@ query Tickets($offset: Int = 1, $limit: Int = 1 $deviceName:String = "") {
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
               0,
               "th",
-              32
+              31
             );
-            _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](1, "Time ");
+            _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](1, "Tags ");
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
           }
         }
@@ -3101,95 +3104,64 @@ query Tickets($offset: Int = 1, $limit: Int = 1 $deviceName:String = "") {
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
               0,
               "td",
-              33
-            );
-            _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](1);
-            _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-          }
-          if (rf & 2) {
-            const col_r21 = ctx.$implicit;
-            _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](1);
-            _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](
-              " ",
-              col_r21.formant_time,
-              " "
-            );
-          }
-        }
-        function DashboardComponent_th_31_Template(rf, ctx) {
-          if (rf & 1) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
-              0,
-              "th",
               32
             );
-            _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](1, "Tags ");
-            _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-          }
-        }
-        function DashboardComponent_td_32_Template(rf, ctx) {
-          if (rf & 1) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
-              0,
-              "td",
-              33
-            );
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](1);
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
           }
           if (rf & 2) {
-            const col_r22 = ctx.$implicit;
+            const col_r19 = ctx.$implicit;
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](1);
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtextInterpolate1"](
               " ",
-              col_r22.expert_connect_tag_name,
+              col_r19.expert_connect_tag_name,
               " "
             );
           }
         }
-        function DashboardComponent_tr_33_Template(rf, ctx) {
+        function DashboardComponent_tr_30_Template(rf, ctx) {
           if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](
               0,
               "tr",
-              34
+              33
             );
           }
         }
-        function DashboardComponent_tr_34_Template(rf, ctx) {
+        function DashboardComponent_tr_31_Template(rf, ctx) {
           if (rf & 1) {
-            const _r25 =
+            const _r22 =
               _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵgetCurrentView"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
               0,
               "tr",
-              35
+              34
             );
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"](
               "click",
-              function DashboardComponent_tr_34_Template_tr_click_0_listener() {
+              function DashboardComponent_tr_31_Template_tr_click_0_listener() {
                 const restoredCtx =
                   _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵrestoreView"](
-                    _r25
+                    _r22
                   );
-                const row_r23 = restoredCtx.$implicit;
-                const ctx_r24 =
+                const row_r20 = restoredCtx.$implicit;
+                const ctx_r21 =
                   _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵnextContext"]();
                 return _angular_core__WEBPACK_IMPORTED_MODULE_4__[
                   "ɵɵresetView"
-                ](ctx_r24.rowClick(row_r23));
+                ](ctx_r21.rowClick(row_r20));
               }
             );
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
           }
         }
-        function DashboardComponent_tr_35_Template(rf, ctx) {
+        function DashboardComponent_tr_32_Template(rf, ctx) {
           if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
               0,
               "tr",
-              36
-            )(1, "td", 37);
+              35
+            )(1, "td", 36);
             _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](
               2,
               "No data found"
@@ -3222,11 +3194,10 @@ query Tickets($offset: Int = 1, $limit: Int = 1 $deviceName:String = "") {
               hasPreviousPage: false,
             };
             this.columns = [
-              "formant_id",
+              "formant_time",
               "device_name",
               "expert_connect_title",
               "expert_connect_bundle",
-              "formant_time",
               "expert_connect_tag_name",
             ];
             // Events
@@ -3336,7 +3307,7 @@ query Tickets($offset: Int = 1, $limit: Int = 1 $deviceName:String = "") {
               onUpdate: "onUpdate",
               onClick: "onClick",
             },
-            decls: 59,
+            decls: 56,
             vars: 8,
             consts: [
               [1, "filter-section"],
@@ -3368,13 +3339,12 @@ query Tickets($offset: Int = 1, $limit: Int = 1 $deviceName:String = "") {
               ["mode", "indeterminate", 4, "ngIf"],
               [1, "table-area"],
               ["mat-table", "", 1, "tickets_table", 3, "dataSource"],
-              ["matColumnDef", "formant_id"],
+              ["matColumnDef", "formant_time"],
               ["mat-header-cell", "", 4, "matHeaderCellDef"],
               ["mat-cell", "", 4, "matCellDef"],
               ["matColumnDef", "device_name"],
               ["matColumnDef", "expert_connect_title"],
               ["matColumnDef", "expert_connect_bundle"],
-              ["matColumnDef", "formant_time"],
               ["matColumnDef", "expert_connect_tag_name"],
               ["mat-header-row", "", 4, "matHeaderRowDef"],
               [
@@ -3510,8 +3480,8 @@ query Tickets($offset: Int = 1, $limit: Int = 1 $deviceName:String = "") {
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](
                   17,
                   DashboardComponent_td_17_Template,
-                  2,
-                  1,
+                  3,
+                  4,
                   "td",
                   12
                 );
@@ -3606,146 +3576,124 @@ query Tickets($offset: Int = 1, $limit: Int = 1 $deviceName:String = "") {
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__[
                   "ɵɵelementContainerEnd"
                 ]();
-                _angular_core__WEBPACK_IMPORTED_MODULE_4__[
-                  "ɵɵelementContainerStart"
-                ](30, 17);
+                _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](
+                  30,
+                  DashboardComponent_tr_30_Template,
+                  1,
+                  0,
+                  "tr",
+                  17
+                );
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](
                   31,
-                  DashboardComponent_th_31_Template,
-                  2,
-                  0,
-                  "th",
-                  11
-                );
-                _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](
-                  32,
-                  DashboardComponent_td_32_Template,
-                  2,
-                  1,
-                  "td",
-                  12
-                );
-                _angular_core__WEBPACK_IMPORTED_MODULE_4__[
-                  "ɵɵelementContainerEnd"
-                ]();
-                _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](
-                  33,
-                  DashboardComponent_tr_33_Template,
+                  DashboardComponent_tr_31_Template,
                   1,
                   0,
                   "tr",
                   18
                 );
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](
-                  34,
-                  DashboardComponent_tr_34_Template,
-                  1,
+                  32,
+                  DashboardComponent_tr_32_Template,
+                  3,
                   0,
                   "tr",
                   19
                 );
-                _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtemplate"](
-                  35,
-                  DashboardComponent_tr_35_Template,
-                  3,
-                  0,
-                  "tr",
-                  20
-                );
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]()();
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelement"](
-                  36,
+                  33,
                   "mat-divider"
                 );
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
-                  37,
+                  34,
                   "section",
-                  21
-                )(38, "div", 22)(39, "div", 23)(
-                  40,
+                  20
+                )(35, "div", 21)(36, "div", 22)(
+                  37,
                   "div",
-                  24
-                )(41, "mat-form-field")(42, "mat-label");
+                  23
+                )(38, "mat-form-field")(39, "mat-label");
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](
-                  43,
+                  40,
                   "Page Size"
                 );
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
-                  44,
+                  41,
                   "select",
-                  25
+                  24
                 );
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"](
                   "change",
-                  function DashboardComponent_Template_select_change_44_listener(
+                  function DashboardComponent_Template_select_change_41_listener(
                     $event
                   ) {
                     return ctx.resetResubmit($event);
                   }
                 );
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
-                  45,
+                  42,
+                  "option",
+                  25
+                );
+                _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](43, "10");
+                _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
+                _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
+                  44,
                   "option",
                   26
                 );
-                _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](46, "10");
+                _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](45, "25");
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
-                  47,
+                  46,
                   "option",
                   27
                 );
-                _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](48, "25");
-                _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementEnd"]();
-                _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
-                  49,
-                  "option",
-                  28
-                );
-                _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](50, "50");
+                _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](47, "50");
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__[
                   "ɵɵelementEnd"
                 ]()()()();
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
-                  51,
+                  48,
                   "div",
-                  24
-                )(52, "button", 29);
+                  23
+                )(49, "button", 28);
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"](
                   "click",
-                  function DashboardComponent_Template_button_click_52_listener() {
+                  function DashboardComponent_Template_button_click_49_listener() {
                     return ctx.paginationHandler("previous");
                   }
                 );
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
-                  53,
+                  50,
                   "mat-icon"
                 );
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](
-                  54,
+                  51,
                   "arrow_back"
                 );
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__[
                   "ɵɵelementEnd"
                 ]()()();
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
-                  55,
+                  52,
                   "div",
-                  24
-                )(56, "button", 30);
+                  23
+                )(53, "button", 29);
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵlistener"](
                   "click",
-                  function DashboardComponent_Template_button_click_56_listener() {
+                  function DashboardComponent_Template_button_click_53_listener() {
                     return ctx.paginationHandler("next");
                   }
                 );
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵelementStart"](
-                  57,
+                  54,
                   "mat-icon"
                 );
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵtext"](
-                  58,
+                  55,
                   "arrow_forward"
                 );
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__[
@@ -3768,7 +3716,7 @@ query Tickets($offset: Int = 1, $limit: Int = 1 $deviceName:String = "") {
                   "dataSource",
                   ctx.ticketsList
                 );
-                _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](19);
+                _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵadvance"](16);
                 _angular_core__WEBPACK_IMPORTED_MODULE_4__["ɵɵproperty"](
                   "matHeaderRowDef",
                   ctx.columns
@@ -3824,6 +3772,7 @@ query Tickets($offset: Int = 1, $limit: Int = 1 $deviceName:String = "") {
               _angular_material_table__WEBPACK_IMPORTED_MODULE_5__.MatNoDataRow,
               _angular_material_icon__WEBPACK_IMPORTED_MODULE_14__.MatIcon,
               _components_layout_layout_component__WEBPACK_IMPORTED_MODULE_3__.LayoutComponent,
+              _angular_common__WEBPACK_IMPORTED_MODULE_8__.DatePipe,
             ],
             styles: [
               ".filter-section[_ngcontent-%COMP%] {\n  background-color: #673ab7;\n  border-top-left-radius: 5px;\n  border-top-right-radius: 5px;\n  display: flex;\n  padding: 25px;\n  padding-bottom: 10px;\n}\n.filter-section[_ngcontent-%COMP%]   .filter-section_fields[_ngcontent-%COMP%] {\n  width: 80%;\n}\n.filter-section[_ngcontent-%COMP%]   .filter-section_fields[_ngcontent-%COMP%]   .filter-section__vehicle[_ngcontent-%COMP%] {\n  min-width: 0;\n  text-align: left;\n  align-self: center;\n}\n.filter-section[_ngcontent-%COMP%]   .filter-section__search[_ngcontent-%COMP%] {\n  position: absolute;\n  right: 30px;\n}\n.filter-section[_ngcontent-%COMP%]   .filter-section__search[_ngcontent-%COMP%]   .mat-mdc-fab.mat-accent[_ngcontent-%COMP%] {\n  background-color: white;\n}\n\n.table-area[_ngcontent-%COMP%] {\n  border-right: 1px solid rgba(0, 0, 0, 0.12);\n  border-left: 1px solid rgba(0, 0, 0, 0.12);\n  border-bottom: 1px solid rgba(0, 0, 0, 0.12);\n}\n.table-area[_ngcontent-%COMP%]   .mat-table[_ngcontent-%COMP%] {\n  width: 100%;\n}\n.table-area[_ngcontent-%COMP%]   .mat-form-field[_ngcontent-%COMP%] {\n  font-size: 14px;\n  width: 100%;\n}\n.table-area[_ngcontent-%COMP%]   tr[_ngcontent-%COMP%] {\n  cursor: pointer;\n}\n.table-area[_ngcontent-%COMP%]   td[_ngcontent-%COMP%], .table-area[_ngcontent-%COMP%]   th[_ngcontent-%COMP%] {\n  width: 25%;\n}\n.table-area[_ngcontent-%COMP%]   th.mat-sort-header-sorted[_ngcontent-%COMP%] {\n  color: black;\n}\n.table-area[_ngcontent-%COMP%]   tr.mat-row[_ngcontent-%COMP%], .table-area[_ngcontent-%COMP%]   tr.mat-footer-row[_ngcontent-%COMP%] {\n  cursor: pointer;\n}\n.table-area[_ngcontent-%COMP%]   .mat-mdc-row[_ngcontent-%COMP%]   .mat-mdc-cell[_ngcontent-%COMP%] {\n  cursor: pointer;\n}\n.table-area[_ngcontent-%COMP%]   .mat-mdc-row[_ngcontent-%COMP%]:hover   .mat-mdc-cell[_ngcontent-%COMP%] {\n  background-color: rgba(0, 0, 0, 0.12);\n}\n\n.pagination-container[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: flex-end;\n}\n.pagination-container[_ngcontent-%COMP%]   .pagination-button-container[_ngcontent-%COMP%] {\n  margin: 10px;\n}\n/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8uL3NyYy9hcHAvcGFnZXMvZGFzaGJvYXJkL2Rhc2hib2FyZC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLHlCQUFBO0VBQ0EsMkJBQUE7RUFDQSw0QkFBQTtFQUNBLGFBQUE7RUFDQSxhQUFBO0VBQ0Esb0JBQUE7QUFDRjtBQUNFO0VBQ0UsVUFBQTtBQUNKO0FBQ0k7RUFDRSxZQUFBO0VBQ0EsZ0JBQUE7RUFDQSxrQkFBQTtBQUNOO0FBSUU7RUFDRSxrQkFBQTtFQUNBLFdBQUE7QUFGSjtBQUtNO0VBQ0UsdUJBQUE7QUFIUjs7QUFVQTtFQUNFLDJDQUFBO0VBQ0EsMENBQUE7RUFDQSw0Q0FBQTtBQVBGO0FBU0U7RUFDRSxXQUFBO0FBUEo7QUFVRTtFQUNFLGVBQUE7RUFDQSxXQUFBO0FBUko7QUFXRTtFQUNFLGVBQUE7QUFUSjtBQVlFO0VBQ0UsVUFBQTtBQVZKO0FBYUU7RUFDRSxZQUFBO0FBWEo7QUFjRTtFQUNFLGVBQUE7QUFaSjtBQWdCRTtFQUNFLGVBQUE7QUFkSjtBQWlCRTtFQUNFLHFDQUFBO0FBZko7O0FBb0JBO0VBQ0UsYUFBQTtFQUNBLHlCQUFBO0FBakJGO0FBbUJFO0VBQ0UsWUFBQTtBQWpCSiIsInNvdXJjZXNDb250ZW50IjpbIi5maWx0ZXItc2VjdGlvbntcbiAgYmFja2dyb3VuZC1jb2xvcjogIzY3M2FiNztcbiAgYm9yZGVyLXRvcC1sZWZ0LXJhZGl1czogNXB4O1xuICBib3JkZXItdG9wLXJpZ2h0LXJhZGl1czogNXB4O1xuICBkaXNwbGF5OiBmbGV4O1xuICBwYWRkaW5nOiAyNXB4O1xuICBwYWRkaW5nLWJvdHRvbTogMTBweDtcblxuICAuZmlsdGVyLXNlY3Rpb25fZmllbGRze1xuICAgIHdpZHRoOiA4MCU7XG5cbiAgICAuZmlsdGVyLXNlY3Rpb25fX3ZlaGljbGV7XG4gICAgICBtaW4td2lkdGg6IDA7XG4gICAgICB0ZXh0LWFsaWduOiBsZWZ0O1xuICAgICAgYWxpZ24tc2VsZjogY2VudGVyO1xuICAgIH1cbiAgfVxuXG5cbiAgLmZpbHRlci1zZWN0aW9uX19zZWFyY2gge1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICByaWdodDogMzBweDtcblxuICAgIC5tYXQtbWRjLWZhYntcbiAgICAgICYubWF0LWFjY2VudHtcbiAgICAgICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XG4gICAgICB9XG4gICAgfVxuICB9XG4gIFxufVxuXG4udGFibGUtYXJlYXtcbiAgYm9yZGVyLXJpZ2h0OiAxcHggc29saWQgcmdiYSgwLCAwLCAwLCAuMTIpO1xuICBib3JkZXItbGVmdDogMXB4IHNvbGlkIHJnYmEoMCwgMCwgMCwgLjEyKTtcbiAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkIHJnYmEoMCwgMCwgMCwgLjEyKTtcblxuICAubWF0LXRhYmxlIHtcbiAgICB3aWR0aDogMTAwJTtcbiAgfVxuICBcbiAgLm1hdC1mb3JtLWZpZWxkIHtcbiAgICBmb250LXNpemU6IDE0cHg7XG4gICAgd2lkdGg6IDEwMCU7XG4gIH1cbiAgXG4gIHRyIHtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gIH1cbiAgXG4gIHRkLCB0aCB7XG4gICAgd2lkdGg6IDI1JTtcbiAgfVxuICBcbiAgdGgubWF0LXNvcnQtaGVhZGVyLXNvcnRlZCB7XG4gICAgY29sb3I6IGJsYWNrO1xuICB9XG4gIFxuICB0ci5tYXQtcm93LCB0ci5tYXQtZm9vdGVyLXJvd3tcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG4gIH1cbiAgXG4gIFxuICAubWF0LW1kYy1yb3cgLm1hdC1tZGMtY2VsbCB7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xuICB9XG4gIFxuICAubWF0LW1kYy1yb3c6aG92ZXIgLm1hdC1tZGMtY2VsbCB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgwLCAwLCAwLCAuMTIpO1xuICB9XG59XG5cblxuLnBhZ2luYXRpb24tY29udGFpbmVyIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBmbGV4LWVuZDtcblxuICAucGFnaW5hdGlvbi1idXR0b24tY29udGFpbmVyIHtcbiAgICBtYXJnaW46IDEwcHg7XG4gIH1cbn0iXSwic291cmNlUm9vdCI6IiJ9 */",
