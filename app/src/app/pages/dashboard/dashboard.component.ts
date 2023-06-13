@@ -5,6 +5,7 @@ import { GqlQueryService } from '../../services/graphql/gql-query.service.servic
 import {FormControl,} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 import { TicketDetailsComponent } from 'src/app/components/ticket-details/ticket-details.component';
+import { TicketsService } from 'src/app/services/tickets.service';
 import type {IPageInfo} from 'src/app/interface/page-info'
 import type { TicketsViewResponse } from 'src/app/interface/tickets';
 
@@ -32,12 +33,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   columns: string[] = [
-    'formantId'
-    , 'deviceName'
-    , 'expertConnectTitle'
-    , 'expertConnectBundle'
-    , 'formantTime'
-    , 'expertConnectTagName'
+    'formant_id'
+    , 'device_name'
+    , 'expert_connect_title'
+    , 'expert_connect_bundle'
+    , 'formant_time'
+    , 'expert_connect_tag_name'
   ];
 
   // Events
@@ -46,24 +47,38 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   constructor(
     private gqlQuery: GqlQueryService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private ticketService: TicketsService
   ) { }
 
   private requestTickets (){
     this.isLoading = true
-    this.ticketsQuery = this.gqlQuery
-    .getTicketsView({ 
-      offset: this.currentOffset, 
-      limit: parseInt(this.currentPageSize.value),
+    this.ticketService.getJoinedTickets({
+      offset:this.currentOffset,
+      limit:parseInt(this.currentPageSize.value),
       deviceName:this.filter.deviceName.value
     })
-    .subscribe((response: TicketsViewResponse) => {
-      this.trackedVehicles = response.data.ticketsViews.nodes
+    .subscribe((response: any) => {
+      this.trackedVehicles = response.tickets.rows
       console.log(response)
       this.ticketsList = new MatTableDataSource(this.trackedVehicles)
-      this.pageInfo = response.data.ticketsViews.pageInfo
+      this.pageInfo = response.tickets.pageInfo
       this.isLoading = false
     })
+
+    // this.ticketsQuery = this.gqlQuery
+    // .getTicketsView({ 
+    //   offset: this.currentOffset, 
+    //   limit: parseInt(this.currentPageSize.value),
+    //   deviceName:this.filter.deviceName.value
+    // })
+    // .subscribe((response: TicketsViewResponse) => {
+    //   this.trackedVehicles = response.data.ticketsViews.nodes
+    //   console.log(response)
+    //   this.ticketsList = new MatTableDataSource(this.trackedVehicles)
+    //   this.pageInfo = response.data.ticketsViews.pageInfo
+    //   this.isLoading = false
+    // })
   }
 
   ngOnInit(): void {

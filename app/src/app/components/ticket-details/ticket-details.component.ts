@@ -14,9 +14,9 @@ export class TicketDetailsComponent {
   expertConnectLink: string | undefined = ""
   formantData: any = {};
 
-  constructor( @Inject(MAT_DIALOG_DATA) public data: ITicketsViewData){
-    this.expertConnectTags = this.data.expertConnectTagName
-    this.expertConnectLink = this.data.jiraExpertConnectLink?.replace(/([\\"]+)/gi,"")
+  constructor( @Inject(MAT_DIALOG_DATA) public data: any){
+    this.expertConnectTags = this.data.expert_connect_tag_name
+    this.expertConnectLink = this.data.jira_expert_connect_link?.replace(/([\\"]+)/gi,"")
     JSON.parse(this.data.value ? this.data?.value  : "{}").filter((point:any)=>{
       return ["halt_error_code", "halt_supplemental_error_code", "from_state", "to_state"].indexOf(point.label) > -1
     }).forEach((pointA:any)=>{

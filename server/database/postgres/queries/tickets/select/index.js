@@ -1,2 +1,4 @@
 import * as Formant from "./formant.js";
-export { Formant };
+import * as All from "./all.js";
+
+export { Formant, All };

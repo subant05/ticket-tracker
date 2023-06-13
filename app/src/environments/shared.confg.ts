@@ -6,8 +6,13 @@ const sharedConfig =  {
     'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.MAtt7IgMfvx0f9pPkez_vMfxAcylTD4w0OC0H_V6cnE',
     enpoints: {
         post: {
-        rules: '/api/rules/formant'
+            rules: "/api/rules/formant"
         },
+        get: {
+            tickets:{ 
+                all:"/api/tickets/all"
+            }
+        }
     },
 }
 
