@@ -664,7 +664,7 @@ TopNavigationBarComponent.ɵfac = function TopNavigationBarComponent_Factory(t) 
 TopNavigationBarComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
   type: TopNavigationBarComponent,
   selectors: [["app-top-navigation-bar"]],
-  decls: 19,
+  decls: 14,
   vars: 1,
   consts: [[1, "navbar"], ["mat-icon-button", "", "aria-label", "Example icon-button with a menu", 3, "matMenuTriggerFor"], ["menu", "matMenu"], ["mat-menu-item", "", 3, "click"], [1, "spacer"]],
   template: function TopNavigationBarComponent_Template(rf, ctx) {
@@ -681,21 +681,11 @@ TopNavigationBarComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_M
       _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
       _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "span");
       _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Dashboard");
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()();
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "button", 3);
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function TopNavigationBarComponent_Template_button_click_11_listener() {
-        return ctx.onMenuItemClick(["rules"]);
-      });
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "mat-icon");
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "gavel");
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "span");
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, "Rules");
       _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()()();
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "span");
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, "Ticket Tracker");
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "span");
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Ticket Tracker");
       _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](18, "span", 4);
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](13, "span", 4);
       _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     }
     if (rf & 2) {
