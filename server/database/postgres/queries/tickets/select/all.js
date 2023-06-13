@@ -20,7 +20,7 @@ export const sqlSelectAssociatedTickets = async (data) => {
           (select count(*) from tickets.tickets_view ) as total 
       from tickets.tickets_view
       WHERE device_name LIKE '%${deviceName}%'
-      ORDER BY formant_id DESC
+      ORDER BY formant_time DESC
       OFFSET $1
       LIMIT $2
     `,
@@ -67,7 +67,7 @@ export const sqlSelectAssociatedTicketsByDeviceName = async (data) => {
           (select count(*) from tickets.tickets_view ) as total 
       from tickets.tickets_view
       WHERE device_name LIKE '%$3%'
-      ORDER BY formant_id DESC
+      ORDER BY formant_time DESC
       OFFSET $1
       LIMIT $2
     `,
