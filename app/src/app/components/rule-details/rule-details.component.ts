@@ -8,7 +8,7 @@ import type { IFormantRule } from 'src/app/interface/rules';
   styleUrls: ['./rule-details.component.scss']
 })
 export class RuleDetailsComponent {
-  constructor( @Inject(MAT_DIALOG_DATA) public data: IFormantRule){
-
+  constructor( @Inject(MAT_DIALOG_DATA) public data: any){
+    console.log(data)
   }
 }

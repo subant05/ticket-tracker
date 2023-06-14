@@ -11,6 +11,9 @@ const sharedConfig =  {
         get: {
             tickets:{ 
                 all:"/api/tickets/all"
+            },
+            rules:{
+                all:"/api/rules/formant"
             }
         }
     },

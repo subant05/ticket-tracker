@@ -31,7 +31,7 @@ router.get("/", async (req, res) => {
       req.query
     );
 
-    console.log(results.rows);
+    // console.log(results.rows);
 
     if (results.rows.length) {
       res.setHeader("Content-Type", "application/json");

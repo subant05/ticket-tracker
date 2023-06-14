@@ -8,6 +8,7 @@ import {FormControl,} from '@angular/forms';
 import type { IFormantRulesResponse, IFormantRule } from 'src/app/interface/rules';
 import { RuleDetailsComponent } from 'src/app/components/rule-details/rule-details.component';
 import { CreateRuleModalComponent } from 'src/app/components/create-rule-modal/create-rule-modal.component';
+import { TicketsService } from 'src/app/services/tickets.service';
 
 @Component({
   selector: 'app-rules',
@@ -35,8 +36,8 @@ export class RulesComponent  implements OnInit, OnDestroy{
   }
 
   columns: string[]= [
-    "streamName"
-    , "streamType"
+    "stream_name"
+    , "stream_type"
   ]
 
   // Events
@@ -46,24 +47,26 @@ export class RulesComponent  implements OnInit, OnDestroy{
 
   constructor(
     private gqlQuery: GqlQueryService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private ticketService: TicketsService
+
   ) { }
 
 
   private requestRules (){
     this.isLoading = true
-    this.rulesQuery = this.gqlQuery
+    this.rulesQuery = this.ticketService
     .getRulesByStreamName({ 
       offset: this.currentOffset, 
       limit: parseInt(this.currentPageSize.value),
       streamName:this.filter.streamName.value
     })
-    .subscribe((response: IFormantRulesResponse) => {
+    .subscribe((response: any) => {
       console.log(response)
 
-      this.trackedRules = response.data.formantRules.nodes
+      this.trackedRules = response.rows
       this.rulesList = new MatTableDataSource(this.trackedRules)
-      this.pageInfo = response.data.formantRules.pageInfo
+      this.pageInfo = response.pageInfo
       this.isLoading = false
     })
   }

@@ -20,7 +20,11 @@ export class TicketsService {
 
   }
 
-  getRulesByStreamName(variables:{offset?: number, limit?:number, streamName:string} = {offset:1, limit:10, streamName:""}){
+  getRulesByStreamName(params:{offset?: number, limit?:number, streamName:string} = {offset:1, limit:10, streamName:""}){
+    const {offset=1, limit=10, streamName=""}=params
 
+    return this.http.get<any>( 
+      `${environment.enpoints.get.rules.all}?offset=${offset}&limit=${limit}&stream_name=${streamName}`,
+      )
   }
 }

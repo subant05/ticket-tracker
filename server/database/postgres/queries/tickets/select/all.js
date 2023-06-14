@@ -66,12 +66,12 @@ export const sqlSelectAssociatedTicketsByDeviceName = async (data) => {
       select *,
           (select count(*) from tickets.tickets_view ) as total 
       from tickets.tickets_view
-      WHERE device_name LIKE '%$3%'
+      WHERE device_name LIKE '%${deviceName}%'
       ORDER BY formant_time DESC
       OFFSET $1
       LIMIT $2
     `,
-      [offset, limit, data.deviceName]
+      [offset, limit]
     );
 
     const total = tickets.rows[0].total;
