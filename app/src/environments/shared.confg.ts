@@ -8,6 +8,12 @@ const sharedConfig =  {
         post: {
             rules: "/api/rules/formant"
         },
+        put: {
+            rules: "/api/rules/formant"
+        },
+        delete: {
+            rules: "/api/rules/formant"
+        },
         get: {
             tickets:{ 
                 all:"/api/tickets/all"

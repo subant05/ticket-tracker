@@ -14,4 +14,14 @@ export class RulesService {
       `${environment.enpoints.post.rules}`, rule
       )
   }
+  updateRule(rule:any){
+    return this.http.put<any>( 
+       `${environment.enpoints.post.rules}`, rule
+       )
+   }
+   deleteRule(id:number=0){
+    return this.http.delete<any>( 
+       `${environment.enpoints.post.rules}?id=${id}`,
+       )
+   }
 }

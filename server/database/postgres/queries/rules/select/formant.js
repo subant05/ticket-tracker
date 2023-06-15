@@ -12,6 +12,7 @@ export const sqlSelectRulesByStreamName = async (data) => {
 
   try {
     const { offset = 1, limit = 10, stream_name = "" } = data;
+
     rules = await client.query(
       `
       select 
@@ -35,7 +36,7 @@ export const sqlSelectRulesByStreamName = async (data) => {
       left outer join rules.formant_associated_streams ON rules.formant_associated_streams.rule_id = rules.formant.id
       left outer join rules.formant_associated_stream_conditions ON rules.formant_associated_stream_conditions.assoc_id = rules.formant_associated_streams.id
       left outer join rules.formant_associated_stream_formatting ON rules.formant_associated_stream_formatting.associated_stream_id = rules.formant_associated_streams.id
-      where rules.formant.stream_name LIKE '%${stream_name}%'
+      where rules.formant.stream_name ILIKE '%${stream_name.trim()}%'
     `,
       []
     );
@@ -144,8 +145,8 @@ export const sqlSelectRulesByStreamName = async (data) => {
 
     console.log(JSON.stringify(ruleObj, null, " "));
   } catch (e) {
-    console.log("FORMANT SELECT TICKETS ERROR", e.message);
-    console.log("FORMANT SELECT TICKETS ERROR", e.stack);
+    console.log("FORMANT SELECT RULES ERROR", e.message);
+    console.log("FORMANT SELECT RULES ERROR", e.stack);
   } finally {
     rules.rows = Object.entries(ruleObj).map((keyValue) => {
       return {

@@ -9,7 +9,8 @@ import type { IFormantRulesResponse, IFormantRule } from 'src/app/interface/rule
 import { RuleDetailsComponent } from 'src/app/components/rule-details/rule-details.component';
 import { CreateRuleModalComponent } from 'src/app/components/create-rule-modal/create-rule-modal.component';
 import { TicketsService } from 'src/app/services/tickets.service';
-
+import { EditRulesComponent } from 'src/app/components/edit-rules/edit-rules/edit-rules.component';
+import { DeleteRulesComponent } from 'src/app/components/delete-rules/delete-rules/delete-rules.component';
 @Component({
   selector: 'app-rules',
   templateUrl: './rules.component.html',
@@ -38,6 +39,7 @@ export class RulesComponent  implements OnInit, OnDestroy{
   columns: string[]= [
     "stream_name"
     , "stream_type"
+    , "delete"
   ]
 
   // Events
@@ -80,8 +82,38 @@ export class RulesComponent  implements OnInit, OnDestroy{
     this.dialogClosed?.unsubscribe()
   }
 
-  rowClick(row:IFormantRule){
+  viewClick(row:IFormantRule){
     const dialogRef = this.dialog.open(RuleDetailsComponent, {
+      width: "80%",
+      height: "625px",
+      enterAnimationDuration:"200ms",
+      exitAnimationDuration:"200ms",
+      data: row
+    });
+    this.dialogClosed = dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      this.requestRules()
+    });
+    this.onClick.emit(row)
+  }
+
+  deleteClick(row:IFormantRule){
+    const dialogRef = this.dialog.open(DeleteRulesComponent, {
+      width: "50%",
+      height: "225px",
+      enterAnimationDuration:"200ms",
+      exitAnimationDuration:"200ms",
+      data: row
+    });
+    this.dialogClosed = dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      this.requestRules()
+    });
+    this.onClick.emit(row)
+  }
+
+  editClick(row:IFormantRule){
+    const dialogRef = this.dialog.open(EditRulesComponent, {
       width: "80%",
       height: "625px",
       enterAnimationDuration:"200ms",

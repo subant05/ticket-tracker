@@ -1,0 +1,100 @@
+.wrapper {
+  margin: 20px;
+  overflow: hidden;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+
+
+    .list-item-tags {
+      height: auto;
+    }
+
+    .tags{
+      display: flex;
+    }
+
+    a {
+      color: black;
+      display: inline;
+      text-decoration: none;
+      -webkit-font-smoothing: antialiased;
+      font-family: var(--mdc-typography-button-font-family, var(--mdc-typography-font-family, Roboto, sans-serif));
+      font-size: var(--mdc-typography-button-font-size, 14px);
+      line-height: var(--mdc-typography-button-line-height, 36px);
+      font-weight: var(--mdc-typography-button-font-weight, 500);
+      letter-spacing: var(--mdc-typography-button-letter-spacing, 0.0892857143em);
+      -webkit-text-decoration: var(--mdc-typography-button-text-decoration, none);
+      text-decoration: var(--mdc-typography-button-text-decoration, none);
+      text-transform: var(--mdc-typography-button-text-transform, none);
+    }
+
+    .wrap {
+      white-space: pre-wrap;
+      height: auto;
+    }
+
+    .filter-add-rule{
+      padding: 10px;
+    }
+  }
+
+  .footer {
+    margin: 20px;
+    display: flex;
+    justify-content: flex-end;
+
+    .close {
+      bottom: 0px;
+      position: absolute;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.close-button{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.mat-mdc-form-field{
+  --mat-mdc-form-field-floating-label-scale: 0.75;
+    display: inline-flex;
+    flex-direction: column;
+    min-width: 0;
+    text-align: inherit;
+    margin: 10px;
+}
+
+@media screen and (min-width: 500px) {
+  .content {
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "side-nav main-content";
+    grid-auto-flow: dense;
+    grid-gap: 10px;
+  }
+}
+
+@media only screen and (min-width: 1050px)  {
+  .wrapper{
+    .content {
+      margin-top: 25px;
+      display: flex;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-areas: "side-nav main-content";
+      grid-auto-flow: dense;
+      grid-gap: 10px;
+      flex-direction: column;
+
+      .mat-mdc-card {
+        max-width: 400px;
+      }
+    }
+  }
+
+}

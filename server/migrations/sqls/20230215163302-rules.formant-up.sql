@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS rules.formant_conditions (
     PRIMARY KEY(id),
     CONSTRAINT fk_formant_rule_id
       FOREIGN KEY (rule_id)
-      REFERENCES rules.formant (id),
+      REFERENCES rules.formant (id) ON DELETE CASCADE,
     CONSTRAINT uq_fomant_condition
       UNIQUE (rule_id, condition, value)
 
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS rules.formant_formatting (
       PRIMARY KEY(id),
       CONSTRAINT fk_formant_rule_id
         FOREIGN KEY (rule_id)
-        REFERENCES rules.formant (id),
+        REFERENCES rules.formant (id) ON DELETE CASCADE,
       CONSTRAINT uq_fomant_formatting
         UNIQUE (rule_id, key, value)
 );
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS rules.formant_associated_streams (
       PRIMARY KEY(id),
       CONSTRAINT fk_formant_rule_id
         FOREIGN KEY (rule_id)
-        REFERENCES rules.formant(id),
+        REFERENCES rules.formant(id) ON DELETE CASCADE,
       CONSTRAINT uq_formant_assoc_streams
         UNIQUE (rule_id, stream_name)
 );
@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS rules.formant_associated_stream_conditions (
     PRIMARY KEY(id),
     CONSTRAINT fk_formant_associated_streams_id
       FOREIGN KEY (assoc_id)
-      REFERENCES rules.formant_associated_streams(id),
+      REFERENCES rules.formant_associated_streams(id) ON DELETE CASCADE,
     CONSTRAINT uq_formant_associated_stream_conditions
       UNIQUE (assoc_id, condition, value)
 
@@ -144,7 +144,7 @@ CREATE TABLE IF NOT EXISTS rules.formant_associated_stream_formatting (
       PRIMARY KEY(id),
       CONSTRAINT fk_associated_stream_id
         FOREIGN KEY (associated_stream_id)
-        REFERENCES rules.formant_associated_streams(id),
+        REFERENCES rules.formant_associated_streams(id) ON DELETE CASCADE,
       CONSTRAINT uq_formant_associated_stream_formatting
         UNIQUE (associated_stream_id, key, value)
 );

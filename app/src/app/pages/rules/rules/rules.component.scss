@@ -86,3 +86,17 @@
     margin: 10px;
   }
 }
+
+.last-cell {
+  display: flex !important;
+  justify-content: flex-end  !important;
+  width: 100% !important;
+  height: 55px;
+  align-items: center;
+
+  button{
+    margin: 0 10px;
+    max-width: 40px;
+    max-height: 40px;
+  }
+}
