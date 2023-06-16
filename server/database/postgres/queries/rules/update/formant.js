@@ -12,6 +12,14 @@ export const sqlUpdateRulesById = async (data) => {
       })
       .join(",");
 
+    await client.query(
+      `
+        DELETE FROM rules.formant_conditions
+        WHERE rule_id = $1
+      `,
+      [data.id]
+    );
+
     rule = await client.query(
       `
       WITH up_rule AS (

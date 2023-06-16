@@ -12,6 +12,8 @@
     </header>
   <form (submit)="saveRule()">
     <div class="content">
+      <h3>Name & Type</h3>
+
       <mat-form-field>
         <mat-label>Stream Name</mat-label>
         <input 
@@ -30,8 +32,9 @@
           </mat-select>
         </mat-form-field>
         <mat-divider></mat-divider>
+          <h3>Conditions</h3>
+
           <div *ngFor="let ruleCond of rule.conditions; let i = index" class="conditions">
-            <mat-label class="condition-header">Condition {{i+1}}</mat-label>
             <br/>
             <mat-form-field>
               <input matInput placeholder="condition" [formControl]="ruleCond.condition" required>
@@ -60,19 +63,25 @@
             <mat-form-field>
               <input matInput placeholder="value" [formControl]="ruleCond.value" required>
             </mat-form-field>
-            <!-- Add More condtion button -->
-            <div *ngIf="(i+1) === rule.conditions.length">
-              <div class="filter-add-rule">
-                <button mat-fab matInput
-                  color="primary"
-                  class="filter-add_rule"
-                  aria-label="add rule"
-                  (click)="addNewCondition()">
-                  <mat-icon>add</mat-icon> 
-                </button>
-              </div>
+            <button mat-fab matInput
+              color="warn"
+              class="filter-add_rule"
+              aria-label="delete condition"
+              (click)="deleteCondition(i)">
+              <mat-icon>delete</mat-icon> 
+            </button>
+          </div>
+          <!-- Add More condtion button -->
+          <div>
+            <div class="filter-add-rule">
+              <button mat-fab matInput
+                color="primary"
+                class="filter-add_rule"
+                aria-label="add rule"
+                (click)="addNewCondition()">
+                <mat-icon>add</mat-icon> 
+              </button>
             </div>
-    
           </div>
     </div>
 

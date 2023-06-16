@@ -59,10 +59,11 @@ export class CreateRuleModalComponent implements OnDestroy {
     })
 
     const result =  isValid.indexOf(true) === -1
-    if(!result)
+    if(!result || !this.rule.conditions.length)
       this.formError = true
 
-    return result
+
+    return result && this.rule.conditions.length
   }
 
   addNewCondition(){
@@ -89,10 +90,10 @@ export class CreateRuleModalComponent implements OnDestroy {
   }
 
   saveRule(){
-    if(!this.isFormValid())
+    if(!this.isFormValid()){
       return;
+    }
 
-    debugger;
     const rule = {
       streamName: this.rule.streamName.value,
       streamType: this.rule.streamType.value,
@@ -113,6 +114,10 @@ export class CreateRuleModalComponent implements OnDestroy {
 
     })
     
+  }
+
+  deleteCondition(index:number){
+    this.rule.conditions.splice(index,1)
   }
 
   ngOnDestroy(): void {

@@ -70,10 +70,10 @@ export class EditRulesComponent implements OnDestroy {
     })
 
     const result =  isValid.indexOf(true) === -1
-    if(!result)
+    if(!result || !this.rule.conditions.length)
       this.formError = true
 
-    return result
+    return result && this.rule.conditions.length
   }
 
   addNewCondition(){
@@ -124,6 +124,10 @@ export class EditRulesComponent implements OnDestroy {
 
     })
     
+  }
+
+  deleteCondition(index:number){
+    this.rule.conditions.splice(index,1)
   }
 
   ngOnDestroy(): void {

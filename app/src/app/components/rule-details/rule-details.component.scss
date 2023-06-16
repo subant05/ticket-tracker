@@ -2,8 +2,8 @@
   margin: 20px;
 
   .content {
-    display: flex;
-    flex-direction: column;
+    display: block;
+    // flex-direction: column;
 
     .list-item-tags {
       height: auto;
@@ -56,11 +56,11 @@
 @media screen and (min-width: 500px) {
   .content {
     margin: 10px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: "side-nav main-content";
-    grid-auto-flow: dense;
-    grid-gap: 10px;
+    // display: grid;
+    // grid-template-columns: 1fr 1fr 1fr;
+    // grid-template-areas: "side-nav main-content";
+    // grid-auto-flow: dense;
+    // grid-gap: 10px;
   }
 }
 
@@ -68,12 +68,12 @@
   .wrapper{
     .content {
       margin-top: 25px;
-      display: flex;
-      flex-direction: column;
+      display: block;
+      // flex-direction: column;
 
-      .mat-mdc-card {
-        max-width: 400px;
-      }
+      // .mat-mdc-card {
+      //   // max-width: 400px;
+      // }
     }
   }
 
