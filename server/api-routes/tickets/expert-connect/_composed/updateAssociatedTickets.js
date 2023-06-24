@@ -9,7 +9,7 @@ import { copyDescriptionAndMisc } from "../_utils/copyDescriptionAndMisc.js";
 import { verifyUpdate } from "../_utils/verifyUpdate.js";
 import { getJiraTicket } from "../_utils/getJiraTicket.js";
 import { updateJiraLabelsWithExperConnectTags } from "../_utils/updateJiraLabelsWithExperConnectTags.js";
-
+import { specificationParser } from "../_utils/parseDeliminatedData.js";
 export const updateAssociatedTickets = Congruity.fn.asyncCompose(
   updateJiraTicket,
   updateJiraLabelsWithExperConnectTags,
@@ -20,7 +20,8 @@ export const updateAssociatedTickets = Congruity.fn.asyncCompose(
   generateJiraTicketPayload,
   getBundleFromMisc,
   getJiraTicketId,
-  parseSpecifications(),
+  // parseSpecifications(),
+  specificationParser,
   copyDescriptionAndMisc,
   verifyUpdate
 );

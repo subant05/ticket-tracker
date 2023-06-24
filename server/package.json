@@ -19,7 +19,7 @@
     "@graphile/pg-pubsub": "^4.13.0",
     "apollo-server": "^3.11.1",
     "apollo-server-express": "^3.11.1",
-    "athena-connection": "^1.0.1",
+    "athena-connection": "^1.0.2",
     "aws-sdk": "^2.1378.0",
     "babel-cli": "^6.26.0",
     "babel-node": "^0.0.1-security",

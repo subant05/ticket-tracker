@@ -7,9 +7,11 @@ import { updateTickets } from "./_composed/updateTickets.js";
 import { filterVehicles } from "./_utils/filterVehicles.js";
 import { recordExpertConnectTags } from "./_composed/recordExpertConnectTags.js";
 import { areRulesValidated } from "./_utils/areRulesValid.js";
+import { updateAthena } from "./_composed/updateAthena.js";
 
 export const createTicketFromAthena = Congruity.fn.asyncCompose(
   recordExpertConnectTags,
+  // updateAthena,
   updateTickets,
   createTickets,
   generateSubstantiveData,
