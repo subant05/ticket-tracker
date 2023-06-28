@@ -24,6 +24,7 @@ export const formantS3DataUpload = (data) => {
       expert_connect_created_date: experConnect.createdDate || null,
       expert_connect_updated_date: experConnect.updatedDate || null,
       jira_url: clonedData.jiraUrl || null,
+      formant_link: clonedData.formantUrl,
     };
   } catch (e) {
     console.log("FAILED TO FORMAT S3 DATA FROM ATHENA: ", e.message);

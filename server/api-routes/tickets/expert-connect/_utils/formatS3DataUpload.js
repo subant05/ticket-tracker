@@ -25,6 +25,7 @@ export const formantS3DataUpload = (data) => {
       expert_connect_created_date: experConnect.createdDate || null,
       expert_connect_updated_date: experConnect.updatedDate || null,
       jira_url: specifications.jiralink || null,
+      formant_link: specifications.formantlink,
     };
   } catch (e) {
     console.log(
