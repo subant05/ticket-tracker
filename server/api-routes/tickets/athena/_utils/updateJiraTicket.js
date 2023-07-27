@@ -24,7 +24,9 @@ export async function updateJiraTicket(data = null) {
         headers: {
           "Content-Type": "application/json",
           Authorization: `${process.env.JIRA_TOKEN_TYPE} ${process.env.JIRA_TOKEN}`,
+          "X-Atlassian-Token": "no-check",
         },
+        redirect: "follow",
       }
     );
 

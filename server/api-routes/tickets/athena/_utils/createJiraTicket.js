@@ -24,7 +24,9 @@ export async function createJiraTicket(data) {
       headers: {
         "Content-Type": "application/json",
         Authorization: `${process.env.JIRA_TOKEN_TYPE} ${process.env.JIRA_TOKEN}`,
+        "X-Atlassian-Token": "no-check",
       },
+      redirect: "follow",
     });
 
     const issue = await response.json();
