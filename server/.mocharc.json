@@ -1,0 +1,12 @@
+{
+  "recursive": true,
+  "timeout": 3000,
+  "diff": true,
+  "extension": ["js", "cjs", "mjs"],
+  "package": "./package.json",
+  "reporter": "spec",
+  "slow": "75",
+  "ui": "bdd",
+  "spec": ["./api-routes/tickets/athena/_utils/_tests_/*.test.js"],
+  "ignore": ["./node_modules/**"]
+}

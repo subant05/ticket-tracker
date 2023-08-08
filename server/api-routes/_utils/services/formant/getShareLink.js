@@ -50,7 +50,6 @@ export async function getShareLink(share, view) {
 
     const origin = process.env.FORMANT_API_URL.replace("api", "app");
     const shareData = await response.json();
-    console.log(shareData);
 
     formantLink = `${origin}/shares/${shareData.code}#${serializeHash({
       viewId: selectedView[0].id,

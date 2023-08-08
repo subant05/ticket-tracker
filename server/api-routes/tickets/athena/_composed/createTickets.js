@@ -5,12 +5,12 @@ import { insertTicketsIntoDatabase } from "../_utils/insertTicketsIntoDatabase.j
 
 export const createTickets = Congruity.fn.asyncCompose(
   async (result) => result.asyncMap(insertTicketsIntoDatabase),
-  async (result) =>
-    result.asyncMap(
-      Congruity.fn.tap((data) => {
-        console.log("JIRA TICKET: ", data.jiraTicket);
-      })
-    ),
+  // async (result) =>
+  //   result.asyncMap(
+  //     Congruity.fn.tap((data) => {
+  //       console.log("JIRA TICKET: ", data.jiraTicket);
+  //     })
+  //   ),
   async (result) => result.asyncMap(createJiraTicket),
   async (result) =>
     result.asyncMap(

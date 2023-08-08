@@ -4,10 +4,16 @@ import _ from "lodash";
 export async function getRuleFormatting(data) {
   if (!data || data === null) return null;
 
-  const clonedData = _.cloneDeep(data);
-  const dataFormatting = await sqlSelectRuleTicketFormatting(data);
+  try {
+    const clonedData = _.cloneDeep(data);
+    const dataFormatting = await sqlSelectRuleTicketFormatting(data);
 
-  clonedData.dataFormatting = dataFormatting.rows;
+    clonedData.dataFormatting = dataFormatting.rows;
 
-  return clonedData;
+    return clonedData;
+  } catch (e) {
+    console.log("ERROR GETTING RULE FORMATTING: ", e.message);
+    console.log("ERROR GETTING RULE FORMATTING: ", e.staack);
+    return null;
+  }
 }

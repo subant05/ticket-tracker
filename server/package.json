@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon index.js  --experimental-specifier-resolution=node --exec babel-node --ext js,graphql --max-old-space-size=8199  ",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --recursive",
     "start": "npm config set strict-ssl false && babel-node index.js",
     "prepare": "husky install"
   },
@@ -54,10 +54,12 @@
     "zlib": "^1.0.5"
   },
   "devDependencies": {
+    "chai": "^4.3.7",
     "db-migrate": "^0.11.12",
     "db-migrate-pg": "^1.2.2",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.2",
+    "mocha": "^10.2.0",
     "prettier": "2.8.4"
   },
   "lint-staged": {
