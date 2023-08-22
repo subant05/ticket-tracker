@@ -1,0 +1,139 @@
+<section class="filter-section">
+  <div class="filter-section_fields">
+    <mat-form-field class="filter-section__input">
+      <mat-label>Vehicle</mat-label>
+      <input
+        matInput 
+        [formControl]="filter.device_name"
+        (keyup)="applyFilter($event)" 
+        placeholder="Vehicle" 
+        #input>
+    </mat-form-field>
+    <mat-form-field class="filter-section__input">
+      <mat-label>Error Message</mat-label>
+      <input
+        matInput 
+        [formControl]="filter.error_message"
+        (keyup)="applyFilter($event)" 
+        placeholder="Error Message" 
+        #input>
+    </mat-form-field>
+    <mat-form-field class="filter-section__input">
+      <mat-label>Error Code</mat-label>
+      <input
+        matInput 
+        [formControl]="filter.error_code"
+        (keyup)="applyFilter($event)" 
+        placeholder="Error Code" 
+        #input>
+    </mat-form-field>
+    <mat-form-field class="filter-section__input">
+      <mat-label>VPU Position</mat-label>
+      <select 
+        matNativeControl 
+        [formControl]="filter.vpu_position"
+        (keyup)="applyFilter($event)">
+        <option value=""></option>
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+    </mat-form-field>
+  </div>
+
+  <div class="filter-section__search">
+    <button mat-fab matInput
+      class="filter-section__search"
+      aria-label="search"
+      (click)="resetResubmit($event)">
+      <mat-icon>search</mat-icon>
+    </button>
+  </div>
+
+</section>
+
+
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+<section class="table-area">
+  <table class="tickets_table" mat-table [dataSource]="ticketsList">
+    <ng-container matColumnDef="rule_id">
+      <th mat-header-cell *matHeaderCellDef>Id </th>
+      <td mat-cell *matCellDef="let col"> {{col.rule_id | date:'medium'}} </td>
+      </ng-container>
+    <ng-container matColumnDef="time">
+      <th mat-header-cell *matHeaderCellDef>Time </th>
+      <td mat-cell *matCellDef="let col"> {{col.time | date:'medium'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="vehicle_name">
+      <th mat-header-cell *matHeaderCellDef>Vehicle </th>
+      <td mat-cell *matCellDef="let col"> {{col.vehicle_name}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="error_message">
+        <th mat-header-cell *matHeaderCellDef>Error Message </th>
+        <td mat-cell *matCellDef="let col"> {{col.error_message}} </td>
+        </ng-container>
+  
+      <ng-container matColumnDef="error_code">
+        <th mat-header-cell *matHeaderCellDef>Error Code </th>
+        <td mat-cell *matCellDef="let col"> {{col.error_code}} </td>
+        </ng-container>
+
+      
+      <ng-container matColumnDef="vpu_position">
+        <th mat-header-cell *matHeaderCellDef>VPU </th>
+        <td mat-cell *matCellDef="let col"> {{col.vpu_position}} </td>
+        </ng-container>
+    
+  
+      <tr mat-header-row *matHeaderRowDef="columns"></tr>
+      <tr 
+        mat-row  
+        class="mat-row" 
+        *matRowDef="let row; columns: columns;"
+        (click)="rowClick(row)"
+      ></tr>
+  
+      <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data found</td>
+      </tr>
+  </table>
+</section>
+<mat-divider></mat-divider>
+<section class="footer">
+  <div class="pagination-row">
+    <div class="pagination-container">
+      <div class="pagination-button-container">
+        <mat-form-field>
+          <mat-label>Page Size</mat-label>
+          <select 
+            matNativeControl 
+            [formControl]="currentPageSize"
+            (change)="resetResubmit($event)">
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+          </select>
+        </mat-form-field>
+      </div>
+      <div class="pagination-button-container">
+        <button mat-fab color="primary" 
+          aria-label="previous" 
+          (click)="paginationHandler('previous')"
+          [disabled]="currentOffset === 1">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </div>
+      <div class="pagination-button-container">
+        <button mat-fab color="primary" 
+          [disabled]="!pageInfo.hasNextPage"
+          aria-label="next"
+          (click)="paginationHandler('next')">
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

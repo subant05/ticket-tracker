@@ -61,6 +61,8 @@ import { CreateRuleModalComponent } from './components/create-rule-modal/create-
 import {MatSelectModule} from '@angular/material/select';
 import { EditRulesComponent } from './components/edit-rules/edit-rules/edit-rules.component';
 import { DeleteRulesComponent } from './components/delete-rules/delete-rules/delete-rules.component';
+import { TicketsComponent } from './pages/dashboard/tabs/tickets/tickets.component';
+import { BagMonitoringComponent } from './pages/dashboard/tabs/bag-monitoring/bag-monitoring.component';
 
 const errorLink = onError(({ graphQLErrors, networkError, response }) => {
 	// React only on graphql errors
@@ -132,6 +134,8 @@ function createDefaultApollo(httpLink: HttpLink): ApolloClientOptions<any> {
     CreateRuleModalComponent,
     EditRulesComponent,
     DeleteRulesComponent,
+    TicketsComponent,
+    BagMonitoringComponent,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

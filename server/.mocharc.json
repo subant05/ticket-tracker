@@ -8,7 +8,8 @@
   "slow": "75",
   "ui": "bdd",
   "spec": [
-    "./api-routes/tickets/athena/_utils/_tests_/*.test.js"
-  ,"./api-routes/tickets/expert-connect/_utils/_tests_/*.test.js"],
+    "./api-routes/tickets/athena/_utils/_tests_/*.test.js",
+    "./api-routes/tickets/expert-connect/_utils/_tests_/*.test.js"
+  ],
   "ignore": ["./node_modules/**"]
 }

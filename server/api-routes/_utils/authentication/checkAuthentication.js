@@ -97,6 +97,7 @@ export const formantConnect = async (req, res, next) => {
 };
 
 export const webClientConnect = async (req, res, next) => {
+  console.log(req, res, next);
   if (req.headers.authorization !== `Bearer ${process.env.WEB_CLIENT_TOKEN}`) {
     res.status(401);
     res.send(`401 Unauthorized`);
