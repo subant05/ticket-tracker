@@ -102,17 +102,17 @@ export class BagMonitoringComponent implements OnInit, OnDestroy{
   }
 
   rowClick(row:any){
-    const dialogRef = this.dialog.open(TicketDetailsComponent, {
-      width: "80%",
-      height: "625px",
-      enterAnimationDuration:"200ms",
-      exitAnimationDuration:"200ms",
-      data: row
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-    this.onClick.emit(row.vehicle_id || row.id)
+    // const dialogRef = this.dialog.open(TicketDetailsComponent, {
+    //   width: "80%",
+    //   height: "625px",
+    //   enterAnimationDuration:"200ms",
+    //   exitAnimationDuration:"200ms",
+    //   data: row
+    // });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(`Dialog result: ${result}`);
+    // });
+    // this.onClick.emit(row.vehicle_id || row.id)
   }
 
   paginationHandler(arg:string){
