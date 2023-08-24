@@ -155,3 +155,31 @@ export const sqlSelectRuleTicketAssocStreamFormatting = async (data) => {
     return formatting;
   }
 };
+
+export const sqlSelectRuleCombineProperties = async (data) => {
+  let formatting = { rows: [] };
+
+  try {
+    formatting = await client.query(
+      `
+      SELECT 
+        rules.formant_combine_properties.properties as combine_property_names,
+        rules.formant_combine_properties.property_deliminator as combine_property_deliminator,
+        rules.formant_combine_properties.value_deliminator as combine_value_deliminator
+      FROM rules.formant
+      LEFT outer join rules.formant_combine_properties ON rules.formant_combine_properties.rule_id = rules.formant.id
+      WHERE rules.formant.id = $1 
+      OR (
+        rules.formant.stream_name = $2
+        AND rules.formant.stream_type = $3
+      )
+    `,
+      [data.rule_id ? data.rule_id : 0, data.stream_name, data.stream_type]
+    );
+  } catch (e) {
+    console.log("SELECT COMBINED PROPERTIES RULE ERROR", e.message);
+    console.log("SELECT COMBINED PROPERTIES RULE ERROR", e.stack);
+  } finally {
+    return formatting;
+  }
+};

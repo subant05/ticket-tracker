@@ -5,6 +5,10 @@ import { req } from "./_config.js";
 
 describe("parseRequestBody", () => {
   let parsedBody = {};
+  const message =
+    process.env.NODE_ENV === "development"
+      ? "#### IGNORE THIS DEMOTION ####"
+      : "Demotion";
 
   before(function () {
     parsedBody = parseRequestBody(req);
@@ -46,20 +50,20 @@ describe("parseRequestBody", () => {
     expect(JSON.stringify(parseRequestBody(req).value)).to.equal(
       JSON.stringify(req.body)
     );
-    expect(parseRequestBody(req).message).to.equal("Demotion");
+    expect(parseRequestBody(req).message).to.equal(message);
     expect(JSON.stringify(parseRequestBody(req).latestDatapoint)).to.equal(
       JSON.stringify(req.body)
     );
     expect(JSON.stringify(parseRequestBody(req).valueJson)).to.equal(
       JSON.stringify([
-        "Demotion",
+        message,
         `${req.body.system}_${req.body.machine_id}`,
         req.body,
       ])
     );
     expect(JSON.stringify(parseRequestBody(req).messageJson)).to.equal(
       JSON.stringify([
-        "Demotion",
+        message,
         `${req.body.system}_${req.body.machine_id}`,
         req.body,
       ])

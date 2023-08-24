@@ -163,3 +163,21 @@ The key of formant_associated_stream_formatting assigned by the database';
 COMMENT ON COLUMN rules.formant_associated_stream_formatting.value IS '@omit create,update
 The value of formant_associated_stream_formatting assigned by the database';
 
+CREATE TABLE IF NOT EXISTS rules.formant_combine_properties (
+  id BIGSERIAL,
+  rule_id BIGINT NOT NULL,
+  properties VARCHAR(255) NOT NULL,
+  property_deliminator VARCHAR(255) NOT NULL DEFAULT ',',
+  value_deliminator VARCHAR(255) NOT NULL DEFAULT ',',
+  PRIMARY KEY (id),
+  CONSTRAINT fk_formant_rule_id
+    FOREIGN KEY (rule_id)
+    REFERENCES rules.formant (id) ON DELETE CASCADE
+);
+
+CREATE INDEX IF NOT EXISTS idx_rules_formant_combine_properties_id ON rules.formant_combine_properties(id);
+CREATE INDEX IF NOT EXISTS idx_rules_formant_combine_properties_rule_id ON rules.formant_combine_properties(rule_id);
+
+COMMENT ON TABLE "rules"."formant_combine_properties" IS E'@name formant_combine_properties';
+COMMENT ON TABLE rules.formant_combine_properties IS '@omit delete
+This id the formant_combine_properties table, which is related combining properties into 1';

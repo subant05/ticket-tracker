@@ -29,13 +29,17 @@ export const sqlSelectRulesByStreamName = async (data) => {
         rules.formant_associated_stream_conditions.operator as associated_stream_operator,
         rules.formant_associated_stream_conditions.value as associated_stream_value,
         rules.formant_associated_stream_formatting.key as associated_stream_formatting_value,
-        rules.formant_associated_stream_formatting.value as associated_stream_formatting_key
+        rules.formant_associated_stream_formatting.value as associated_stream_formatting_key,
+        rules.formant_combine_properties.properties as combine_property_names,
+        rules.formant_combine_properties.property_deliminator as combine_property_deliminator,
+        rules.formant_combine_properties.value_deliminator as combine_value_deliminator
       from rules.formant
       left outer join rules.formant_conditions ON rules.formant_conditions.rule_id = rules.formant.id
       left outer join rules.formant_formatting ON rules.formant_formatting.rule_id = rules.formant.id
       left outer join rules.formant_associated_streams ON rules.formant_associated_streams.rule_id = rules.formant.id
       left outer join rules.formant_associated_stream_conditions ON rules.formant_associated_stream_conditions.assoc_id = rules.formant_associated_streams.id
       left outer join rules.formant_associated_stream_formatting ON rules.formant_associated_stream_formatting.associated_stream_id = rules.formant_associated_streams.id
+      left outer join rules.formant_combine_properties ON rules.formant_combine_properties.rule_id = rules.formant.id
       where rules.formant.stream_name ILIKE '%${stream_name.trim()}%'
     `,
       []

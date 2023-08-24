@@ -47,6 +47,14 @@ export function checkCondition(rule, datapoint) {
         datapoint.value <= greaterThanAndLessThanRange[1]
       );
       break;
+    case "||":
+      const orList = ruleValue.split(",");
+      const isFound = orList.find(
+        (value) => value.trim().toString() === datapoint.value.toString()
+      );
+
+      return typeof isFound !== "undefined";
+      break;
     case "!=":
       return ruleValue != datapoint.value;
       break;

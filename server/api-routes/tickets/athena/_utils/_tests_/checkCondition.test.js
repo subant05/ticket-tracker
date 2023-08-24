@@ -309,4 +309,49 @@ describe("checkCondition", () => {
     );
     expect(evalation).to.be.true;
   });
+
+  it("should evaluate (||) to true", () => {
+    const evalation = checkCondition(
+      {
+        condition: "apple",
+        operator: "||",
+        value: "10, 4, 12, 34, 22",
+      },
+      {
+        label: "apple",
+        value: "10",
+      }
+    );
+    expect(evalation).to.be.true;
+  });
+
+  it("should evaluate (||) to true", () => {
+    const evalation = checkCondition(
+      {
+        condition: "apple",
+        operator: "||",
+        value: "10, 4, 12, 34, 22",
+      },
+      {
+        label: "apple",
+        value: "34",
+      }
+    );
+    expect(evalation).to.be.true;
+  });
+
+  it("should evaluate (||) to false", () => {
+    const evalation = checkCondition(
+      {
+        condition: "apple",
+        operator: "||",
+        value: "10, 4, 12, 34, 22",
+      },
+      {
+        label: "apple",
+        value: "5",
+      }
+    );
+    expect(evalation).to.be.false;
+  });
 });

@@ -382,41 +382,44 @@ function CreateRuleModalComponent_div_29_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](15, "<=");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](16, "mat-option", 24);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](17, "<=||>=");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](17, "||");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](18, "mat-option", 25);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](19, ">=||<=");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](19, "<=||>=");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](20, "mat-option", 26);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](21, "<=&&>=");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](21, ">=||<=");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](22, "mat-option", 27);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](23, ">=&&<=");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](23, "<=&&>=");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](24, "mat-option", 28);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](25, "!=");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](25, ">=&&<=");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](26, "mat-option", 29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](27, "!==");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](27, "!=");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](28, "mat-option", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](29, "!");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](29, "!==");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](30, "mat-option", 31);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](31, "!!");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](32, "mat-form-field");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](33, "input", 32);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](31, "!");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](34, "button", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function CreateRuleModalComponent_div_29_Template_button_click_34_listener() {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](32, "mat-option", 32);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](33, "!!");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](34, "mat-form-field");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](35, "input", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](36, "button", 34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function CreateRuleModalComponent_div_29_Template_button_click_36_listener() {
       const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r5);
       const i_r3 = restoredCtx.index;
       const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
       return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵresetView"](ctx_r4.deleteCondition(i_r3));
     });
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](35, "mat-icon");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](36, "delete");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](37, "mat-icon");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](38, "delete");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()()();
   }
   if (rf & 2) {
@@ -425,7 +428,7 @@ function CreateRuleModalComponent_div_29_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControl", ruleCond_r2.condition);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControl", ruleCond_r2.operator);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](30);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControl", ruleCond_r2.value);
   }
 }
@@ -513,7 +516,7 @@ CreateRuleModalComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MO
   selectors: [["app-create-rule-modal"]],
   decls: 38,
   vars: 5,
-  consts: [[1, "wrapper"], ["selected", "", 3, "color", 4, "ngIf"], ["mat-icon-button", "", 1, "close-button", 3, "mat-dialog-close"], [3, "submit"], [1, "content"], ["matInput", "", "required", "", 3, "formControl"], ["required", "", 3, "formControl"], ["value", ""], ["value", "numeric set"], ["value", "json"], ["class", "conditions", 4, "ngFor", "ngForOf"], [1, "filter-add-rule"], ["mat-fab", "", "matInput", "", "color", "primary", "aria-label", "add rule", 1, "filter-add_rule", 3, "click"], [1, "footer"], ["mat-raised-button", "", "matInput", "", "type", "submit", "color", "primary", "aria-label", "submit rule", 1, "filter-submitrule"], ["selected", "", 3, "color"], [1, "conditions"], ["matInput", "", "placeholder", "condition", "required", "", 3, "formControl"], ["placeholder", "operator", "required", "", 3, "formControl"], ["value", "="], ["value", ">"], ["value", "<"], ["value", ">="], ["value", "<="], ["value", "<=||>="], ["value", ">=||<="], ["value", "<=&&>="], ["value", ">=&&<="], ["value", "!="], ["value", "!=="], ["value", "!"], ["value", "!!"], ["matInput", "", "placeholder", "value", "required", "", 3, "formControl"], ["mat-fab", "", "matInput", "", "color", "warn", "aria-label", "delete condition", 1, "filter-add_rule", 3, "click"]],
+  consts: [[1, "wrapper"], ["selected", "", 3, "color", 4, "ngIf"], ["mat-icon-button", "", 1, "close-button", 3, "mat-dialog-close"], [3, "submit"], [1, "content"], ["matInput", "", "required", "", 3, "formControl"], ["required", "", 3, "formControl"], ["value", ""], ["value", "numeric set"], ["value", "json"], ["class", "conditions", 4, "ngFor", "ngForOf"], [1, "filter-add-rule"], ["mat-fab", "", "matInput", "", "color", "primary", "aria-label", "add rule", 1, "filter-add_rule", 3, "click"], [1, "footer"], ["mat-raised-button", "", "matInput", "", "type", "submit", "color", "primary", "aria-label", "submit rule", 1, "filter-submitrule"], ["selected", "", 3, "color"], [1, "conditions"], ["matInput", "", "placeholder", "condition", "required", "", 3, "formControl"], ["placeholder", "operator", "required", "", 3, "formControl"], ["value", "="], ["value", ">"], ["value", "<"], ["value", ">="], ["value", "<="], ["value", "||"], ["value", "<=||>="], ["value", ">=||<="], ["value", "<=&&>="], ["value", ">=&&<="], ["value", "!="], ["value", "!=="], ["value", "!"], ["value", "!!"], ["matInput", "", "placeholder", "value", "required", "", 3, "formControl"], ["mat-fab", "", "matInput", "", "color", "warn", "aria-label", "delete condition", 1, "filter-add_rule", 3, "click"]],
   template: function CreateRuleModalComponent_Template(rf, ctx) {
     if (rf & 1) {
       _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0)(1, "header")(2, "h4");
@@ -551,7 +554,7 @@ CreateRuleModalComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MO
       _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](27, "h3");
       _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](28, "Conditions");
       _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](29, CreateRuleModalComponent_div_29_Template, 37, 3, "div", 10);
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](29, CreateRuleModalComponent_div_29_Template, 39, 3, "div", 10);
       _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](30, "div")(31, "div", 11)(32, "button", 12);
       _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function CreateRuleModalComponent_Template_button_click_32_listener() {
         return ctx.addNewCondition();
@@ -741,41 +744,44 @@ function EditRulesComponent_div_29_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](15, "<=");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](16, "mat-option", 24);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](17, "<=||>=");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](17, "||");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](18, "mat-option", 25);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](19, ">=||<=");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](19, "<=||>=");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](20, "mat-option", 26);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](21, "<=&&>=");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](21, ">=||<=");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](22, "mat-option", 27);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](23, ">=&&<=");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](23, "<=&&>=");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](24, "mat-option", 28);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](25, "!=");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](25, ">=&&<=");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](26, "mat-option", 29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](27, "!==");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](27, "!=");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](28, "mat-option", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](29, "!");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](29, "!==");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](30, "mat-option", 31);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](31, "!!");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()()();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](32, "mat-form-field");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](33, "input", 32);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](31, "!");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](34, "button", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function EditRulesComponent_div_29_Template_button_click_34_listener() {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](32, "mat-option", 32);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](33, "!!");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()()();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](34, "mat-form-field");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](35, "input", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](36, "button", 34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function EditRulesComponent_div_29_Template_button_click_36_listener() {
       const restoredCtx = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r5);
       const i_r3 = restoredCtx.index;
       const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
       return _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵresetView"](ctx_r4.deleteCondition(i_r3));
     });
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](35, "mat-icon");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](36, "delete");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](37, "mat-icon");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](38, "delete");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]()()();
   }
   if (rf & 2) {
@@ -784,7 +790,7 @@ function EditRulesComponent_div_29_Template(rf, ctx) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControl", ruleCond_r2.condition);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControl", ruleCond_r2.operator);
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](30);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formControl", ruleCond_r2.value);
   }
 }
@@ -883,7 +889,7 @@ EditRulesComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1
   selectors: [["app-edit-rules"]],
   decls: 38,
   vars: 5,
-  consts: [[1, "wrapper"], ["selected", "", 3, "color", 4, "ngIf"], ["mat-icon-button", "", 1, "close-button", 3, "mat-dialog-close"], [3, "submit"], [1, "content"], ["matInput", "", "required", "", 3, "formControl"], ["required", "", 3, "formControl"], ["value", ""], ["value", "numeric set"], ["value", "json"], ["class", "conditions", 4, "ngFor", "ngForOf"], [1, "filter-add-rule"], ["mat-fab", "", "matInput", "", "color", "primary", "aria-label", "add rule", 1, "filter-add_rule", 3, "click"], [1, "footer"], ["mat-raised-button", "", "matInput", "", "type", "submit", "color", "primary", "aria-label", "submit rule", 1, "filter-submitrule"], ["selected", "", 3, "color"], [1, "conditions"], ["matInput", "", "placeholder", "condition", "required", "", 3, "formControl"], ["placeholder", "operator", "required", "", 3, "formControl"], ["value", "="], ["value", ">"], ["value", "<"], ["value", ">="], ["value", "<="], ["value", "<=||>="], ["value", ">=||<="], ["value", "<=&&>="], ["value", ">=&&<="], ["value", "!="], ["value", "!=="], ["value", "!"], ["value", "!!"], ["matInput", "", "placeholder", "value", "required", "", 3, "formControl"], ["mat-fab", "", "matInput", "", "color", "warn", "aria-label", "delete condition", 1, "filter-add_rule", 3, "click"]],
+  consts: [[1, "wrapper"], ["selected", "", 3, "color", 4, "ngIf"], ["mat-icon-button", "", 1, "close-button", 3, "mat-dialog-close"], [3, "submit"], [1, "content"], ["matInput", "", "required", "", 3, "formControl"], ["required", "", 3, "formControl"], ["value", ""], ["value", "numeric set"], ["value", "json"], ["class", "conditions", 4, "ngFor", "ngForOf"], [1, "filter-add-rule"], ["mat-fab", "", "matInput", "", "color", "primary", "aria-label", "add rule", 1, "filter-add_rule", 3, "click"], [1, "footer"], ["mat-raised-button", "", "matInput", "", "type", "submit", "color", "primary", "aria-label", "submit rule", 1, "filter-submitrule"], ["selected", "", 3, "color"], [1, "conditions"], ["matInput", "", "placeholder", "condition", "required", "", 3, "formControl"], ["placeholder", "operator", "required", "", 3, "formControl"], ["value", "="], ["value", ">"], ["value", "<"], ["value", ">="], ["value", "<="], ["value", "||"], ["value", "<=||>="], ["value", ">=||<="], ["value", "<=&&>="], ["value", ">=&&<="], ["value", "!="], ["value", "!=="], ["value", "!"], ["value", "!!"], ["matInput", "", "placeholder", "value", "required", "", 3, "formControl"], ["mat-fab", "", "matInput", "", "color", "warn", "aria-label", "delete condition", 1, "filter-add_rule", 3, "click"]],
   template: function EditRulesComponent_Template(rf, ctx) {
     if (rf & 1) {
       _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0)(1, "header")(2, "h4");
@@ -921,7 +927,7 @@ EditRulesComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_1
       _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](27, "h3");
       _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](28, "Conditions");
       _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
-      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](29, EditRulesComponent_div_29_Template, 37, 3, "div", 10);
+      _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](29, EditRulesComponent_div_29_Template, 39, 3, "div", 10);
       _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](30, "div")(31, "div", 11)(32, "button", 12);
       _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function EditRulesComponent_Template_button_click_32_listener() {
         return ctx.addNewCondition();
