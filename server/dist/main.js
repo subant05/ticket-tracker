@@ -2066,7 +2066,7 @@ class BagMonitoringComponent {
     this.trackedVehicles = [];
     // Public
     this.isLoading = true;
-    this.currentOffset = 0;
+    this.currentOffset = 1;
     this.ticketsList = new _angular_material_table__WEBPACK_IMPORTED_MODULE_3__.MatTableDataSource([]);
     this.currentPageSize = new _angular_forms__WEBPACK_IMPORTED_MODULE_4__.FormControl("10");
     this.filter = {
@@ -2086,7 +2086,7 @@ class BagMonitoringComponent {
   }
   requestTickets() {
     this.isLoading = true;
-    this.currentOffset = 0;
+    this.currentOffset = 1;
     this.ticketService.getBagMonitoringTickets({
       offset: this.currentOffset,
       limit: parseInt(this.currentPageSize.value),
@@ -2145,7 +2145,7 @@ class BagMonitoringComponent {
   }
   resetResubmit(e) {
     console.log(e);
-    this.currentOffset = 0;
+    this.currentOffset = 1;
     this.requestTickets();
   }
 }
@@ -2297,7 +2297,7 @@ BagMonitoringComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODU
       _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](10);
       _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("formControl", ctx.currentPageSize);
       _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](8);
-      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("disabled", ctx.currentOffset === 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("disabled", ctx.currentOffset === 1);
       _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
       _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("disabled", !ctx.pageInfo.hasNextPage);
     }
@@ -2555,7 +2555,7 @@ class TicketsComponent {
   }
   resetResubmit(e) {
     console.log(e);
-    this.currentOffset = 0;
+    this.currentOffset = 1;
     this.requestTickets();
   }
 }
@@ -2661,7 +2661,7 @@ TicketsComponent.ɵcmp = /*@__PURE__*/_angular_core__WEBPACK_IMPORTED_MODULE_3__
       _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](10);
       _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("formControl", ctx.currentPageSize);
       _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](8);
-      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("disabled", ctx.currentOffset === 0);
+      _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("disabled", ctx.currentOffset === 1);
       _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](4);
       _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵproperty"]("disabled", !ctx.pageInfo.hasNextPage);
     }
