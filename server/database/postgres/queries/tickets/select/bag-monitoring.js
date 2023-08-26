@@ -25,7 +25,7 @@ export const sqlSelectAllBagMonitoringTickets = async (data) => {
     tickets = await client.query(
       `
       SELECT 
-        (select count(*) from tickets.tickets_view ) as total,
+        (select count(*) from tickets.bag_monitoring) as total,
         id,
         error_message,
         error_code,
