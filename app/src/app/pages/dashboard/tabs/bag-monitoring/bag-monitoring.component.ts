@@ -20,7 +20,7 @@ export class BagMonitoringComponent implements OnInit, OnDestroy{
     
   // Public
   isLoading:boolean = true
-  currentOffset:number = 1
+  currentOffset:number = 0
   ticketsList = new MatTableDataSource([]);
   ticketsQuery: Subscription | undefined
   currentPageSize: any = new FormControl("10")
@@ -61,7 +61,7 @@ export class BagMonitoringComponent implements OnInit, OnDestroy{
 
   private requestTickets (){
     this.isLoading = true
-    this.currentOffset = 1
+    this.currentOffset = 0
     this.ticketService.getBagMonitoringTickets ({
       offset:this.currentOffset,
       limit:parseInt(this.currentPageSize.value),
@@ -131,7 +131,7 @@ export class BagMonitoringComponent implements OnInit, OnDestroy{
 
   resetResubmit(e: Event){
     console.log(e)
-    this.currentOffset = 1
+    this.currentOffset = 0
     this.requestTickets()
   }
 }
