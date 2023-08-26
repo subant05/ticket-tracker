@@ -2086,7 +2086,7 @@ class BagMonitoringComponent {
   }
   requestTickets() {
     this.isLoading = true;
-    this.currentOffset = 0;
+    this.currentOffset = 1;
     this.ticketService.getBagMonitoringTickets({
       offset: this.currentOffset,
       limit: parseInt(this.currentPageSize.value),
@@ -2095,6 +2095,7 @@ class BagMonitoringComponent {
       error_code: this.filter.error_code.value,
       vpu_position: this.filter.vpu_position.value
     }).subscribe(response => {
+      console.log(response.tickets.pageInfo);
       this.trackedVehicles = response.tickets.rows;
       console.log(response);
       this.ticketsList = new _angular_material_table__WEBPACK_IMPORTED_MODULE_3__.MatTableDataSource(this.trackedVehicles);
@@ -2483,7 +2484,7 @@ class TicketsComponent {
     this.trackedVehicles = [];
     // Public
     this.isLoading = true;
-    this.currentOffset = 0;
+    this.currentOffset = 1;
     this.ticketsList = new _angular_material_table__WEBPACK_IMPORTED_MODULE_4__.MatTableDataSource([]);
     this.currentPageSize = new _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormControl("10");
     this.filter = {

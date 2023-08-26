@@ -20,7 +20,7 @@ export class TicketsComponent implements OnInit, OnDestroy{
     
   // Public
   isLoading:boolean = true
-  currentOffset:number = 0
+  currentOffset:number = 1
   ticketsList = new MatTableDataSource([]);
   ticketsQuery: Subscription | undefined
   currentPageSize: any = new FormControl("10")
