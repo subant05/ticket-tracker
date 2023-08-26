@@ -25,7 +25,7 @@ export const sqlSelectAllBagMonitoringTickets = async (data) => {
     tickets = await client.query(
       `
       SELECT 
-        id as rule_id,
+        id,
         error_message,
         error_code,
         vpu_position,

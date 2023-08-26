@@ -59,7 +59,7 @@
   <table class="tickets_table" mat-table [dataSource]="ticketsList">
     <ng-container matColumnDef="rule_id">
       <th mat-header-cell *matHeaderCellDef>Id </th>
-      <td mat-cell *matCellDef="let col"> {{col.rule_id | date:'medium'}} </td>
+      <td mat-cell *matCellDef="let col"> {{col.id }} </td>
       </ng-container>
     <ng-container matColumnDef="time">
       <th mat-header-cell *matHeaderCellDef>Time </th>
