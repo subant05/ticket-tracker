@@ -2144,7 +2144,7 @@ class BagMonitoringComponent {
   }
   resetResubmit(e) {
     console.log(e);
-    this.currentOffset = 1;
+    this.currentOffset = 0;
     this.requestTickets();
   }
 }

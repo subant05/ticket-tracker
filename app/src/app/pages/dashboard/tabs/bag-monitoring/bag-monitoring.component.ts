@@ -130,7 +130,7 @@ export class BagMonitoringComponent implements OnInit, OnDestroy{
 
   resetResubmit(e: Event){
     console.log(e)
-    this.currentOffset = 1
+    this.currentOffset = 0
     this.requestTickets()
   }
 }
