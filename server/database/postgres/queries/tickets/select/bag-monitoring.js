@@ -34,10 +34,12 @@ export const sqlSelectAllBagMonitoringTickets = async (data) => {
         vehicle_name
       FROM tickets.bag_monitoring 
       WHERE 1=1
-      ${device_name ? " AND vehicle_name LIKE" + "'" + device_name + "%'" : ""} 
+      ${
+        device_name ? " AND vehicle_name LIKE" + "'%" + device_name + "%'" : ""
+      } 
       ${
         error_message
-          ? " AND error_message LIKE" + "'" + error_message + "%'"
+          ? " AND error_message LIKE" + "'%" + error_message + "%'"
           : ""
       } 
       ${error_code ? " AND error_code =" + error_code : ""} 
