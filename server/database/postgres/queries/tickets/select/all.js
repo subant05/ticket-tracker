@@ -36,10 +36,9 @@ export const sqlSelectAssociatedTickets = async (data) => {
     }),
       (tickets.pageInfo.hasPreviousPage =
         parseInt(offset) === 1 ? false : true);
+    console.log(limit, offset, total);
     tickets.pageInfo.hasNextPage =
-      limit * offset < total && tickets.rows.length === parseInt(limit)
-        ? true
-        : false;
+      total - offset < limit || !tickets.rows.length ? false : true;
     console.log(tickets.pageInfo.hasPreviousPage);
   } catch (e) {
     console.log("FORMANT SELECT TICKETS ERROR", e.message);

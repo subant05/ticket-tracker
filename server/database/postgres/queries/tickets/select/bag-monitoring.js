@@ -61,9 +61,8 @@ export const sqlSelectAllBagMonitoringTickets = async (data) => {
       (tickets.pageInfo.hasPreviousPage =
         parseInt(offset) === 1 ? false : true);
     tickets.pageInfo.hasNextPage =
-      limit * offset < total && tickets.rows.length === parseInt(limit)
-        ? true
-        : false;
+      total - offset < limit || !tickets.rows.length ? false : true;
+
     console.log(tickets.pageInfo.hasPreviousPage);
   } catch (e) {
     console.log("BAG MONITORING SELECT TICKETS ERROR", e.message);
