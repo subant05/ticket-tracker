@@ -133,4 +133,13 @@ export class BagMonitoringComponent implements OnInit, OnDestroy{
     this.currentOffset = 0
     this.requestTickets()
   }
+
+  resetReset(e: Event){
+    this.currentOffset = 0
+    this.filter.device_name.reset()
+    this.filter.error_code.reset()
+    this.filter.error_message.reset()
+    this.filter.vpu_position.reset()
+    this.requestTickets()
+  }
 }

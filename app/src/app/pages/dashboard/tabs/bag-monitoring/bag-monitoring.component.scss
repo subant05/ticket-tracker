@@ -19,7 +19,16 @@
     }
   }
 
+  .filter-section__reset {
+    position: absolute;
+    right: 70px;
 
+    .mat-mdc-fab{
+      &.mat-accent{
+        background-color: yellow;
+      }
+    }
+  }
   .filter-section__search {
     position: absolute;
     right: 30px;

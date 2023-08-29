@@ -35,15 +35,25 @@ export const sqlSelectAllBagMonitoringTickets = async (data) => {
       FROM tickets.bag_monitoring 
       WHERE 1=1
       ${
-        device_name ? " AND vehicle_name LIKE" + "'%" + device_name + "%'" : ""
+        device_name && device_name !== "null"
+          ? " AND vehicle_name LIKE" + "'%" + device_name + "%'"
+          : ""
       } 
       ${
-        error_message
+        error_message && error_message !== "null"
           ? " AND error_message LIKE" + "'%" + error_message + "%'"
           : ""
       } 
-      ${error_code ? " AND error_code =" + error_code : ""} 
-      ${vpu_position ? " AND vpu_position =" + vpu_position : ""} 
+      ${
+        error_code && error_code !== "null"
+          ? " AND error_code =" + error_code
+          : ""
+      } 
+      ${
+        vpu_position && vpu_position !== "null"
+          ? " AND vpu_position =" + vpu_position
+          : ""
+      } 
       ORDER BY time DESC
       OFFSET $1
       LIMIT $2
