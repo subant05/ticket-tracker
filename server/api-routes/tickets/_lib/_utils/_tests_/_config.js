@@ -1,0 +1,19 @@
+export const req = {
+  body: {
+    timestamp: "2023-06-09T12:06:36.861645+00:00",
+    from_state: 3,
+    to_state: 1,
+    error_code: 18,
+    supplemental_error_code: 1,
+    halt_error_code: 0,
+    halt_supplemental_error_code: 0,
+    program: "jupiter",
+    system: "loamy",
+    machine_id: "83",
+    vpu_software_version: "",
+    latitude: 42.4723137,
+    longitude: -92.4415184,
+    bearing: 345.7734375,
+    digital_field_id: 0,
+  },
+};
