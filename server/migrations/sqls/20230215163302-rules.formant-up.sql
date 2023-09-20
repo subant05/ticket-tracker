@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS rules.formant_conditions (
     condition VARCHAR(255) NOT NULL,
     operator VARCHAR(10) NOT NULL,
     value VARCHAR(255) NOT NULL,
+    ticket_type TEXT,
     PRIMARY KEY(id),
     CONSTRAINT fk_formant_rule_id
       FOREIGN KEY (rule_id)

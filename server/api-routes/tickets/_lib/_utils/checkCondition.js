@@ -1,51 +1,48 @@
-export function checkCondition(rule, datapoint) {
+export function checkCondition(rule, datapoint, skip = []) {
   if (rule.condition !== datapoint.label) return false;
 
   const ruleValue = !isNaN(rule.value) ? parseInt(rule.value) : rule.value;
+  let isValid = false;
 
   switch (rule.operator) {
     case "=":
-      return ruleValue === datapoint.value;
+      isValid = ruleValue === datapoint.value;
       break;
     case ">":
-      return datapoint.value > ruleValue;
+      isValid = datapoint.value > ruleValue;
       break;
     case "<":
-      return datapoint.value < ruleValue;
+      isValid = datapoint.value < ruleValue;
       break;
     case ">=":
-      return datapoint.value >= ruleValue;
+      isValid = datapoint.value >= ruleValue;
       break;
     case "<=":
-      return datapoint.value <= ruleValue;
+      isValid = datapoint.value <= ruleValue;
       break;
     case "<=||>=":
       const lessThanOrGreaterThanRange = ruleValue.split(",");
-      return (
+      isValid =
         datapoint.value <= lessThanOrGreaterThanRange[0] ||
-        datapoint.value >= lessThanOrGreaterThanRange[1]
-      );
+        datapoint.value >= lessThanOrGreaterThanRange[1];
       break;
     case ">=||<=":
       const greaterThanOrLessThanRange = ruleValue.split(",");
-      return (
+      isValid =
         datapoint.value >= greaterThanOrLessThanRange[0] ||
-        datapoint.value <= greaterThanOrLessThanRange[1]
-      );
+        datapoint.value <= greaterThanOrLessThanRange[1];
       break;
     case "<=&&>=":
       const lessThanAndGreaterThanRange = ruleValue.split(",");
-      return (
+      isValid =
         datapoint.value <= lessThanAndGreaterThanRange[0] &&
-        datapoint.value >= lessThanAndGreaterThanRange[1]
-      );
+        datapoint.value >= lessThanAndGreaterThanRange[1];
       break;
     case ">=&&<=":
       const greaterThanAndLessThanRange = ruleValue.split(",");
-      return (
+      isValid =
         datapoint.value >= greaterThanAndLessThanRange[0] &&
-        datapoint.value <= greaterThanAndLessThanRange[1]
-      );
+        datapoint.value <= greaterThanAndLessThanRange[1];
       break;
     case "||":
       const orList = ruleValue.split(",");
@@ -53,22 +50,46 @@ export function checkCondition(rule, datapoint) {
         (value) => value.trim().toString() === datapoint.value.toString()
       );
 
-      return typeof isFound !== "undefined";
+      isValid = typeof isFound !== "undefined";
       break;
     case "!=":
-      return ruleValue != datapoint.value;
+      isValid = ruleValue != datapoint.value;
       break;
     case "!==":
-      return ruleValue !== datapoint.value;
+      isValid = ruleValue !== datapoint.value;
       break;
     case "!":
-      return ruleValue === "false" && !datapoint.value;
+      isValid = ruleValue === "false" && !datapoint.value;
       break;
     case "!!":
-      return ruleValue === "true" && !!datapoint.value;
+      isValid = ruleValue === "true" && !!datapoint.value;
       break;
     default:
-      return false;
+      isValid = false;
       break;
   }
+
+  console.log(
+    "Is Found: ",
+    !isValid,
+    rule.condition === datapoint.label,
+    rule.ticket_type,
+    skip,
+    skip instanceof Array
+    // skip.indexOf(rule.ticket_type.replace(/_/gi, " ").toLowerCase()) === -1
+  );
+  if (
+    !isValid &&
+    rule.condition === datapoint.label &&
+    rule.ticket_type &&
+    skip &&
+    skip instanceof Array &&
+    skip.indexOf(rule.ticket_type.replace(/_/gi, " ").toLowerCase()) === -1
+  ) {
+    skip.push(rule.ticket_type.replace(/_/gi, " ").toLowerCase());
+
+    isValid = true;
+  }
+
+  return isValid;
 }

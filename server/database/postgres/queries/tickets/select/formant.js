@@ -11,7 +11,8 @@ export const sqlSelectRulesByStreanNameAndStreamType = async (data) => {
         rule.stream_name,
         rule_conditions.condition,
         rule_conditions.operator,
-        rule_conditions.value
+        rule_conditions.value,
+        rule_conditions.ticket_type
       FROM rules.formant as rule
       LEFT OUTER JOIN rules.formant_conditions AS rule_conditions ON rule_conditions.rule_id = rule.id
       WHERE rule.stream_name = $1 

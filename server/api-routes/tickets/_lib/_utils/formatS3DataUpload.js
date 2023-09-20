@@ -6,7 +6,10 @@ export const formantS3DataUpload = (data) => {
 
   try {
     const clonedData = _.cloneDeep(data);
-    const experConnect = clonedData.expertConnectTicket.data;
+    const experConnect =
+      clonedData.expertConnectTicket && clonedData.expertConnectTicket.data
+        ? clonedData.expertConnectTicket.data
+        : {};
 
     return {
       id: uuid(),

@@ -2,8 +2,8 @@
 CREATE TABLE IF NOT EXISTS tickets.connection (
   id BIGSERIAL,
   formant_id BIGINT NOT NULL,
-  jira_id BIGINT NOT NULL,
-  expert_connect_id BIGINT NOT NULL,
+  jira_id BIGINT,
+  expert_connect_id BIGINT,
   PRIMARY KEY(id),
   CONSTRAINT fk_formant
     FOREIGN KEY (formant_id)
