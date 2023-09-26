@@ -1,9 +1,9 @@
 /* Replace with your SQL commands */
 CREATE TABLE IF NOT EXISTS tickets.expert_connect (
       id BIGSERIAL,
-      vehicle_id BIGINT NOT NULL,
-      title varchar(255) NOT NULL,
-      description text NOT NULL,
+      vehicle_id BIGINT,
+      title varchar(255),
+      description text,
       product varchar(255),
       machine_hours varchar(255),
       serial_number varchar(255),
@@ -11,11 +11,11 @@ CREATE TABLE IF NOT EXISTS tickets.expert_connect (
       resolution text,
       advisor_id BIGINT,
       team_id BIGINT,
-      contact_id BIGINT NOT NULL,
+      contact_id BIGINT,
       bundle INT DEFAULT 0,
-      ec_id varchar(100) NOT NULL,
-      created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-      updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+      ec_id varchar(100),
+      created_at TIMESTAMPTZ DEFAULT NOW(),
+      updated_at TIMESTAMPTZ DEFAULT NOW(),
       PRIMARY KEY(id),
       CONSTRAINT fk_vehicle
         FOREIGN KEY (vehicle_id)
