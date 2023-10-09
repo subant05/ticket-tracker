@@ -34,45 +34,45 @@ app.use("/rules", (req, res) => res.sendFile("index.html", { root: "./dist" }));
 app.use("/", express.static(path.join(__dirname, "./dist")));
 app.use(express.static("./dist"));
 
-app.use(
-  postgraphile(
-    process.env.NODE_ENV === "development"
-      ? process.env.DEV_DATABASE_URL
-      : process.env.DATABASE_URL,
-    [
-      "tickets",
-      "rules",
-      "vehicles",
-      "tags",
-      "groups",
-      "personnel",
-      "organizations",
-    ],
-    {
-      appendPlugins: [
-        SchemaResolver,
-        PgSimplifyInflectorPlugin,
-        ConnectionFilterPlugin,
-        // , JupiterSubscriptionPlugin
-      ],
-      pluginHook,
-      ownerConnectionString:
-        process.env.NODE_ENV === "development"
-          ? process.env.DEV_DATABASE_URL
-          : process.env.DATABASE_URL + "?ssl=true",
-      watchPg: true,
-      enhanceGraphiql: true,
-      ignoreRBAC: false, // Role Based Access Control (RBAC)
-      extendedErrors: ["errcode", "detail", "hint"],
-      graphiql: true,
-      subscriptions: true,
-      simpleSubscriptions: true,
-      live: true,
-      retryOnInitFail: true,
-      rejectUnauthorized: false,
-    }
-  )
-);
+// app.use(
+//   postgraphile(
+//     process.env.NODE_ENV === "development"
+//       ? process.env.DEV_DATABASE_URL
+//       : process.env.DATABASE_URL,
+//     [
+//       "tickets",
+//       "rules",
+//       "vehicles",
+//       "tags",
+//       "groups",
+//       "personnel",
+//       "organizations",
+//     ],
+//     {
+//       appendPlugins: [
+//         SchemaResolver,
+//         PgSimplifyInflectorPlugin,
+//         ConnectionFilterPlugin,
+//         // , JupiterSubscriptionPlugin
+//       ],
+//       pluginHook,
+//       ownerConnectionString:
+//         process.env.NODE_ENV === "development"
+//           ? process.env.DEV_DATABASE_URL
+//           : process.env.DATABASE_URL + "?ssl=true",
+//       watchPg: true,
+//       enhanceGraphiql: true,
+//       ignoreRBAC: false, // Role Based Access Control (RBAC)
+//       extendedErrors: ["errcode", "detail", "hint"],
+//       graphiql: true,
+//       subscriptions: true,
+//       simpleSubscriptions: true,
+//       live: true,
+//       retryOnInitFail: true,
+//       rejectUnauthorized: false,
+//     }
+//   )
+// );
 
 app.get("*", function (req, res) {
   res.sendFile(path.join(`${__dirname}/dist/index.html`));
