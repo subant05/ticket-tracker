@@ -16,9 +16,7 @@ npm i -g db-migrate
 
 -- Install Postgres
 
-```
 [Postgres](https://www.postgresql.org)
-```
 
 ## Installation
 
