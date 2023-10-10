@@ -147,3 +147,17 @@ cd app && npm run watch
 ```
 cd app && npm run build
 ```
+
+## Deployment
+
+-- Build Web Application
+
+```
+cd app && npm run build
+```
+
+-- Commit & Push
+
+```
+cd server && git add . && git commit -m "< Git Message>" && git push heroku master
+```
