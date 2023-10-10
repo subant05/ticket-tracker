@@ -6,6 +6,7 @@ import { updateTickets } from "../_lib/_composed/updateTickets.js";
 import { recordExpertConnectTags } from "../_lib/_composed/recordExpertConnectTags.js";
 import { areRulesValidated } from "../_lib/_utils/areRulesValid.js";
 import { getLatestInOrbitDataSourceDatapoint } from "../_lib/_composed/getLatestInOrbitDataSourceDatapoint.js";
+import { addVPUPostionToMachineId } from "../_lib/_utils/addVPUPostionToMachineId.js";
 
 export const createTicketFromInOrbit = Congruity.fn.asyncCompose(
   recordExpertConnectTags,
@@ -14,5 +15,6 @@ export const createTicketFromInOrbit = Congruity.fn.asyncCompose(
   generateSubstantiveData,
   areRulesValidated,
   setupTickets,
+  addVPUPostionToMachineId(2),
   getLatestInOrbitDataSourceDatapoint
 );
