@@ -96,6 +96,13 @@ IN_ORBIT_URI=api.inorbit.ai
 -- Start
 
 ```
+cd server && npm run start
+
+```
+
+-- Watch
+
+```
 cd server && npm run dev
 ```
 
