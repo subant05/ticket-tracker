@@ -1,5 +1,25 @@
 # Ticket Tracker
 
+## Setup
+
+-- Install nodemon
+
+```
+npm i -g nodemon
+```
+
+-- Install DB-Migrations
+
+```
+npm i -g db-migrate
+```
+
+-- Install Postgres
+
+```
+[Postgres](https://www.postgresql.org)
+```
+
 ## Installation
 
 -- Server
