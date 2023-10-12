@@ -15,5 +15,6 @@ export const req = {
     longitude: -92.4415184,
     bearing: 345.7734375,
     digital_field_id: 0,
+    dashboard: "formant",
   },
 };

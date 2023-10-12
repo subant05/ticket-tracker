@@ -17,9 +17,7 @@ describe("parseRequestBody", () => {
   it("Ensure properties are set correctly", () => {
     expect(parseRequestBody(req).type).to.equal("alert");
     expect(parseRequestBody(req).eventType).to.equal("alert");
-    expect(parseRequestBody(req).formantUrl).to.equal(
-      `${process.env.FORMANT_API_URL}`
-    );
+    expect(parseRequestBody(req).formantUrl).to.be.null;
     expect(parseRequestBody(req).url).to.equal(
       `${process.env.FORMANT_API_URL}`
     );
