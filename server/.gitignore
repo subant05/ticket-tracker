@@ -4,3 +4,4 @@
 request.log
 .env
 node_modules
+migration-undo.json
