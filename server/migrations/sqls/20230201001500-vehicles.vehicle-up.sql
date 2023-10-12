@@ -4,8 +4,8 @@ CREATE TABLE IF NOT EXISTS vehicles.vehicle (
     device_id VARCHAR(255) NOT NULL,
     name varchar(255) NOT NULL,
     ip VARCHAR(20),
-	decommissioned BOOLEAN NOT NULL DEFAULT false,
-    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+	decommissioned BOOLEAN DEFAULT false,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
     PRIMARY KEY(id),
     CONSTRAINT uq_vehicle_name_device_id 
         UNIQUE (name, device_id)

@@ -31,7 +31,7 @@ export const importGroups = async (res) => {
               $8,
               $9
             )
-            ON CONFLICT (name, group_id) 
+            ON CONFLICT (name) 
             DO UPDATE SET name = $1, 
             group_id = $2, 
             created_at = $3,

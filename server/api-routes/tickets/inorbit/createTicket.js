@@ -15,6 +15,5 @@ export const createTicketFromInOrbit = Congruity.fn.asyncCompose(
   generateSubstantiveData,
   areRulesValidated,
   setupTickets,
-  addVPUPostionToMachineId(2),
   getLatestInOrbitDataSourceDatapoint
 );

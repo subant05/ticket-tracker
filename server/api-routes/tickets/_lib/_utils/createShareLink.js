@@ -2,14 +2,8 @@ import _ from "lodash";
 import { getShareLink } from "../../../_utils/services/formant/getShareLink.js";
 import moment from "moment";
 
-export async function createFormantShareLink(data) {
-  if (
-    !data ||
-    data === null ||
-    !data.deviceId ||
-    !data.value.timestamp ||
-    data.dashboard !== "formant"
-  )
+export async function createShareLink(data) {
+  if (!data || data === null || !data.deviceId || !data.value.timestamp)
     return null;
 
   const clonedData = _.cloneDeep(data);
@@ -36,9 +30,6 @@ export async function createFormantShareLink(data) {
 
     return clonedData;
   } catch (e) {
-    console.log("UNABLE TO CREATE FORMANT SHARE LINK: ", e.message);
-    console.log("UNABLE TO CREATE FORMANT SHARE LINK: ", e.stack);
-
     return null;
   }
 }
